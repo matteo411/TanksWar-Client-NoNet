@@ -1,6 +1,6 @@
 //
 //  HelloWorldLayer.h
-//  cocos2d-1.x-ARC-iOS
+//  cocos2d-1.x-ARC-iOS n
 //
 //  Created by Steffen Itterheim on 23.07.12.
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
