@@ -12,3 +12,10 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #endif
+static int TAG_TAG=100;
+static int TAG_BACKGROUND=0;
+static int TAG__LABAl=101;
+static int TAG__CHANGSCENE=102;
+static int  TAG__UPDATEBUILD=103;
+static int TAG__PANEL=3;
+static int TAG__CHOICEMENU=4;
