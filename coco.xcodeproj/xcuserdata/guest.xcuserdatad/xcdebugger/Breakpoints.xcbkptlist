@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "cocos2d-1.x-ARC-iOS/HelloWorldLayer.m"
-         timestampString = "384512153.321793"
+         timestampString = "384773491.76195"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "240"
-         endingLineNumber = "240"
+         startingLineNumber = "237"
+         endingLineNumber = "237"
          landmarkName = "-selectSpriteForTouch:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "cocos2d-1.x-ARC-iOS/HelloWorldLayer.m"
-         timestampString = "384512153.321793"
+         timestampString = "384773491.76195"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "241"
-         endingLineNumber = "241"
+         startingLineNumber = "238"
+         endingLineNumber = "238"
          landmarkName = "-selectSpriteForTouch:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "cocos2d-1.x-ARC-iOS/HelloWorldLayer.m"
-         timestampString = "384512153.321793"
+         timestampString = "384777355.43156"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "355"
-         endingLineNumber = "355"
+         startingLineNumber = "382"
+         endingLineNumber = "382"
          landmarkName = "-Choicemenu2:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,12 +47,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "cocos2d-1.x-ARC-iOS/HelloWorldLayer.m"
-         timestampString = "384512153.321793"
+         timestampString = "384777355.43156"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "347"
-         endingLineNumber = "347"
-         landmarkName = "-Choicemenu2:"
+         startingLineNumber = "383"
+         endingLineNumber = "383"
+         landmarkName = "-Choicemenu3:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -60,12 +60,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "cocos2d-1.x-ARC-iOS/HelloWorldLayer.m"
-         timestampString = "384512153.321793"
+         timestampString = "384773491.76195"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "348"
-         endingLineNumber = "348"
-         landmarkName = "-Choicemenu2:"
+         startingLineNumber = "236"
+         endingLineNumber = "236"
+         landmarkName = "-selectSpriteForTouch:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

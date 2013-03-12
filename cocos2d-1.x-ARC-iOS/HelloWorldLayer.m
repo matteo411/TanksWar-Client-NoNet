@@ -11,7 +11,6 @@
 #import "SlidingMenuGrid.h"
 #import "HelloWorldLayer.h"
 #import<math.h>
-#import "MyUIview.h"
 #import "CCUIViewWrapper.h"
 #import "SWScrollView.h"
 
@@ -70,19 +69,6 @@
         CCSprite *BackGround=[CCSprite spriteWithFile:@"map.png" rect:CGRectMake(0, 0, 1024, 768)];
         BackGround.anchorPoint=ccp(0, 0);
         [self addChild:BackGround z:1   tag:TAG_BACKGROUND  ];
-
-        /*for (int y=0; y<4; y++)
-            for (int x=0; x<6; x++)
-            {
-                CCSprite *s=[CCSprite spriteWithBatchNode:tags rect:CGRectMake(0, 0, 64, 64)];
-            [s setOpacity:255];
-            [tags addChild:s ];
-            [s setPosition:ccp(size.width*(2+x)/12, size.height*(3+y)/10)];
-                [tagSprites addObject:s ];
-        
-            }
-        */
-        //pomelo
         name = @"chenyl107";
         channel = @"junshi";
         
@@ -98,8 +84,8 @@
         [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Fuel,playerResource.Crop,playerResource.Steel,playerResource.Xi]];
         label.position=ccp(120, 670);
         [self addChild:label z:2 tag:TAG__LABAl];
-        
-        [CCMenuItemFont setFontName:@"Marker Felt"];
+        [self schedule:@selector(update:)interval:2 ];
+                [CCMenuItemFont setFontName:@"Marker Felt"];
         [CCMenuItemFont setFontSize:40  ];
         CCMenuItemFont *militaryArea=[CCMenuItemFont itemFromString:@"资源区" target:self selector:@selector(sceneTransition:) ];
     
@@ -108,9 +94,6 @@
         [changeScene setPosition:ccp(930, 730)];
         [self addChild:changeScene z:2 tag:TAG__CHANGSCENE];
          [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-        
-        //[self schedule:@selector(addup) interval:1];
-        //[self schedule:@selector(labelOfNum) interval:1.5];
         
 
 	}
@@ -270,11 +253,10 @@
 -(void) ChoicePanel//选择面板
 { 
     
-    CGSize size = [[CCDirector sharedDirector] winSize];
+   /* CGSize size = [[CCDirector sharedDirector] winSize];
     CCSprite *Panel=[CCSprite spriteWithFile:@"panel.png"];
     Panel.position=ccp(size.width/2, size.height/2);
-    [self addChild:Panel z:3 tag:TAG__PANEL];
-   
+    [self addChild:Panel z:3 tag:TAG__PANEL];*/
     /*
     NSMutableArray *allItems=[[NSMutableArray alloc] init];
     CCSprite *firstmenu=[CCSprite spriteWithFile:@"农田menu.png"];
@@ -301,19 +283,57 @@
     menugrid.contentSize=CGSizeMake(100, 100);
 
     [self addChild:menugrid z:2 tag:1005];
-    */
-    /*UIScrollView *scroll=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 340, 595)];
-    scroll.backgroundColor=[UIColor colorWithRed:0     green:0 blue:0 alpha:1];
+     */
+    
+    UIScrollView *scroll=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 340, 595)];
+    scroll.backgroundColor=[UIColor  colorWithRed:1  green:1 blue:1 alpha:0];
     CGPoint nodeSize=ccp(340,595);
     int nodecount=4;
+    //UIImage *image=[UIImage imageNamed:@"农田menu.png"];
+    UIView *image1=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 170, 595)];
+    image1.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+    image1.layer.borderColor=[[UIColor whiteColor]CGColor];
+    image1.layer.borderWidth=2;
+    image1.userInteractionEnabled=YES;
+    UITapGestureRecognizer *tapGestyre1=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event1: )];
+    [image1 addGestureRecognizer:tapGestyre1];
+    [scroll addSubview:image1];
+    UIView *image2=[[UIView alloc] initWithFrame:CGRectMake(170, 0, 170, 595)];
+    image2.backgroundColor=[UIColor colorWithRed:1 green:0 blue:0 alpha:1];
+    image2.layer.borderColor=[[UIColor whiteColor]CGColor];
+    image2.layer.borderWidth=2;
+    UITapGestureRecognizer *tapGestyre2=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event2: )];
+    [image2 addGestureRecognizer:tapGestyre2];
+    [scroll addSubview:image2];
+    UIView *image3=[[UIView alloc] initWithFrame:CGRectMake(340, 0, 170, 595)];
+    image3.backgroundColor=[UIColor colorWithRed:0 green:1 blue:0 alpha:1];
+    image3.layer.borderColor=[[UIColor whiteColor]CGColor];
+    image3.layer.borderWidth=2;
+    UITapGestureRecognizer *tapGestyre3=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event3: )];
+    [image3 addGestureRecognizer:tapGestyre3];
+    [scroll addSubview:image3];
+    UIView *image4=[[UIView alloc] initWithFrame:CGRectMake(510, 0, 170   , 595)];
+    image4.layer.borderColor=[[UIColor whiteColor]CGColor];
+    image4.layer.borderWidth=2;
+    image4.backgroundColor=[UIColor colorWithRed:0 green:0 blue:1 alpha:1];
+    UITapGestureRecognizer *tapGestyre4=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event4: )];
+    [image4 addGestureRecognizer:tapGestyre4];
+    [scroll addSubview:image4];
     scroll.contentSize=CGSizeMake(nodeSize.x*2, nodeSize.y);
     CCUIViewWrapper *wrapper=[CCUIViewWrapper wrapperForUIView:scroll];
     wrapper.position=ccp(185,809);
-
-    [self addChild:wrapper z:2 tag:20];
-     */
-    
-       CCSprite *Menu1=[CCSprite spriteWithFile:@"农田menu.png"];
+    [self addChild:wrapper z:4 tag:20];
+ /*  CCUIViewWrapper *menu1=[CCUIViewWrapper wrapperForUIView:image1];
+    CCUIViewWrapper *menu2=[CCUIViewWrapper wrapperForUIView:image2];
+    CCUIViewWrapper *menu3=[CCUIViewWrapper wrapperForUIView:image3];
+    CCUIViewWrapper *menu4=[CCUIViewWrapper wrapperForUIView:image4];
+    CCMenuItemSprite *Menu1=[CCMenuItemSprite itemFromNormalSprite:menu1 selectedSprite:nil target:self selector:@selector(Choicemenu1:)];
+     CCMenuItemSprite *Menu2=[CCMenuItemSprite itemFromNormalSprite:menu2 selectedSprite:nil target:self selector:@selector(Choicemenu2:)];
+     CCMenuItemSprite *Menu3=[CCMenuItemSprite itemFromNormalSprite:menu3 selectedSprite:nil target:self selector:@selector(Choicemenu3:)];
+     CCMenuItemSprite *Menu4=[CCMenuItemSprite itemFromNormalSprite:menu4 selectedSprite:nil target:self selector:@selector(Choicemenu4:)];
+    */
+    /*
+    CCSprite *Menu1=[CCSprite spriteWithFile:@"农田menu.png"];
     CCSprite *Menu2=[CCSprite spriteWithFile:@"石油厂menu.png"];
     CCSprite *Menu3=[CCSprite spriteWithFile:@"钢铁厂menu.png"];
     CCSprite *Menu4=[CCSprite spriteWithFile:@"稀矿场menu.png"];
@@ -326,6 +346,7 @@
     [menu alignItemsVerticallyWithPadding:-20];
     [menu setPosition:ccp(7*size.width/24, 9*size.height/20)];
     [self addChild:menu z:4 tag:TAG__CHOICEMENU];
+     */
 }
 -(void)Choicemenu1:sender
 {
@@ -439,11 +460,7 @@
     
     
 }
--(void) labelOfNum
-{
-   
-    [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Fuel,playerResource.Crop,playerResource.Steel,playerResource.Xi]];
-}
+
 -(void)delete:(id)sender  //删除建筑
 {
     [self removeChildByTag:103 cleanup:YES];
@@ -477,12 +494,72 @@
         
     }
 }
--(void)addup:(id)sender//资源增加
+
+-(void)update:(ccTime)delta
 {
     [playerResource setCrop:50];
     [playerResource setFuel:50];
-    [playerResource setSteel:50];
+   [playerResource setSteel:50];
     [playerResource setXi:50];
+    [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Fuel,playerResource.Crop,playerResource.Steel,playerResource.Xi]];
+
+}
+-(void) event1:(UITapGestureRecognizer *)gesture
+{
+    [self removeChildByTag:20 cleanup:YES];
+    //[self removeChildByTag:3 cleanup:YES];
+    self.isTouchEnabled=YES;
+    CCSprite *Build=[CCSprite spriteWithFile:@"农田.png"];
+    [buildingSprites addObject:Build];
+    Build.position=selSprite.position;
+    [self addChild:Build z:2];
+    [self rotateWrench];
+    
+    CGPoint myp = Build.position;
+    [self saveToServer:&myp withPng:@"农田.png"];
+}
+-(void) event2:(UITapGestureRecognizer *)gesture
+{
+    [self removeChildByTag:20 cleanup:YES];
+    [self removeChildByTag:3 cleanup:YES];
+    self.isTouchEnabled=YES;
+    CCSprite *Build=[CCSprite spriteWithFile:@"石油厂.png"];
+    [buildingSprites addObject:Build];
+    Build.position=selSprite.position;
+    [self addChild:Build z:2];
+    [self rotateWrench];
+    
+    CGPoint myp = Build.position;
+    [self saveToServer:&myp withPng:@"石油厂.png"];
+}
+-(void) event3:(UITapGestureRecognizer *)gesture
+{
+    [self removeChildByTag:20 cleanup:YES];
+    [self removeChildByTag:3 cleanup:YES];
+    self.isTouchEnabled=YES;
+    CCSprite *Build=[CCSprite spriteWithFile:@"钢铁厂.png"];
+    [buildingSprites addObject:Build];
+    Build.position=selSprite.position;
+    [self addChild:Build z:2];
+    [self rotateWrench];
+    
+    CGPoint myp = Build.position;
+    [self saveToServer:&myp withPng:@"钢铁厂.png"];
+    
+}
+-(void) event4:(UITapGestureRecognizer *)gesture
+{
+    [self removeChildByTag:20 cleanup:YES];
+    [self removeChildByTag:3 cleanup:YES];
+    self.isTouchEnabled=YES;
+    CCSprite *Build=[CCSprite spriteWithFile:@"稀矿场.png"];
+    [buildingSprites addObject:Build];
+    Build.position=selSprite.position;
+    [self addChild:Build z:2];
+    [self rotateWrench];
+    
+    CGPoint myp = Build.position;
+    [self saveToServer:&myp withPng:@"稀矿场.png"];
 }
 // on "dealloc" you need to release all your retained objects
 

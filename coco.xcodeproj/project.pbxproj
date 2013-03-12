@@ -35,8 +35,6 @@
 		AC622C8716E97F960030E4E7 /* 农田menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC622C8316E97F960030E4E7 /* 农田menu.png */; };
 		AC622C8816E97F960030E4E7 /* 石油厂menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC622C8416E97F960030E4E7 /* 石油厂menu.png */; };
 		AC622C8916E97F960030E4E7 /* 稀矿场menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC622C8516E97F960030E4E7 /* 稀矿场menu.png */; };
-		AC622C9616E99FE80030E4E7 /* MyUIview.m in Sources */ = {isa = PBXBuildFile; fileRef = AC622C9416E99FE80030E4E7 /* MyUIview.m */; };
-		AC622C9716E99FE80030E4E7 /* MyUIview.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC622C9516E99FE80030E4E7 /* MyUIview.xib */; };
 		AC622CAC16E9B9790030E4E7 /* CCUIViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AC622CAB16E9B9790030E4E7 /* CCUIViewWrapper.m */; };
 		AC622CB216E9CCF20030E4E7 /* SlidingMenuGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = AC622CB116E9CCF20030E4E7 /* SlidingMenuGrid.m */; };
 		ACEF913716E6079B00DD7120 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACEF913016E6079B00DD7120 /* map@2x.png */; };
@@ -299,9 +297,6 @@
 		AC622C8316E97F960030E4E7 /* 农田menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "农田menu.png"; sourceTree = "<group>"; };
 		AC622C8416E97F960030E4E7 /* 石油厂menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "石油厂menu.png"; sourceTree = "<group>"; };
 		AC622C8516E97F960030E4E7 /* 稀矿场menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "稀矿场menu.png"; sourceTree = "<group>"; };
-		AC622C9316E99FE80030E4E7 /* MyUIview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUIview.h; sourceTree = "<group>"; };
-		AC622C9416E99FE80030E4E7 /* MyUIview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUIview.m; sourceTree = "<group>"; };
-		AC622C9516E99FE80030E4E7 /* MyUIview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyUIview.xib; sourceTree = "<group>"; };
 		AC622CAA16E9B9790030E4E7 /* CCUIViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUIViewWrapper.h; sourceTree = "<group>"; };
 		AC622CAB16E9B9790030E4E7 /* CCUIViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCUIViewWrapper.m; sourceTree = "<group>"; };
 		AC622CB016E9CCF20030E4E7 /* SlidingMenuGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingMenuGrid.h; sourceTree = "<group>"; };
@@ -649,9 +644,6 @@
 		DC087EE215BDA9470044A820 /* cocos2d-1.x-ARC-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				AC622C9316E99FE80030E4E7 /* MyUIview.h */,
-				AC622C9416E99FE80030E4E7 /* MyUIview.m */,
-				AC622C9516E99FE80030E4E7 /* MyUIview.xib */,
 				2A10363A169AE798001311F1 /* pomelo */,
 				DC08803715BDA94A0044A820 /* AppDelegate.h */,
 				DC08803815BDA94A0044A820 /* AppDelegate.m */,
@@ -1178,7 +1170,6 @@
 				AC622C8716E97F960030E4E7 /* 农田menu.png in Resources */,
 				AC622C8816E97F960030E4E7 /* 石油厂menu.png in Resources */,
 				AC622C8916E97F960030E4E7 /* 稀矿场menu.png in Resources */,
-				AC622C9716E99FE80030E4E7 /* MyUIview.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1205,7 +1196,6 @@
 				2A10368B169AEB55001311F1 /* SocketIOTransportXHR.m in Sources */,
 				0E075F0516AF1E8A00ABD9D0 /* Resources.m in Sources */,
 				0E0DE17E16AF6AAC007AFF32 /* ResourceScene.m in Sources */,
-				AC622C9616E99FE80030E4E7 /* MyUIview.m in Sources */,
 				AC622CAC16E9B9790030E4E7 /* CCUIViewWrapper.m in Sources */,
 				AC622CB216E9CCF20030E4E7 /* SlidingMenuGrid.m in Sources */,
 				AC1DA46516EAE8AD0014F3FE /* SWScrollView.m in Sources */,
