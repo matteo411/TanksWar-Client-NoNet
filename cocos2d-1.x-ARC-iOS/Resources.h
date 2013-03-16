@@ -11,18 +11,18 @@
 
 @interface Resources : NSObject
 {
-    int crop;
+    int food;
     int steel;
-    int fuel;
-    int xi;
+    int oil;
+    int ore;
 }
--(int)Crop;
+-(int)Food;
 -(int)Steel;
--(int)Fuel;
--(int)Xi;
--(void)setCrop:(int) numChanged;
+-(int)Oil;
+-(int)Ore;
+-(void)setFood:(int) numChanged;
 -(void)setSteel:(int)numChanged;
--(void)setFuel:(int)numChanged;
--(void)setXi:(int) numChanged;
+-(void)setOil:(int)numChanged;
+-(void)setOre:(int) numChanged;
 -(void) initialazation;
 @end

@@ -10,33 +10,33 @@
 
 
 @implementation Resources
--(int)Crop
+-(int)Food
 {
-    return  crop;
+    return  food;
 }
 -(int)Steel
 {
     return  steel;
 }
--(int)Fuel
+-(int)Oil
 {
-    return fuel;
+    return oil;
 }
--(int)Xi
+-(int)Ore
 {
-    return xi;
+    return ore;
 }
--(void)setCrop:(int)numChanged
+-(void)setFood:(int)numChanged
 {
-    crop+=numChanged;
+    food+=numChanged;
 }
--(void)setFuel:(int)numChanged
+-(void)setOil:(int)numChanged
 {
-    fuel+=numChanged;
+    oil+=numChanged;
 }
--(void)setXi:(int)numChanged
+-(void)setOre:(int)numChanged
 {
-    xi+=numChanged;
+    ore+=numChanged;
 }
 -(void)setSteel:(int)numChanged
 {
@@ -44,9 +44,9 @@
 }
 -(void) initialazation
 {
-    crop=1000;
+    food=1000;
     steel=1000;
-    fuel=1000;
-    xi=1000;
+    oil=1000;
+    ore=1000;
 }
 @end

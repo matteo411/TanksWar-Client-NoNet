@@ -33,23 +33,23 @@
 	// return the scene
 	return scene;
 }
-// on "init" you need to initialize your instance
+
 -(id) init
-{   // always call "super" init
-	// Apple recommends to re-assign "self" with the "super" return value
+{   
 	if( (self=[super init])) {
-        //MyUIview *view=[[MyUIview alloc] initWithNibName:@"MyUIview" bundle:nil];
-        //[[[CCDirector sharedDirector] openGLView] addSubview:view.view];
+        
+        //变量初始化
         tagSprites=[[NSMutableArray alloc] init];
         buildingSprites=[[NSMutableArray alloc] init];
         
-        //  从文件中读取数据
+        //初始化tags
         CCSpriteBatchNode *tags=[CCSpriteBatchNode batchNodeWithFile:@"tags.png" capacity:24];
         [self addChild:tags z:2 tag:TAG_TAG];
+        
+        //从文件中读取数据并添加到tags和tagSprites
         NSString *filename=@"DataList.plist";
         NSDictionary *dict=[NSDictionary dictionaryWithContentsOfFile:[Util getActuralPath:filename]];
         NSArray *nodes=[dict objectForKey:@"nodes"];
-        
         for (id node in nodes)//读取坐标点
         {
             int x=[[node objectForKey:@"x"]floatValue];
@@ -82,7 +82,7 @@
         
         
         label=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(100, 100) alignment: UIViewAnimationCurveEaseIn fontName:@"Arial" fontSize:16];
-        [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Fuel,playerResource.Crop,playerResource.Steel,playerResource.Xi]];
+        [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Oil,playerResource.Food,playerResource.Steel,playerResource.Ore]];
         label.position=ccp(120, 670);
         [self addChild:label z:2 tag:TAG__LABAl];
         [self schedule:@selector(update:)interval:2 ];
@@ -498,11 +498,11 @@
 
 -(void)update:(ccTime)delta
 {
-    [playerResource setCrop:50];
-    [playerResource setFuel:50];
+    [playerResource setFood:50];
+    [playerResource setOil:50];
    [playerResource setSteel:50];
-    [playerResource setXi:50];
-    [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Fuel,playerResource.Crop,playerResource.Steel,playerResource.Xi]];
+    [playerResource setOre:50];
+    [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Oil,playerResource.Food,playerResource.Steel,playerResource.Ore]];
 
 }
 -(void) event1:(UITapGestureRecognizer *)gesture
