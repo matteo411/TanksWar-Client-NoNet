@@ -42,16 +42,17 @@
         //[[[CCDirector sharedDirector] openGLView] addSubview:view.view];
         tagSprites=[[NSMutableArray alloc] init];
         buildingSprites=[[NSMutableArray alloc] init];
+        
         //  从文件中读取数据
-         CCSpriteBatchNode *tags=[CCSpriteBatchNode batchNodeWithFile:@"tags.png" capacity:24];
-                   [self addChild:tags z:2 tag:TAG_TAG];
+        CCSpriteBatchNode *tags=[CCSpriteBatchNode batchNodeWithFile:@"tags.png" capacity:24];
+        [self addChild:tags z:2 tag:TAG_TAG];
         NSString *filename=@"DataList.plist";
-        NSDictionary *dict=[NSDictionary dictionaryWithContentsOfFile:[self getActuralPath:filename ]];
+        NSDictionary *dict=[NSDictionary dictionaryWithContentsOfFile:[Util getActuralPath:filename]];
         NSArray *nodes=[dict objectForKey:@"nodes"];
         
         for (id node in nodes)//读取坐标点
         {
-            int x=[[node objectForKey:@"x"]floatValue   ];
+            int x=[[node objectForKey:@"x"]floatValue];
             int y=[[node objectForKey:@"y"]floatValue];
             CCSprite *s=[CCSprite spriteWithBatchNode:tags  rect:CGRectMake(0, 0, 64, 64)];
             [tags addChild:s ];
@@ -101,12 +102,12 @@
  
 }
 
--(NSString*) getActuralPath:(NSString *) file//读取plist文件  确定tag坐标点
-{
-    NSArray *path=[file componentsSeparatedByString:@"."    ];
-    NSString *acturalPath=[[NSBundle mainBundle] pathForResource:[path objectAtIndex:0] ofType:[path objectAtIndex:1]];
-    return acturalPath;
-}
+//-(NSString*) getActuralPath:(NSString *) file//读取plist文件  确定tag坐标点
+//{
+//    NSArray *path=[file componentsSeparatedByString:@"."    ];
+//    NSString *acturalPath=[[NSBundle mainBundle] pathForResource:[path objectAtIndex:0] ofType:[path objectAtIndex:1]];
+//    return acturalPath;
+//}
 -(BOOL) initPomelo
 {
     //初始化pomelo

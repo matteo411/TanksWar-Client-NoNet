@@ -25,6 +25,7 @@
 		2A103689169AEB55001311F1 /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A103681169AEB55001311F1 /* SocketIOPacket.m */; };
 		2A10368A169AEB55001311F1 /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A103684169AEB55001311F1 /* SocketIOTransportWebsocket.m */; };
 		2A10368B169AEB55001311F1 /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A103686169AEB55001311F1 /* SocketIOTransportXHR.m */; };
+		2AD8145716F45EC1000F2337 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD8145616F45EC1000F2337 /* Util.m */; };
 		AC1DA46516EAE8AD0014F3FE /* SWScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1DA46416EAE8AD0014F3FE /* SWScrollView.m */; };
 		AC4C7E3B169AADA8007ECFC4 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4C7E37169AADA6007ECFC4 /* background.png */; };
 		AC4C7E3C169AADA8007ECFC4 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4C7E38169AADA7007ECFC4 /* background@2x.png */; };
@@ -286,6 +287,8 @@
 		2A103684169AEB55001311F1 /* SocketIOTransportWebsocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportWebsocket.m; sourceTree = "<group>"; };
 		2A103685169AEB55001311F1 /* SocketIOTransportXHR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportXHR.h; sourceTree = "<group>"; };
 		2A103686169AEB55001311F1 /* SocketIOTransportXHR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportXHR.m; sourceTree = "<group>"; };
+		2AD8145516F45EC1000F2337 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		2AD8145616F45EC1000F2337 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		AC1DA46316EAE8AD0014F3FE /* SWScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWScrollView.h; sourceTree = "<group>"; };
 		AC1DA46416EAE8AD0014F3FE /* SWScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWScrollView.m; sourceTree = "<group>"; };
 		AC4C7E37169AADA6007ECFC4 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../background.png; sourceTree = "<group>"; };
@@ -605,6 +608,15 @@
 			name = SocketRocket;
 			sourceTree = "<group>";
 		};
+		2AD8145416F45E62000F2337 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				2AD8145516F45EC1000F2337 /* Util.h */,
+				2AD8145616F45EC1000F2337 /* Util.m */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
 		DC087EC315BDA9460044A820 = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +656,7 @@
 		DC087EE215BDA9470044A820 /* cocos2d-1.x-ARC-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				2AD8145416F45E62000F2337 /* util */,
 				2A10363A169AE798001311F1 /* pomelo */,
 				DC08803715BDA94A0044A820 /* AppDelegate.h */,
 				DC08803815BDA94A0044A820 /* AppDelegate.m */,
@@ -1199,6 +1212,7 @@
 				AC622CAC16E9B9790030E4E7 /* CCUIViewWrapper.m in Sources */,
 				AC622CB216E9CCF20030E4E7 /* SlidingMenuGrid.m in Sources */,
 				AC1DA46516EAE8AD0014F3FE /* SWScrollView.m in Sources */,
+				2AD8145716F45EC1000F2337 /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
