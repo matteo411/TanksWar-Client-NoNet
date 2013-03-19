@@ -38,13 +38,12 @@
 {   // always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
-        //MyUIview *view=[[MyUIview alloc] initWithNibName:@"MyUIview" bundle:nil];
-        //[[[CCDirector sharedDirector] openGLView] addSubview:view.view];
+        buildingInformation=[[NSMutableArray alloc] init];
         tagSprites=[[NSMutableArray alloc] init];
         buildingSprites=[[NSMutableArray alloc] init];
         //  从文件中读取数据
-         CCSpriteBatchNode *tags=[CCSpriteBatchNode batchNodeWithFile:@"tags.png" capacity:24];
-                   [self addChild:tags z:2 tag:TAG_TAG];
+        CCSpriteBatchNode *tags=[CCSpriteBatchNode batchNodeWithFile:@"tags.png" capacity:24];
+        [self addChild:tags z:2 tag:TAG_TAG];
         NSString *filename=@"DataList.plist";
         NSDictionary *dict=[NSDictionary dictionaryWithContentsOfFile:[self getActuralPath:filename ]];
         NSArray *nodes=[dict objectForKey:@"nodes"];
@@ -56,45 +55,41 @@
             CCSprite *s=[CCSprite spriteWithBatchNode:tags  rect:CGRectMake(0, 0, 64, 64)];
             [tags addChild:s ];
             [s setPosition:ccp(x,y)];
-            
-            [tagSprites addObject:s];
+            [tagSprites addObject:s]; 
         }
    
         
         playerResource=[[Resources alloc] init];
         [playerResource initialazation];
-        //CGSize size = [[CCDirector sharedDirector] winSize];
-		// create and initialize a Label
-		//CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-        CCSprite *BackGround=[CCSprite spriteWithFile:@"map.png" rect:CGRectMake(0, 0, 1024, 768)];
+        
+        CCSprite *BackGround=[CCSprite spriteWithFile:@"ipad_reszonebkg.png" rect:CGRectMake(0, 0, 1024, 768)];
         BackGround.anchorPoint=ccp(0, 0);
-        [self addChild:BackGround z:1   tag:TAG_BACKGROUND  ];
-        name = @"chenyl107";
-        channel = @"junshi";
+        [self addChild:BackGround z:1   tag:TAG_BACKGROUND  ];//添加背景图
         
-        
-        if ([self initPomelo]) {
-            [self connectToPomelo];
-        }else{
-            NSLog(@"pomelo初始化失败");
-        }
-        
-        
-        label=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(100, 100) alignment: UIViewAnimationCurveEaseIn fontName:@"Arial" fontSize:16];
-        [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Fuel,playerResource.Crop,playerResource.Steel,playerResource.Xi]];
+        label=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(200, 100) alignment:UITextAlignmentLeft fontName:@"AppleGothic" fontSize:30];
+        [label setString:[NSString stringWithFormat:@"石油：%i",playerResource.Fuel]];
         label.position=ccp(120, 670);
         [self addChild:label z:2 tag:TAG__LABAl];
-        [self schedule:@selector(update:)interval:2 ];
-                [CCMenuItemFont setFontName:@"Marker Felt"];
-        [CCMenuItemFont setFontSize:40  ];
-        CCMenuItemFont *militaryArea=[CCMenuItemFont itemFromString:@"资源区" target:self selector:@selector(sceneTransition:) ];
-    
-        CCMenu *changeScene=[CCMenu menuWithItems:militaryArea, nil];
-        [changeScene alignItemsHorizontally];
-        [changeScene setPosition:ccp(930, 730)];
-        [self addChild:changeScene z:2 tag:TAG__CHANGSCENE];
-         [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+        [self schedule:@selector(update:)interval:10 ];//资源的计算
         
+        [CCMenuItemFont setFontName:@"Marker Felt"];
+        [CCMenuItemFont setFontSize:30  ];
+        CCMenuItemFont *militaryArea=[CCMenuItemFont itemFromString:@"资源区" target:self selector:@selector(sceneTransition:) ];
+         CCMenuItemFont *resourceyArea=[CCMenuItemFont itemFromString:@"军事区" target:self selector:@selector(sceneTransition:) ];
+         CCMenuItemFont *mapsOfearth=[CCMenuItemFont itemFromString:@"地图" target:self selector:@selector(sceneTransition:) ];
+        CCMenu *changeScene=[CCMenu menuWithItems:militaryArea,resourceyArea,mapsOfearth,nil];
+        [changeScene alignItemsVerticallyWithPadding:30];
+        [changeScene setPosition:ccp(980, 630)];
+        [self addChild:changeScene z:3 tag:TAG__CHANGSCENE];
+        
+        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];//触摸代理 
+        
+        CCSprite *battleRight=[CCSprite spriteWithFile:@"Rgroupbg.png"];
+        battleRight.position=ccp(980, 384);
+        [self addChild:battleRight z:2];
+        CCSprite *topTable=[CCSprite spriteWithFile:@"ipad_helpup.png"];
+        topTable.position=ccp(500,750);
+        [self addChild:topTable z:2];
 
 	}
 	return self;
@@ -208,9 +203,6 @@
 }
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    
-    
-    
     CGPoint point;
     point=[self convertTouchToNodeSpace:touch];
     [self selectSpriteForTouch:point];
@@ -242,7 +234,7 @@
 {
     //self.isTouchEnabled=NO;
     [CCMenuItemFont setFontName:@"Marker Felt"];
-    [CCMenuItemFont setFontSize:30];
+    [CCMenuItemFont setFontSize:20];
     CCMenuItemFont  *Delete=[CCMenuItemFont itemFromString:@"拆除" target:self selector:@selector(delete:)];
     CCMenuItemFont *upGrade=[CCMenuItemFont itemFromString:@"升级" target:self selector:@selector(upgrade:)];
     CCMenu *menu=[CCMenu menuWithItems:Delete,upGrade,nil];
@@ -348,6 +340,7 @@
     [self addChild:menu z:4 tag:TAG__CHOICEMENU];
      */
 }
+/*
 -(void)Choicemenu1:sender
 {
     [self removeChildByTag:4 cleanup:YES];
@@ -411,10 +404,11 @@
     
     
 }
+*/
 -(void)rotateWrench//转动扳手
 {
     CCSprite *wrench=[CCSprite spriteWithFile:@"wrench.png"];
-    wrench.position=ccp(selSprite.position.x-40, selSprite.position.y+40);
+    wrench.position=ccp(selSprite.position.x-40,selSprite.position.y+40);
     [self addChild:wrench z:2 tag:19 ];
     
     CCAction *rotate1=[CCRotateBy actionWithDuration:0.5 angle:60];
@@ -425,7 +419,14 @@
     
 }
 -(void)deleteWrench:(id)sender //删除扳手
-{
+{   CCParticleSystem *systerm=[CCParticleGalaxy node];
+    systerm.position=selSprite.position;
+    systerm.contentSize=CGSizeMake(50,50);
+    systerm.duration=0.5f;
+    [self addChild: systerm z:2];
+    CCSprite *levelOfbuilding=[CCSprite spriteWithFile:@"level0.png"];
+    levelOfbuilding.position=ccp(selSprite.position.x+50, selSprite.position.y-20);
+    [self addChild:levelOfbuilding z:2];
     [self removeChild:sender cleanup:YES];
 }
 -(void)saveToServer:(CGPoint *)point withPng:(NSString *)png
@@ -470,6 +471,15 @@
 }
 -(void)upgrade:(id)sender  //升级建筑
 {
+    CCParticleSystem *systerm=[CCParticleGalaxy node];
+    systerm.position=selSprite.position;
+    systerm.contentSize=CGSizeMake(50,50);
+    systerm.duration=0.5f;
+    [self addChild: systerm z:2];
+    int levelNum=1;
+    CCSprite *levelOfbuilding=[CCSprite spriteWithFile:[NSString stringWithFormat:@"level%d.png",levelNum]];
+    levelOfbuilding.position=ccp(selSprite.position.x+50, selSprite.position.y-20);
+    [self addChild:levelOfbuilding z:2];
     [self removeChildByTag:103 cleanup:YES];
     //[self removeChild:selSprite cleanup:YES];
 }
@@ -506,20 +516,33 @@
 }
 -(void) event1:(UITapGestureRecognizer *)gesture
 {
+    CCSprite *sprite;
+    for(sprite in tagSprites)
+   {
+       if (sprite==selSprite) {
+           sprite=selSprite;
+       }
+   }
+   
     [self removeChildByTag:20 cleanup:YES];
-    //[self removeChildByTag:3 cleanup:YES];
+    [self removeChildByTag:3 cleanup:YES];
     self.isTouchEnabled=YES;
     CCSprite *Build=[CCSprite spriteWithFile:@"农田.png"];
     [buildingSprites addObject:Build];
     Build.position=selSprite.position;
     [self addChild:Build z:2];
     [self rotateWrench];
-    
-    CGPoint myp = Build.position;
-    [self saveToServer:&myp withPng:@"农田.png"];
+  
 }
 -(void) event2:(UITapGestureRecognizer *)gesture
 {
+    CCSprite *sprite;
+    for(sprite in tagSprites)
+    {
+        if (sprite==selSprite) {
+            sprite=selSprite;
+        }
+    }
     [self removeChildByTag:20 cleanup:YES];
     [self removeChildByTag:3 cleanup:YES];
     self.isTouchEnabled=YES;
@@ -534,6 +557,13 @@
 }
 -(void) event3:(UITapGestureRecognizer *)gesture
 {
+    CCSprite *sprite;
+    for(sprite in tagSprites)
+    {
+        if (sprite==selSprite) {
+            sprite=selSprite;
+        }
+    }
     [self removeChildByTag:20 cleanup:YES];
     [self removeChildByTag:3 cleanup:YES];
     self.isTouchEnabled=YES;
@@ -549,6 +579,13 @@
 }
 -(void) event4:(UITapGestureRecognizer *)gesture
 {
+    CCSprite *sprite;
+    for(sprite in tagSprites)
+    {
+        if (sprite==selSprite) {
+            sprite=selSprite;
+        }
+    }
     [self removeChildByTag:20 cleanup:YES];
     [self removeChildByTag:3 cleanup:YES];
     self.isTouchEnabled=YES;

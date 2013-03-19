@@ -36,7 +36,7 @@
         
 		// create and initialize a Label
 		//CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-        CCSprite *BackGround=[CCSprite spriteWithFile:@"background.png" rect:CGRectMake(0, 0, 1024, 768)];
+        CCSprite *BackGround=[CCSprite spriteWithFile:@"ipad_military_bkg.png" rect:CGRectMake(0, 0, 1024, 768)];
         BackGround.anchorPoint=ccp(0, 0);
         [self addChild:BackGround z:1   tag:0];
         
