@@ -798,6 +798,13 @@
 			name = SocketRocket;
 			sourceTree = "<group>";
 		};
+		2A942C1916F8A327007B3148 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = resource;
+			sourceTree = "<group>";
+		};
 		2AD8145416F45E62000F2337 /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,6 +880,7 @@
 		DC087EE315BDA9470044A820 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2A942C1916F8A327007B3148 /* resource */,
 				AC3293DE16F8995B00DC1D21 /* fire.png */,
 				AC32932916F8988900DC1D21 /* ipad_battleleft.png */,
 				AC32932A16F8988900DC1D21 /* ipad_battleright.png */,
