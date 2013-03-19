@@ -185,8 +185,10 @@
 }
 -(void)sceneTransition:(id)sender
 {
-    CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[HelloWorldLayer scene] withColor:ccWHITE];
-    [[CCDirector sharedDirector] replaceScene:tran];
+//    CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[HelloWorldLayer scene] withColor:ccWHITE];
+//    [[CCDirector sharedDirector] replaceScene:tran];
+    HelloWorldLayer *lab = [[HelloWorldLayer alloc]init];
+    [self addChild:lab z:3];
 }
 
 

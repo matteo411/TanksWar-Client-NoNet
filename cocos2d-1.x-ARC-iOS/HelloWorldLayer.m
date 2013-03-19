@@ -69,160 +69,172 @@
         
         playerResource=[[Resources alloc] init];
         [playerResource initialazation];
+
+        
+//        name = @"chenyl107";
+//        channel = @"junshi";
+        
+        
+//        if ([self initPomelo]) {
+//            [self connectToPomelo];
+//        }else{
+//            NSLog(@"pomelo初始化失败");
+//        }
+
         
         CCSprite *BackGround=[CCSprite spriteWithFile:@"ipad_reszonebkg.png" rect:CGRectMake(0, 0, 1024, 768)];
         BackGround.anchorPoint=ccp(0, 0);
         [self addChild:BackGround z:1   tag:TAG_BACKGROUND  ];//添加背景图
         
 
+
+
+        //初始化资源
+
         label=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(100, 100) alignment: UIViewAnimationCurveEaseIn fontName:@"Arial" fontSize:16];
         [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Oil,playerResource.Food,playerResource.Steel,playerResource.Ore]];
 
         label.position=ccp(120, 670);
         [self addChild:label z:2 tag:TAG__LABAl];
-        [self schedule:@selector(update:)interval:10 ];//资源的计算
-        
-        [CCMenuItemFont setFontName:@"Marker Felt"];
-        [CCMenuItemFont setFontSize:30  ];
-        CCMenuItemFont *militaryArea=[CCMenuItemFont itemFromString:@"资源区" target:self selector:@selector(sceneTransition:) ];
-         CCMenuItemFont *resourceyArea=[CCMenuItemFont itemFromString:@"军事区" target:self selector:@selector(sceneTransition:) ];
-         CCMenuItemFont *mapsOfearth=[CCMenuItemFont itemFromString:@"地图" target:self selector:@selector(sceneTransition:) ];
-        CCMenu *changeScene=[CCMenu menuWithItems:militaryArea,resourceyArea,mapsOfearth,nil];
-        [changeScene alignItemsVerticallyWithPadding:30];
-        [changeScene setPosition:ccp(980, 630)];
-        [self addChild:changeScene z:3 tag:TAG__CHANGSCENE];
+
+        [self schedule:@selector(update:)interval:2 ];//资源的计算
+      
         
         [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];//触摸代理 
-        
-        CCSprite *battleRight=[CCSprite spriteWithFile:@"Rgroupbg.png"];
-        battleRight.position=ccp(980, 384);
-        [self addChild:battleRight z:2];
+
+//        [CCMenuItemFont setFontName:@"Marker Felt"];
+//        [CCMenuItemFont setFontSize:40];
+//        CCMenuItemFont *militaryArea=[CCMenuItemFont itemFromString:@"资源区" target:self selector:@selector(sceneTransition:) ];                                  //为什么监听跳转会在这里 chenyl
+//    
+//        CCMenu *changeScene=[CCMenu menuWithItems:militaryArea, nil];
+//        [changeScene alignItemsHorizontally];//水平排列
+//        [changeScene setPosition:ccp(930, 730)];
+//        [self addChild:changeScene z:2 tag:TAG__CHANGSCENE];
+        //这句话什么意思 chenyl
         CCSprite *topTable=[CCSprite spriteWithFile:@"ipad_helpup.png"];
         topTable.position=ccp(500,750);
         [self addChild:topTable z:2];
 
+        
+        
 	}
 	return self;
  
 }
 
-//-(NSString*) getActuralPath:(NSString *) file//读取plist文件  确定tag坐标点
-//{
-//    NSArray *path=[file componentsSeparatedByString:@"."    ];
-//    NSString *acturalPath=[[NSBundle mainBundle] pathForResource:[path objectAtIndex:0] ofType:[path objectAtIndex:1]];
-//    return acturalPath;
-//}
--(BOOL) initPomelo
-{
-    //初始化pomelo
-    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
-    pomelo = myDelegate.pomelo;
-    if (pomelo != nil) {
-        return TRUE;
-    }else{
-        return  FALSE;
-    }
-}
--(void)connectToPomelo
-{
-    //连接gate服务器得到分配的connect服务器
-    
-    [pomelo connectToHost:@"127.0.0.1" onPort:3014 withCallback:^(Pomelo *p){
-        NSDictionary *params = [NSDictionary dictionaryWithObject:@"chenyl107" forKey:@"uid"];
-        [pomelo requestWithRoute:@"gate.gateHandler.queryEntry" andParams:params andCallback:^(NSDictionary *result){
-            
-            [pomelo disconnectWithCallback:^(Pomelo *p){
-                host = [result objectForKey:@"host"];
-                port = [[result objectForKey:@"port"] intValue];
-                
-                //连接得到的connection服务器
-                [pomelo connectToHost:host onPort:port withCallback:^(Pomelo *p){
-                    
-                    
-                    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                                            name, @"username",
-                                            channel, @"rid",
-                                            nil];
-                    [p requestWithRoute:@"connector.entryHandler.enter" andParams:params andCallback:^(NSDictionary *result){
-                        NSArray *userList = [result objectForKey:@"users"];
-                        for (NSString *name1 in userList) {
-                            NSLog(@"%@",name1);
-                            //只是为了看一下该频道里有多少人，没啥用 可与去掉
-                            
-                            
-                            NSDictionary *params2 = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                     @"military", @"category",
-                                                     nil];
-                            [p requestWithRoute:@"connector.entryHandler.getArchitecture" andParams:params2 andCallback:^(NSDictionary* responseData){
-                               
-                                
-                                resources = [responseData objectForKey:@"Resources"];
-                                
-                                int count = [resources count];
-                                
-                                for (int i=0; i<count; i++) {
-                                    
-                                    NSLog(@"chenyl1");
-                                    NSDictionary *resource =[resources objectAtIndex:i];
-                                    NSNumber *xx = [resource objectForKey:@"pointx"];
-                                    NSNumber *yy = [resource objectForKey:@"pointy"];
-                                    NSString *pngg = [resource objectForKey:@"png"];
-                                    CGPoint thep = CGPointMake( [xx floatValue],  [yy floatValue]);
-                                    
-                                    for (CCSprite *sprite in tagSprites)
-                                    {
-                                        if(fabs([sprite position].x - thep.x)<1.0)
-                                        {
-                                            
-                                            
-                                            
-                                            self.isTouchEnabled=YES;
-                                            
-                                            CCSprite *Build=[CCSprite spriteWithFile:pngg];
-                                            
-                                            [buildingSprites addObject:Build];
-                                            
-                                            Build.position=thep;
-                                            
-                                            [self addChild:Build z:3];
-                                            
-                                        }
-                                    }
-                                    
-                                    
-                                }
-                                
-                                
-                                
-                                
-                            }];
-                            
-                            
-                        }
-                        
-                    }];
-                    
-                    
-                }];
-            }];
-        }];
-    }];
-    
-    
 
-}
+//                  不要删除，等前后端整合时候有用
+//-(BOOL) initPomelo
+//{
+//    //初始化pomelo
+//    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+//    pomelo = myDelegate.pomelo;
+//    if (pomelo != nil) {
+//        return TRUE;
+//    }else{
+//        return  FALSE;
+//    }
+//}
+//-(void)connectToPomelo
+//{
+//    //连接gate服务器得到分配的connect服务器
+//    
+//    [pomelo connectToHost:@"127.0.0.1" onPort:3014 withCallback:^(Pomelo *p){
+//        NSDictionary *params = [NSDictionary dictionaryWithObject:@"chenyl107" forKey:@"uid"];
+//        [pomelo requestWithRoute:@"gate.gateHandler.queryEntry" andParams:params andCallback:^(NSDictionary *result){
+//            
+//            [pomelo disconnectWithCallback:^(Pomelo *p){
+//                host = [result objectForKey:@"host"];
+//                port = [[result objectForKey:@"port"] intValue];
+//                
+//                //连接得到的connection服务器
+//                [pomelo connectToHost:host onPort:port withCallback:^(Pomelo *p){
+//                    
+//                    
+//                    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                            name, @"username",
+//                                            channel, @"rid",
+//                                            nil];
+//                    [p requestWithRoute:@"connector.entryHandler.enter" andParams:params andCallback:^(NSDictionary *result){
+//                        NSArray *userList = [result objectForKey:@"users"];
+//                        for (NSString *name1 in userList) {
+//                            NSLog(@"%@",name1);
+//                            //只是为了看一下该频道里有多少人，没啥用 可与去掉
+//                            
+//                            
+//                            NSDictionary *params2 = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                                     @"military", @"category",
+//                                                     nil];
+//                            [p requestWithRoute:@"connector.entryHandler.getArchitecture" andParams:params2 andCallback:^(NSDictionary* responseData){
+//                               
+//                                
+//                                resources = [responseData objectForKey:@"Resources"];
+//                                
+//                                int count = [resources count];
+//                                
+//                                for (int i=0; i<count; i++) {
+//                                    
+//                                    NSLog(@"chenyl1");
+//                                    NSDictionary *resource =[resources objectAtIndex:i];
+//                                    NSNumber *xx = [resource objectForKey:@"pointx"];
+//                                    NSNumber *yy = [resource objectForKey:@"pointy"];
+//                                    NSString *pngg = [resource objectForKey:@"png"];
+//                                    CGPoint thep = CGPointMake( [xx floatValue],  [yy floatValue]);
+//                                    
+//                                    for (CCSprite *sprite in tagSprites)
+//                                    {
+//                                        if(fabs([sprite position].x - thep.x)<1.0)
+//                                        {
+//                                            
+//                                            
+//                                            
+//                                            self.isTouchEnabled=YES;
+//                                            
+//                                            CCSprite *Build=[CCSprite spriteWithFile:pngg];
+//                                            
+//                                            [buildingSprites addObject:Build];
+//                                            
+//                                            Build.position=thep;
+//                                            
+//                                            [self addChild:Build z:3];
+//                                            
+//                                        }
+//                                    }
+//                                    
+//                                    
+//                                }
+//                                
+//                                
+//                                
+//                                
+//                            }];
+//                            
+//                            
+//                        }
+//                        
+//                    }];
+//                    
+//                    
+//                }];
+//            }];
+//        }];
+//    }];
+//    
+//    
+//
+//}
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint point;
     point=[self convertTouchToNodeSpace:touch];
     [self selectSpriteForTouch:point];
-    NSLog(@"%f",point.x);
-    NSLog(@"%f",point.y);
-    return TRUE;
+    return TRUE;//？？？ chenyl
 
 }
 -(void)selectSpriteForTouch:(CGPoint) point
 {
+    //判断玩家点击的是建筑还是地标
+    
     for (CCSprite *sprite in buildingSprites) {
         if (CGRectContainsPoint(sprite.boundingBox, point)) {
             selSprite=sprite;
@@ -324,6 +336,7 @@
     scroll.contentSize=CGSizeMake(nodeSize.x*2, nodeSize.y);
     CCUIViewWrapper *wrapper=[CCUIViewWrapper wrapperForUIView:scroll];
     wrapper.position=ccp(185,809);
+    //wrapper.position=ccp(500,809);
     [self addChild:wrapper z:4 tag:20];
  /*  CCUIViewWrapper *menu1=[CCUIViewWrapper wrapperForUIView:image1];
     CCUIViewWrapper *menu2=[CCUIViewWrapper wrapperForUIView:image2];
@@ -493,27 +506,35 @@
     [self removeChildByTag:103 cleanup:YES];
     //[self removeChild:selSprite cleanup:YES];
 }
--(void)sceneTransition:(id)sender  //转换到军事区
-{
-     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Do you sure you want to leave?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes" ,@"No", nil];
-    [alert show];
-                                                                                           
-   
-}
--(void)alertView:(UIAlertView*)actionsheet //uikit 的应用 （试验）  弹出提示按钮
-   clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex==0) {
-        
-    }
-    else if (buttonIndex==1) {
-        CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
-        [[CCDirector sharedDirector] replaceScene:tran];
-    }
-    else{
-        
-    }
-}
+//-(void)sceneTransition:(id)sender  //转换到军事区
+//{
+////     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Do you sure you want to leave?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes" ,@"No", nil];
+////    [alert show];
+//    CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
+//    [[CCDirector sharedDirector] replaceScene:tran];
+//    
+//   
+//}
+//-(void)sceneTransition2:(id)sender
+//{
+//    CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[HelloWorldLayer scene] withColor:ccWHITE];
+//    [[CCDirector sharedDirector] replaceScene:tran];
+//}
+//-(void)alertView:(UIAlertView*)actionsheet //uikit 的应用 （试验）  弹出提示按钮
+//   clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (buttonIndex==0) {
+//        
+//    }
+//    else if (buttonIndex==1) {
+//        //ResourceScene是资源区？chenyl
+//        CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
+//        [[CCDirector sharedDirector] replaceScene:tran];
+//    }
+//    else{
+//        
+//    }
+//}
 
 -(void)update:(ccTime)delta
 {
