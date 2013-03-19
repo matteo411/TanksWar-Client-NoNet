@@ -56,7 +56,7 @@
             }
 
         label=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(100, 100) alignment: UIViewAnimationCurveEaseIn fontName:@"Arial" fontSize:16];
-        [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Fuel,playerResource.Crop,playerResource.Steel,playerResource.Xi]];
+        [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Oil,playerResource.Food,playerResource.Steel,playerResource.Ore]];
         label.position=ccp(120, 670);
         [self addChild:label z:2 tag:101];
         
@@ -169,7 +169,7 @@
 -(void) labelOfNum
 {
     
-    [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Fuel,playerResource.Crop,playerResource.Steel,playerResource.Xi]];
+    [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Oil,playerResource.Food,playerResource.Steel,playerResource.Ore]];
 }
 -(void)delete:(id)sender
 {

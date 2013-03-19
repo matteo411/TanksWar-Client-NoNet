@@ -14,6 +14,8 @@
 #import "Resources.h"
 #import "ResourceScene.h"
 #import "tagInformation.h"
+#import "Util.h"
+
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer<PomeloDelegate>
 
