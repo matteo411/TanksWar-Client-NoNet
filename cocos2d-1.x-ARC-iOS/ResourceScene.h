@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "Resources.h"
 #import "HelloWorldLayer.h"
+#import "Util.h"
 @interface ResourceScene : CCLayer {
     CGPoint Tpoint;
     CCSprite *selSprite;
@@ -21,7 +22,14 @@
     NSString *name;//当前用户的用户名
     NSString *channel;//频道
     NSArray *resources;
-    CCLabelTTF *label;
+    CCLabelTTF *labelOfFood;
+    CCLabelTTF *labelOfOil;
+    CCLabelTTF *labelOfOre;
+    CCLabelTTF *labelOfSteel;
+    int addFood;
+    int addOil;
+    int addOre;
+    int addSteel;
     
 }
 +(CCScene *) scene;

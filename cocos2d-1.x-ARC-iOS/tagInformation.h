@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface tagInformation :NSObject
+@interface tagInformation :CCNode
 {
-  @public  CCSprite *buildingSprite;
-  @public  enum
+    CCSprite *buildingSprite;
+    enum
       {
         food,
         steel,
@@ -20,10 +20,8 @@
         ore,
          tag
        } BuildingType;
-  @public  int levelNum;
+    //int levelNum;
 }
--(int)getLevelNum;
--(void)getBuildingType;
-
-
+@property int levelNum;
+-(id)getBuildingType;
 @end

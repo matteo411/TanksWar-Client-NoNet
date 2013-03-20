@@ -45,22 +45,23 @@
         
         // UIImageView *BGimage=[[UIImageView alloc]initWithImage:[UIImage  imageNamed:@"右侧导航条.png"]];
         
-        UIScrollView *scroll=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height/rightSize)];
+        UIScrollView *scroll=[[UIScrollView alloc] initWithFrame:CGRectMake(-10, 35,786,95)];
         //Y,X,宽度（|）,高度（——）
-        scroll.backgroundColor=[UIColor  colorWithRed:1  green:1 blue:1 alpha:0.5];
-        //scroll.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"右侧导航条.png"]];
-        //scroll.scrollEnabled = NO;
+        scroll.backgroundColor=[UIColor  colorWithRed:1  green:1 blue:1 alpha:0];
+       //scroll.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"右侧导航条.png"]];
+        scroll.scrollEnabled = NO;
         scroll.directionalLockEnabled =NO;
        
         //设置背景
         
         UIImageView* bgview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"右侧导航条.png"]];
-        bgview.frame = CGRectMake(0, 0, scroll.frame.size.width, scroll.frame.size.height);
-        //bgview.transform = CGAffineTransformMakeRotation(135);
+        bgview.frame = CGRectMake(600,0, scroll.frame.size.height, scroll.frame.size.width);
+        bgview.transform = CGAffineTransformMakeRotation(M_PI*0.5);
+        bgview.center=ccp(384,45);
         [scroll addSubview:bgview];
-               
+              
         // size.width/nodecount*(nodecount-1)。。。。。chenyl
-        UIView *image1=[[UIView alloc] initWithFrame:CGRectMake( scroll.frame.size.width/nodecount*(nodecount-1), 0, scroll.frame.size.width/nodecount, scroll.frame.size.height-1)];
+        UIView *image1=[[UIView alloc] initWithFrame:CGRectMake( bgview.frame.size.width/nodecount*(nodecount-1), 9, bgview.frame.size.width/nodecount, bgview.frame.size.height-10)];
         image1.backgroundColor=[UIColor colorWithRed:1 green:0 blue:0 alpha:1];
         image1.layer.borderColor=[[UIColor whiteColor]CGColor];
         image1.layer.borderWidth=2;
@@ -77,7 +78,7 @@
         
         
         
-        UIView *image2=[[UIView alloc] initWithFrame:CGRectMake(scroll.frame.size.width/nodecount*(nodecount-2), 0, scroll.frame.size.width/nodecount, scroll.frame.size.height-1)];
+        UIView *image2=[[UIView alloc] initWithFrame:CGRectMake(bgview.frame.size.width/nodecount*(nodecount-2), 9, bgview.frame.size.width/nodecount, bgview.frame.size.height-10)];
         image2.backgroundColor=[UIColor colorWithRed:1 green:1 blue:0 alpha:1];
         image2.layer.borderColor=[[UIColor whiteColor]CGColor];
         image2.layer.borderWidth=2;

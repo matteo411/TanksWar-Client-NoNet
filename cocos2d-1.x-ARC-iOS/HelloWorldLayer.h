@@ -38,9 +38,15 @@
     NSString *name;
     //频道
     NSString *channel;
-   
     NSArray *resources;
-    CCLabelTTF *label;
+    CCLabelTTF *labelOfFood;
+    CCLabelTTF *labelOfOil;
+    CCLabelTTF *labelOfOre;
+    CCLabelTTF *labelOfSteel;
+    int addFood;
+    int addOil;
+    int addOre;
+    int addSteel;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child

@@ -11,12 +11,5 @@
 
 @implementation tagInformation
 
--(int)getLevelNum
-{
-    return levelNum;
-}
--(void)getBuildingType
-{
-    
-}
+
 @end
