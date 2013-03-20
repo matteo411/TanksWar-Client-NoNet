@@ -11,6 +11,7 @@
 @implementation Building
 
 @synthesize Build;
-@synthesize Wrench;
+@synthesize key;
+@synthesize level;
 
 @end
