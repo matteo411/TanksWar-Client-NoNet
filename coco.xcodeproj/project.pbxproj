@@ -805,6 +805,52 @@
 			name = resource;
 			sourceTree = "<group>";
 		};
+		2A942C1A16F9D477007B3148 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC3293E016F8998300DC1D21 /* tagInformation.h */,
+				AC3293E116F8998300DC1D21 /* tagInformation.m */,
+				0E075F0216AF1E8A00ABD9D0 /* Resources.h */,
+				0E075F0316AF1E8A00ABD9D0 /* Resources.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2A942C1B16F9D4F8007B3148 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				DC08803715BDA94A0044A820 /* AppDelegate.h */,
+				DC08803815BDA94A0044A820 /* AppDelegate.m */,
+				2A942C1D16F9D576007B3148 /* View */,
+				2A942C1C16F9D545007B3148 /* Controller */,
+				2A942C1A16F9D477007B3148 /* Model */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		2A942C1C16F9D545007B3148 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DC08803A15BDA94A0044A820 /* RootViewController.h */,
+				DC08803B15BDA94A0044A820 /* RootViewController.m */,
+				2A34DE0D16F79F450097AE56 /* NavigationLayer.h */,
+				2A34DE0E16F79F450097AE56 /* NavigationLayer.m */,
+				DC08803D15BDA94A0044A820 /* HelloWorldLayer.h */,
+				DC08803E15BDA94A0044A820 /* HelloWorldLayer.m */,
+				DC08804015BDA94A0044A820 /* GameConfig.h */,
+				0E0DE17C16AF6AAC007AFF32 /* ResourceScene.h */,
+				0E0DE17D16AF6AAC007AFF32 /* ResourceScene.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		2A942C1D16F9D576007B3148 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		2AD8145416F45E62000F2337 /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -853,23 +899,9 @@
 		DC087EE215BDA9470044A820 /* cocos2d-1.x-ARC-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				AC3293E016F8998300DC1D21 /* tagInformation.h */,
-				AC3293E116F8998300DC1D21 /* tagInformation.m */,
-				2AD8145416F45E62000F2337 /* util */,
 				2A10363A169AE798001311F1 /* pomelo */,
-				DC08803715BDA94A0044A820 /* AppDelegate.h */,
-				DC08803815BDA94A0044A820 /* AppDelegate.m */,
-				DC08803A15BDA94A0044A820 /* RootViewController.h */,
-				DC08803B15BDA94A0044A820 /* RootViewController.m */,
-				2A34DE0D16F79F450097AE56 /* NavigationLayer.h */,
-				2A34DE0E16F79F450097AE56 /* NavigationLayer.m */,
-				DC08803D15BDA94A0044A820 /* HelloWorldLayer.h */,
-				DC08803E15BDA94A0044A820 /* HelloWorldLayer.m */,
-				DC08804015BDA94A0044A820 /* GameConfig.h */,
-				0E0DE17C16AF6AAC007AFF32 /* ResourceScene.h */,
-				0E0DE17D16AF6AAC007AFF32 /* ResourceScene.m */,
-				0E075F0216AF1E8A00ABD9D0 /* Resources.h */,
-				0E075F0316AF1E8A00ABD9D0 /* Resources.m */,
+				2A942C1B16F9D4F8007B3148 /* App */,
+				2AD8145416F45E62000F2337 /* util */,
 				DC08805615BDA9820044A820 /* libs */,
 				DC087EE315BDA9470044A820 /* Resources */,
 				DC08803315BDA94A0044A820 /* Supporting Files */,

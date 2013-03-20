@@ -91,11 +91,7 @@
         [label2 setBackgroundColor:[UIColor clearColor]];
         [image2 addSubview:label2];
         
-        
-        
-        
-        //        CGPoint nodeSize=ccp(340,200);。。。。chenyl 不需要 （弹出代码）
-        scroll.contentSize=CGSizeMake(scroll.frame.size.width+1, scroll.frame.size.height);//节点（内容）的大小
+         scroll.contentSize=CGSizeMake(scroll.frame.size.width+1, scroll.frame.size.height);//节点（内容）的大小
         CCUIViewWrapper *wrapper=[CCUIViewWrapper wrapperForUIView:scroll];
         
         
@@ -109,11 +105,7 @@
         
         
         [self addChild:helloWorldLayer z:3 tag:97];
-//        [self addChild:resourceLabel z:3 tag:98];
-//        resourceLabel.isTouchEnabled=NO;
-//        resourceLabel.visible=NO;
-//        helloWorldLayer.visible=YES;
-//        helloWorldLayer.isTouchEnabled=YES;
+
         
         
 	}
@@ -123,35 +115,17 @@
 
 -(void)sceneTransition:(int)sender  //转换到军事区
 {
-
-    
     [self removeChildByTag:98 cleanup:NO];
     resourceLabel = [[ResourceScene alloc]init];
     [self addChild:resourceLabel z:3 tag:98];
-  
-//   
-//     helloWorldLayer.isTouchEnabled=NO;
-//    helloWorldLayer.visible=NO;
-//    resourceLabel.isTouchEnabled=YES;
-//    resourceLabel.visible=YES;
-    
-
 }
 
 -(void)sceneTransition2:(int)sender
 {
-
     [self removeChildByTag:97 cleanup:NO];
     helloWorldLayer = [[HelloWorldLayer alloc]init];
     [self addChild:helloWorldLayer z:3 tag:97];
-    
-//    resourceLabel.isTouchEnabled=NO;
-//    resourceLabel.visible=NO;
-//    
-//    helloWorldLayer.isTouchEnabled=YES;
-//    helloWorldLayer.visible=YES;
 
-   
 }
 
 @end
