@@ -12,6 +12,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #endif
+#define degreesToRadians(x)(M_PI*(x)/180.0)
 static int TAG_TAG=100;
 static int TAG_BACKGROUND=0;
 static int TAG__LABAl=101;
