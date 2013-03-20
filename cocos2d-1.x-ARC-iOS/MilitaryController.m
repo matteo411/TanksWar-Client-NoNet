@@ -9,13 +9,13 @@
 
 // Import the interfaces
 #import "SlidingMenuGrid.h"
-#import "HelloWorldLayer.h"
+#import "MilitaryController.h"
 #import <math.h>
 #import "CCUIViewWrapper.h"
 #import "SWScrollView.h"
 
 // HelloWorldLayer implementation
-@implementation HelloWorldLayer
+@implementation MilitaryController
 @synthesize pomelo; 
 @synthesize name;
 @synthesize channel;
@@ -25,7 +25,7 @@
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [HelloWorldLayer node];
+	MilitaryController *layer = [MilitaryController node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -43,9 +43,7 @@
         buildingSprites=[[NSMutableArray alloc] init];
        
         
-        //变量初始化
-        tagSprites=[[NSMutableArray alloc] init];
-        buildingSprites=[[NSMutableArray alloc] init];
+        
         
         //初始化tags
         CCSpriteBatchNode *tags=[CCSpriteBatchNode batchNodeWithFile:@"tags.png" capacity:24];
@@ -73,18 +71,6 @@
         playerResource=[[Resources alloc] init];
         [playerResource initialazation];
 
-        
-//        name = @"chenyl107";
-//        channel = @"junshi";
-        
-        
-//        if ([self initPomelo]) {
-//            [self connectToPomelo];
-//        }else{
-//            NSLog(@"pomelo初始化失败");
-//        }
-
-        
         CCSprite *BackGround=[CCSprite spriteWithFile:@"ipad_reszonebkg.png" rect:CGRectMake(0, 0, 1024, 768)];
         BackGround.anchorPoint=ccp(0, 0);
         [self addChild:BackGround z:1   tag:TAG_BACKGROUND  ];//添加背景图
@@ -152,106 +138,7 @@
     [self addChild:labelOfOre z:3 tag:TAG__LABAl];
     [self schedule:@selector(update:)interval:10 ];
 }
-//                  不要删除，等前后端整合时候有用
-//-(BOOL) initPomelo
-//{
-//    //初始化pomelo
-//    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
-//    pomelo = myDelegate.pomelo;
-//    if (pomelo != nil) {
-//        return TRUE;
-//    }else{
-//        return  FALSE;
-//    }
-//}
-//-(void)connectToPomelo
-//{
-//    //连接gate服务器得到分配的connect服务器
-//    
-//    [pomelo connectToHost:@"127.0.0.1" onPort:3014 withCallback:^(Pomelo *p){
-//        NSDictionary *params = [NSDictionary dictionaryWithObject:@"chenyl107" forKey:@"uid"];
-//        [pomelo requestWithRoute:@"gate.gateHandler.queryEntry" andParams:params andCallback:^(NSDictionary *result){
-//            
-//            [pomelo disconnectWithCallback:^(Pomelo *p){
-//                host = [result objectForKey:@"host"];
-//                port = [[result objectForKey:@"port"] intValue];
-//                
-//                //连接得到的connection服务器
-//                [pomelo connectToHost:host onPort:port withCallback:^(Pomelo *p){
-//                    
-//                    
-//                    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                            name, @"username",
-//                                            channel, @"rid",
-//                                            nil];
-//                    [p requestWithRoute:@"connector.entryHandler.enter" andParams:params andCallback:^(NSDictionary *result){
-//                        NSArray *userList = [result objectForKey:@"users"];
-//                        for (NSString *name1 in userList) {
-//                            NSLog(@"%@",name1);
-//                            //只是为了看一下该频道里有多少人，没啥用 可与去掉
-//                            
-//                            
-//                            NSDictionary *params2 = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                                     @"military", @"category",
-//                                                     nil];
-//                            [p requestWithRoute:@"connector.entryHandler.getArchitecture" andParams:params2 andCallback:^(NSDictionary* responseData){
-//                               
-//                                
-//                                resources = [responseData objectForKey:@"Resources"];
-//                                
-//                                int count = [resources count];
-//                                
-//                                for (int i=0; i<count; i++) {
-//                                    
-//                                    NSLog(@"chenyl1");
-//                                    NSDictionary *resource =[resources objectAtIndex:i];
-//                                    NSNumber *xx = [resource objectForKey:@"pointx"];
-//                                    NSNumber *yy = [resource objectForKey:@"pointy"];
-//                                    NSString *pngg = [resource objectForKey:@"png"];
-//                                    CGPoint thep = CGPointMake( [xx floatValue],  [yy floatValue]);
-//                                    
-//                                    for (CCSprite *sprite in tagSprites)
-//                                    {
-//                                        if(fabs([sprite position].x - thep.x)<1.0)
-//                                        {
-//                                            
-//                                            
-//                                            
-//                                            self.isTouchEnabled=YES;
-//                                            
-//                                            CCSprite *Build=[CCSprite spriteWithFile:pngg];
-//                                            
-//                                            [buildingSprites addObject:Build];
-//                                            
-//                                            Build.position=thep;
-//                                            
-//                                            [self addChild:Build z:3];
-//                                            
-//                                        }
-//                                    }
-//                                    
-//                                    
-//                                }
-//                                
-//                                
-//                                
-//                                
-//                            }];
-//                            
-//                            
-//                        }
-//                        
-//                    }];
-//                    
-//                    
-//                }];
-//            }];
-//        }];
-//    }];
-//    
-//    
-//
-//}
+
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint point;
@@ -302,34 +189,7 @@
     CCSprite *Panel=[CCSprite spriteWithFile:@"panel.png"];
     Panel.position=ccp(size.width/2, size.height/2);
     [self addChild:Panel z:3 tag:TAG__PANEL];
-    /*
-    NSMutableArray *allItems=[[NSMutableArray alloc] init];
-    CCSprite *firstmenu=[CCSprite spriteWithFile:@"农田menu.png"];
-    CCSprite *firstSelmenu=[CCSprite spriteWithFile:@"农田.png"];
-    CCSprite *secondmenu=[CCSprite spriteWithFile:@"石油厂menu.png"];
-    CCSprite *secondSelmenu=[CCSprite spriteWithFile:@"石油厂.png"];
-    CCSprite *thirdmenu=[CCSprite spriteWithFile:@"钢铁厂menu.png"];
-    CCSprite *thirdSelmenu=[CCSprite spriteWithFile:@"钢铁厂.png"];
-    CCSprite *forthmenu=[CCSprite spriteWithFile:@"稀矿场menu.png"];
-    CCSprite *forthSelmenu=[CCSprite spriteWithFile:@"稀矿场.png"];
-    CCMenuItemSprite    *menu1=[CCMenuItemSprite itemFromNormalSprite:firstmenu selectedSprite:firstSelmenu target:self selector:@selector(Choicemenu1:)];
-    CCMenuItemSprite    *menu2=[CCMenuItemSprite itemFromNormalSprite:secondmenu selectedSprite:secondSelmenu target:self selector: @selector(Choicemenu2:)];
-    CCMenuItemSprite     *menu3=[CCMenuItemSprite itemFromNormalSprite:thirdmenu selectedSprite:thirdSelmenu target:self selector:@selector(Choicemenu3:)   ];
-    CCMenuItemSprite    *menu4=[CCMenuItemSprite itemFromNormalSprite:forthmenu selectedSprite:forthSelmenu target:self selector:@selector(Choicemenu4:)];
-    menu1.tag=1001;
-    menu2.tag=1002;
-    menu3.tag=1003;
-    menu4.tag=1004;
-    [allItems addObject:menu1];
-    [allItems addObject:menu2];
-    [allItems addObject:menu3];
-    [allItems addObject:menu4];
-    SlidingMenuGrid *menugrid=[SlidingMenuGrid menuWithArray:allItems cols:1 rows:4 position:ccp(size.width/2,size.height/2) padding:CGPointMake(100, 100) verticalPaging:YES];
-    menugrid.contentSize=CGSizeMake(100, 100);
-
-    [self addChild:menugrid z:2 tag:1005];
-     */
-    
+        
     UIScrollView *scroll=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 340, 595)];
     scroll.backgroundColor=[UIColor  colorWithRed:1  green:1 blue:1 alpha:0];
     CGPoint nodeSize=ccp(340,595);
@@ -416,96 +276,8 @@
     wrapper.position=ccp(185,809);
     //wrapper.position=ccp(500,809);
     [self addChild:wrapper z:4 tag:20];
- /*  CCUIViewWrapper *menu1=[CCUIViewWrapper wrapperForUIView:image1];
-    CCUIViewWrapper *menu2=[CCUIViewWrapper wrapperForUIView:image2];
-    CCUIViewWrapper *menu3=[CCUIViewWrapper wrapperForUIView:image3];
-    CCUIViewWrapper *menu4=[CCUIViewWrapper wrapperForUIView:image4];
-    CCMenuItemSprite *Menu1=[CCMenuItemSprite itemFromNormalSprite:menu1 selectedSprite:nil target:self selector:@selector(Choicemenu1:)];
-     CCMenuItemSprite *Menu2=[CCMenuItemSprite itemFromNormalSprite:menu2 selectedSprite:nil target:self selector:@selector(Choicemenu2:)];
-     CCMenuItemSprite *Menu3=[CCMenuItemSprite itemFromNormalSprite:menu3 selectedSprite:nil target:self selector:@selector(Choicemenu3:)];
-     CCMenuItemSprite *Menu4=[CCMenuItemSprite itemFromNormalSprite:menu4 selectedSprite:nil target:self selector:@selector(Choicemenu4:)];
-    */
-    /*
-    CCSprite *Menu1=[CCSprite spriteWithFile:@"农田menu.png"];
-    CCSprite *Menu2=[CCSprite spriteWithFile:@"石油厂menu.png"];
-    CCSprite *Menu3=[CCSprite spriteWithFile:@"钢铁厂menu.png"];
-    CCSprite *Menu4=[CCSprite spriteWithFile:@"稀矿场menu.png"];
-    CCMenuItemSprite *menu1=[CCMenuItemSprite itemFromNormalSprite:Menu1 selectedSprite:nil target:self selector:@selector(Choicemenu1:)];
-    CCMenuItemSprite *menu2=[CCMenuItemSprite itemFromNormalSprite:Menu2 selectedSprite:nil target:self selector:@selector(Choicemenu2:)];
-    CCMenuItemSprite *menu3=[CCMenuItemSprite itemFromNormalSprite:Menu3 selectedSprite:nil target:self selector:@selector(Choicemenu3:)];
-    CCMenuItemSprite *menu4=[CCMenuItemSprite itemFromNormalSprite:Menu4 selectedSprite:nil target:self selector:@selector(Choicemenu4:)];
-   
-    CCMenu *menu=[CCMenu menuWithItems:menu1,menu2,menu3,menu4,nil];
-    [menu alignItemsVerticallyWithPadding:-20];
-    [menu setPosition:ccp(7*size.width/24, 9*size.height/20)];
-    [self addChild:menu z:4 tag:TAG__CHOICEMENU];
-     */
 }
-/*
--(void)Choicemenu1:sender
-{
-    [self removeChildByTag:4 cleanup:YES];
-    [self removeChildByTag:3 cleanup:YES];
-    self.isTouchEnabled=YES;
-    CCSprite *Build=[CCSprite spriteWithFile:@"农田.png"];
-    [buildingSprites addObject:Build];
-    Build.position=selSprite.position;
-    [self addChild:Build z:2];
-   [self rotateWrench];
-    
-    CGPoint myp = Build.position;
-    [self saveToServer:&myp withPng:@"农田.png"];
-    
-    
-}
--(void)Choicemenu2:sender
-{
-    [self removeChildByTag:4 cleanup:YES];
-    [self removeChildByTag:3 cleanup:YES];
-    self.isTouchEnabled=YES;
-    CCSprite *Build=[CCSprite spriteWithFile:@"石油厂.png"];
-    [buildingSprites addObject:Build];
-    Build.position=selSprite.position;
-    [self addChild:Build z:2];
-    [self rotateWrench];
-    
-    CGPoint myp = Build.position;
-    [self saveToServer:&myp withPng:@"石油厂.png"];
-    
-}
--(void)Choicemenu3:sender
-{
-    [self removeChildByTag:4 cleanup:YES];
-    [self removeChildByTag:3 cleanup:YES];
-    self.isTouchEnabled=YES;
-    CCSprite *Build=[CCSprite spriteWithFile:@"钢铁厂.png"];
-    [buildingSprites addObject:Build];
-    Build.position=selSprite.position;
-    [self addChild:Build z:2];
-    [self rotateWrench];
-    
-    CGPoint myp = Build.position;
-    [self saveToServer:&myp withPng:@"钢铁厂.png"];
-    
-    
-}
--(void)Choicemenu4:sender
-{
-    [self removeChildByTag:4 cleanup:YES];
-    [self removeChildByTag:3 cleanup:YES];
-    self.isTouchEnabled=YES;
-    CCSprite *Build=[CCSprite spriteWithFile:@"稀矿场.png"];
-    [buildingSprites addObject:Build];
-    Build.position=selSprite.position;
-    [self addChild:Build z:2];
-    [self rotateWrench];
-    
-    CGPoint myp = Build.position;
-    [self saveToServer:&myp withPng:@"稀矿场.png"];
-    
-    
-}
-*/
+
 -(void)rotateWrench//转动扳手
 {
     CCSprite *wrench=[CCSprite spriteWithFile:@"wrench.png"];

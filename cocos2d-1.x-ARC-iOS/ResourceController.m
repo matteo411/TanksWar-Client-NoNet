@@ -6,17 +6,17 @@
 //  Copyright 2013年 __MyCompanyName__. All rights reserved.
 //
 
-#import "ResourceScene.h"
+#import "ResourceController.h"
 #import "CCUIViewWrapper.h"
 
-@implementation ResourceScene
+@implementation ResourceController
 +(CCScene *) scene
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	ResourceScene *layer = [ResourceScene node];
+	ResourceController *layer = [ResourceController node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];

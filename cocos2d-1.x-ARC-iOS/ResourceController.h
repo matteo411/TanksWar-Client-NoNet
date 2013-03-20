@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Resources.h"
-#import "HelloWorldLayer.h"
+#import "MilitaryController.h"
 #import "Util.h"
-@interface ResourceScene : CCLayer {
+@interface ResourceController: CCLayer {
     CGPoint Tpoint;
     CCSprite *selSprite;
     NSMutableArray *tagSprites;

@@ -12,12 +12,12 @@
 #import "Pomelo.h"
 #import "AppDelegate.h"
 #import "Resources.h"
-#import "ResourceScene.h"
+#import "ResourceController.h"
 #import "tagInformation.h"
 #import "Util.h"
 
 // HelloWorldLayer
-@interface HelloWorldLayer : CCLayer<PomeloDelegate>
+@interface MilitaryController : CCLayer<PomeloDelegate>
 
 {
     NSMutableArray *buildingInformation;
