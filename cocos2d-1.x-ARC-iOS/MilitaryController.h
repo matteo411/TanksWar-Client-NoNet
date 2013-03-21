@@ -20,14 +20,14 @@
 @interface MilitaryController : CCLayer<PomeloDelegate>
 
 {
-    NSMutableArray *buildingInformation;
+//    NSMutableArray *buildingInformation; 
     CGPoint Tpoint;
     
     //标记玩家选中的精灵
     CCSprite *selSprite;
     
-    NSMutableArray *tagSprites;
-    NSMutableArray *buildingSprites;
+//    NSMutableArray *tagSprites;
+    NSMutableArray *buildings;
     Resources *playerResource;
     
     //connection服务器的host

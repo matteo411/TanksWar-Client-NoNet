@@ -36,7 +36,7 @@
         
         
         CCSpriteBatchNode *tags=[CCSpriteBatchNode batchNodeWithFile:@"tags.png" capacity:24];
-        [self addChild:tags z:2 tag:TAG_TAG];
+        [self addChild:tags z:2 tag:100];
         NSString *filename=@"DataList.plist";
         NSDictionary *dict=[NSDictionary dictionaryWithContentsOfFile:[Util getActuralPath:filename]];
         NSArray *nodes=[dict objectForKey:@"nodes"];
@@ -87,26 +87,26 @@
     labelOfFood=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
     [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.Food]];
     labelOfFood.position=ccp(200, 700);
-    [self addChild:labelOfFood z:3 tag:TAG__LABAl];
+    [self addChild:labelOfFood z:3 tag:101];
     [labelOfFood setColor:ccRED];
     
     labelOfOil=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100)  alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
     [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.Oil]];
     labelOfOil.position=ccp(400, 700);
     [labelOfOil setColor:ccRED];
-    [self addChild:labelOfOil z:3 tag:TAG__LABAl];
+    [self addChild:labelOfOil z:3 tag:101];
     
     labelOfSteel=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
     [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.Steel]];
     labelOfSteel.position=ccp(600, 700);
     [labelOfSteel setColor:ccRED];
-    [self addChild:labelOfSteel z:3 tag:TAG__LABAl];
+    [self addChild:labelOfSteel z:3 tag:101];
     
     labelOfOre=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
     [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.Ore]];
     labelOfOre.position=ccp(800, 700);
     [labelOfOre setColor:ccRED];
-    [self addChild:labelOfOre z:3 tag:TAG__LABAl];
+    [self addChild:labelOfOre z:3 tag:101];
     [self schedule:@selector(update:)interval:10 ];
 }
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
@@ -158,7 +158,7 @@
     CGSize size = [[CCDirector sharedDirector] winSize];
     CCSprite *Panel=[CCSprite spriteWithFile:@"panel.png"];
     Panel.position=ccp(size.width/2, size.height/2);
-    [self addChild:Panel z:3 tag:TAG__PANEL];
+    [self addChild:Panel z:3 tag:3];
     /*
      NSMutableArray *allItems=[[NSMutableArray alloc] init];
      CCSprite *firstmenu=[CCSprite spriteWithFile:@"农田menu.png"];

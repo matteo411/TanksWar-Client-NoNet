@@ -12,4 +12,7 @@
 
 
 +(NSString*) getActuralPath:(NSString *) file;
++(NSArray *) getNodelistByNodeName:(NSString *) nodeName;
+//+(NSDictionary *) getSingleNodeByKEY
++(BOOL) modifyPng:(NSString*) png ByKey:(int)key;
 @end

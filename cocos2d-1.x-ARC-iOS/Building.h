@@ -10,16 +10,20 @@
 #import "cocos2d.h"
 @interface Building : NSObject{
     //建筑
-    CCSprite *Build;
+    CCSprite *BuildSprite;
     
     //key
     int key;
-    //等级
     
+    //png
+    NSString* png;
+    
+    //等级
     int level;
     
 }
 @property (nonatomic) int level;
 @property (nonatomic) int key;
-@property (nonatomic, strong) CCSprite* Build;
+@property (nonatomic,strong) NSString* png;
+@property (nonatomic, strong) CCSprite* BuildSprite;
 @end

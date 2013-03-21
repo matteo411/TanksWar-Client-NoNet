@@ -10,8 +10,8 @@
 
 @implementation Building
 
-@synthesize Build;
+@synthesize BuildSprite;
 @synthesize key;
 @synthesize level;
-
+@synthesize png;
 @end
