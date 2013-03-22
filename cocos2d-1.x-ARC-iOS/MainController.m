@@ -53,9 +53,15 @@
     
 }
 
+-(void)sceneTransition:(int)sender
+{
+    [self removeChildByTag:97 cleanup:YES];
+    militaryController = [[MilitaryController alloc]init];
+    [self addChild:militaryController z:3 tag:97];
+    
+}
 
-
--(void)sceneTransition:(int)sender  //转换到军事区
+-(void)sceneTransition2:(int)sender  //转换到军事区
 {
     [self removeChildByTag:98 cleanup:YES];
     resourceController = [[ResourceController alloc]init];
@@ -65,12 +71,6 @@
     [self addChild:resourceController z:3 tag:98];
 }
 
--(void)sceneTransition2:(int)sender
-{
-    [self removeChildByTag:97 cleanup:YES];
-    militaryController = [[MilitaryController alloc]init];
-    [self addChild:militaryController z:3 tag:97];
-    
-}
+
 
 @end

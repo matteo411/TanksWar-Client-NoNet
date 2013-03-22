@@ -228,7 +228,7 @@
     
     //换行技巧：如下换行可实现多行显示，但要求label有足够的宽度。
     
-    UIImage *menu1=[UIImage imageNamed:@"bl_3.png"];
+    UIImage *menu1=[UIImage imageNamed:@"armory_item.png"];
     UIImageView *menuPic1=[[UIImageView alloc]initWithImage:menu1];
     menuPic1.frame=CGRectMake(20, 20, 40, 40);
     menuPic1.transform =CGAffineTransformMakeRotation(M_PI*0.5);
@@ -535,9 +535,9 @@
             [self removeChild:building.BuildSprite cleanup:YES];
              NSLog(@"invoke event1 __if");
             //配置
-            building.png =@"ipad_b9.png";
+            building.png =@"armory.png";
             building.level = 1;
-            building.BuildSprite =[CCSprite spriteWithFile:@"ipad_b9.png"];
+            building.BuildSprite =[CCSprite spriteWithFile:@"armory.png"];
             NSLog(@"invoke event1 __if 1.1");
             building.BuildSprite.position =tempxy;
             NSLog(@"invoke event1 __if 1.2");
