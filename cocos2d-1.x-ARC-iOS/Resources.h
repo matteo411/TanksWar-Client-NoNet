@@ -24,5 +24,5 @@
 -(void)setSteel:(int)numChanged;
 -(void)setOil:(int)numChanged;
 -(void)setOre:(int) numChanged;
--(void) initialazation;
+-(void) initialize;
 @end

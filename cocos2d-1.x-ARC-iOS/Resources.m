@@ -42,7 +42,7 @@
 {
     steel+=numChanged;
 }
--(void) initialazation
+-(void) initialize
 {
     food=1000;
     steel=1000;

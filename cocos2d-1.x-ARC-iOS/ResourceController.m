@@ -8,7 +8,7 @@
 
 #import "ResourceController.h"
 #import "CCUIViewWrapper.h"
-
+#import "Building.h"
 @implementation ResourceController
 +(CCScene *) scene
 {
@@ -28,46 +28,58 @@
 {
 	if( (self=[super init])) {
         
-        playerResource=[[Resources alloc] init];
-        [playerResource initialazation];
-        CGSize size = [[CCDirector sharedDirector] winSize];
-        tagSprites=[[NSMutableArray alloc] init];
-        buildingSprites=[[NSMutableArray alloc] init];
+        buildings=[[NSMutableArray alloc] init];
         
         
-        CCSpriteBatchNode *tags=[CCSpriteBatchNode batchNodeWithFile:@"tags.png" capacity:24];
-        [self addChild:tags z:2 tag:100];
-        NSString *filename=@"DataList.plist";
-        NSDictionary *dict=[NSDictionary dictionaryWithContentsOfFile:[Util getActuralPath:filename]];
-        NSArray *nodes=[dict objectForKey:@"nodes"];
-        for (id node in nodes)//读取坐标点
+        
+        NSArray *nodes = [Util getNodelistByNodeName:@"resource"];
+        NSLog(@"invoke10");
+        for (NSMutableDictionary* node in nodes)//读取坐标点
         {
-            int x=[[node objectForKey:@"x"]floatValue];
-            int y=[[node objectForKey:@"y"]floatValue];
-            CCSprite *s=[CCSprite spriteWithBatchNode:tags  rect:CGRectMake(0, 0, 64, 64)];
-            [tags addChild:s ];
-            [s setPosition:ccp(x,y)];
-            [tagSprites addObject:s];
+            NSLog(@"%@",node);
+            Building *building=[[Building alloc]init];
+            NSString* png = [node objectForKey:@"png"];
+            NSLog(@"invoke10.4");
+            building.BuildSprite=[CCSprite spriteWithFile:png rect:CGRectMake(0, 0, 47, 66) ];//mark!!!
+            NSLog(@"invoke10.5");
+            building.BuildSprite.position = ccp([[node objectForKey:@"x"]floatValue],[[node objectForKey:@"y"]floatValue]);
+            building.key =[[node objectForKey:@"key"] intValue];
+            building.level=[[node objectForKey:@"level"] intValue];
+            building.png = [node objectForKey:@"png"];
+            [buildings addObject:building];
+            
+            [self addChild:building.BuildSprite z:2];
         }
-		// create and initialize a Label
-		//CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
+        NSLog(@"invoke11");
+        
+        //玩家资源
+        playerResource=[[Resources alloc] init];
+        [playerResource initialize];
+        
         CCSprite *BackGround=[CCSprite spriteWithFile:@"ipad_military_bkg.png" rect:CGRectMake(0, 0, 1024, 768)];
         BackGround.anchorPoint=ccp(0, 0);
-        [self addChild:BackGround z:1   tag:0];
-
-        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+        [self addChild:BackGround z:1   tag:0  ];//添加背景图
+        
+        [self initAddNumOfResource];
+        
+        [self addLabel];
+        //初始化资源
+        
+        //资源的计算
+        
+        
+        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];//触摸代理
         
         CCSprite *topTable=[CCSprite spriteWithFile:@"ipad_helpup.png"];
         topTable.position=ccp(500,750);
         topTable.opacity=150;
         [self addChild:topTable z:2];
-        
-        [self    addLabel];
-        
+  
 	}
 	return self;
     
 }
+
 -(void)addLabel
 {
     
@@ -107,85 +119,69 @@
     labelOfOre.position=ccp(800, 700);
     [labelOfOre setColor:ccRED];
     [self addChild:labelOfOre z:3 tag:101];
-    [self schedule:@selector(update:)interval:10 ];
+    [self schedule:@selector(updateLabel:)interval:10 ];
 }
+-(void)updateLabel:(ccTime)delta
+{
+    [playerResource setFood:addFood];
+    [playerResource setOil:addOil];
+    [playerResource setSteel:addSteel];
+    [playerResource setOre:addOre];
+    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.Oil]];
+    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.Food]];
+    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.Steel]];
+    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.Ore]];
+}
+
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    
-    
-    
     CGPoint point;
     point=[self convertTouchToNodeSpace:touch];
     [self selectSpriteForTouch:point];
-    
-    return TRUE;
+    return TRUE;//？？？ chenyl
     
 }
 -(void)selectSpriteForTouch:(CGPoint) point
 {
-    for (CCSprite *sprite in buildingSprites) {
-        if (CGRectContainsPoint(sprite.boundingBox, point)) {
-            selSprite=sprite;
-            [self updateBuilding];
-            return;
+    
+    //NSLog(@"point:%f,%f",point.x,point.y);
+    for (Building *building  in buildings) {
+        if (CGRectContainsPoint(building.BuildSprite.boundingBox, point)) {
+            if([building.png isEqualToString:@"tags.png"])
+            {
+                [self ChoicePanel:building.key];
+                return;
+            }else
+            {
+                [self buildingHandle:building];
+                return;
+            }
+            
         }
     }
-    for (CCSprite *sprite in tagSprites)
-    {
-        if (CGRectContainsPoint(sprite.boundingBox, point))
-        {
-            selSprite=sprite;
-            [self ChoicePanel];
-            return;
-        }
-    }
+    
 }
--(void)updateBuilding
+-(void)buildingHandle:(Building *) building//建筑
 {
     //self.isTouchEnabled=NO;
     [CCMenuItemFont setFontName:@"Marker Felt"];
-    [CCMenuItemFont setFontSize:30];
+    [CCMenuItemFont setFontSize:20];
     CCMenuItemFont  *Delete=[CCMenuItemFont itemFromString:@"拆除" target:self selector:@selector(delete:)];
     CCMenuItemFont *upGrade=[CCMenuItemFont itemFromString:@"升级" target:self selector:@selector(upgrade:)];
+    Delete.tag= upGrade.tag = building.key;
+    
     CCMenu *menu=[CCMenu menuWithItems:Delete,upGrade,nil];
-    [menu setPosition:ccp(selSprite.position.x+50, selSprite.position.y-50)];
+    [menu setPosition:ccp(building.BuildSprite.position.x+50, building.BuildSprite.position.y-50)];
     [menu alignItemsHorizontally];
     [self addChild:menu z:3 tag:103];
 }
--(void) ChoicePanel
+-(void) ChoicePanel:(int)key//选择面板  building!!!!!!
 {
     
     CGSize size = [[CCDirector sharedDirector] winSize];
     CCSprite *Panel=[CCSprite spriteWithFile:@"panel.png"];
     Panel.position=ccp(size.width/2, size.height/2);
     [self addChild:Panel z:3 tag:3];
-    /*
-     NSMutableArray *allItems=[[NSMutableArray alloc] init];
-     CCSprite *firstmenu=[CCSprite spriteWithFile:@"农田menu.png"];
-     CCSprite *firstSelmenu=[CCSprite spriteWithFile:@"农田.png"];
-     CCSprite *secondmenu=[CCSprite spriteWithFile:@"石油厂menu.png"];
-     CCSprite *secondSelmenu=[CCSprite spriteWithFile:@"石油厂.png"];
-     CCSprite *thirdmenu=[CCSprite spriteWithFile:@"钢铁厂menu.png"];
-     CCSprite *thirdSelmenu=[CCSprite spriteWithFile:@"钢铁厂.png"];
-     CCSprite *forthmenu=[CCSprite spriteWithFile:@"稀矿场menu.png"];
-     CCSprite *forthSelmenu=[CCSprite spriteWithFile:@"稀矿场.png"];
-     CCMenuItemSprite    *menu1=[CCMenuItemSprite itemFromNormalSprite:firstmenu selectedSprite:firstSelmenu target:self selector:@selector(Choicemenu1:)];
-     CCMenuItemSprite    *menu2=[CCMenuItemSprite itemFromNormalSprite:secondmenu selectedSprite:secondSelmenu target:self selector: @selector(Choicemenu2:)];
-     CCMenuItemSprite     *menu3=[CCMenuItemSprite itemFromNormalSprite:thirdmenu selectedSprite:thirdSelmenu target:self selector:@selector(Choicemenu3:)   ];
-     CCMenuItemSprite    *menu4=[CCMenuItemSprite itemFromNormalSprite:forthmenu selectedSprite:forthSelmenu target:self selector:@selector(Choicemenu4:)];
-     menu1.tag=1001;
-     menu2.tag=1002;
-     menu3.tag=1003;
-     menu4.tag=1004;
-     [allItems addObject:menu1];
-     [allItems addObject:menu2];
-     [allItems addObject:menu3];
-     [allItems addObject:menu4];
-     SlidingMenuGrid *menugrid=[SlidingMenuGrid menuWithArray:allItems cols:1 rows:4 position:ccp(size.width/2,size.height/2) padding:CGPointMake(100, 100) verticalPaging:YES];
-     menugrid.contentSize=CGSizeMake(100, 100);
-     
-     [self addChild:menugrid z:2 tag:1005];
-     */
     
     UIScrollView *scroll=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 340, 595)];
     scroll.backgroundColor=[UIColor  colorWithRed:1  green:1 blue:1 alpha:0];
@@ -213,6 +209,7 @@
     menuPic1.userInteractionEnabled=YES;
     UITapGestureRecognizer *singleTap1 =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event1:)];
     [menuPic1 addGestureRecognizer:singleTap1];
+    singleTap1.view.tag = key;
     UIView *image1=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 85, 595)];
     image1.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
     image1.layer.borderColor=[[UIColor blackColor]CGColor];
@@ -229,7 +226,7 @@
     menuPic2.userInteractionEnabled=YES;
     UITapGestureRecognizer *singleTap2 =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event2:)];
     [menuPic2 addGestureRecognizer:singleTap2];
-    
+    singleTap2.view.tag = key;
     UIView *image2=[[UIView alloc] initWithFrame:CGRectMake(85, 0, 85, 595)];
     image2.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
     image2.layer.borderColor=[[UIColor blackColor]CGColor];
@@ -245,7 +242,7 @@
     menuPic3.userInteractionEnabled=YES;
     UITapGestureRecognizer *singleTap3 =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event3:)];
     [menuPic3 addGestureRecognizer:singleTap3];
-    
+    singleTap3.view.tag = key;
     UIView *image3=[[UIView alloc] initWithFrame:CGRectMake(170, 0, 85, 595)];
     image3.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
     image3.layer.borderColor=[[UIColor blackColor]CGColor];
@@ -260,7 +257,7 @@
     menuPic4.userInteractionEnabled=YES;
     UITapGestureRecognizer *singleTap4 =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event4:)];
     [menuPic4 addGestureRecognizer:singleTap4];
-    
+    singleTap4.view.tag = key;
     UIView *image4=[[UIView alloc] initWithFrame:CGRectMake(255, 0, 85 , 595)];
     image4.layer.borderColor=[[UIColor blackColor]CGColor];
     image4.layer.borderWidth=2;
@@ -273,182 +270,363 @@
     wrapper.position=ccp(185,809);
     //wrapper.position=ccp(500,809);
     [self addChild:wrapper z:4 tag:20];
-    /*  CCUIViewWrapper *menu1=[CCUIViewWrapper wrapperForUIView:image1];
-     CCUIViewWrapper *menu2=[CCUIViewWrapper wrapperForUIView:image2];
-     CCUIViewWrapper *menu3=[CCUIViewWrapper wrapperForUIView:image3];
-     CCUIViewWrapper *menu4=[CCUIViewWrapper wrapperForUIView:image4];
-     CCMenuItemSprite *Menu1=[CCMenuItemSprite itemFromNormalSprite:menu1 selectedSprite:nil target:self selector:@selector(Choicemenu1:)];
-     CCMenuItemSprite *Menu2=[CCMenuItemSprite itemFromNormalSprite:menu2 selectedSprite:nil target:self selector:@selector(Choicemenu2:)];
-     CCMenuItemSprite *Menu3=[CCMenuItemSprite itemFromNormalSprite:menu3 selectedSprite:nil target:self selector:@selector(Choicemenu3:)];
-     CCMenuItemSprite *Menu4=[CCMenuItemSprite itemFromNormalSprite:menu4 selectedSprite:nil target:self selector:@selector(Choicemenu4:)];
-     */
-    /*
-     CCSprite *Menu1=[CCSprite spriteWithFile:@"农田menu.png"];
-     CCSprite *Menu2=[CCSprite spriteWithFile:@"石油厂menu.png"];
-     CCSprite *Menu3=[CCSprite spriteWithFile:@"钢铁厂menu.png"];
-     CCSprite *Menu4=[CCSprite spriteWithFile:@"稀矿场menu.png"];
-     CCMenuItemSprite *menu1=[CCMenuItemSprite itemFromNormalSprite:Menu1 selectedSprite:nil target:self selector:@selector(Choicemenu1:)];
-     CCMenuItemSprite *menu2=[CCMenuItemSprite itemFromNormalSprite:Menu2 selectedSprite:nil target:self selector:@selector(Choicemenu2:)];
-     CCMenuItemSprite *menu3=[CCMenuItemSprite itemFromNormalSprite:Menu3 selectedSprite:nil target:self selector:@selector(Choicemenu3:)];
-     CCMenuItemSprite *menu4=[CCMenuItemSprite itemFromNormalSprite:Menu4 selectedSprite:nil target:self selector:@selector(Choicemenu4:)];
-     
-     CCMenu *menu=[CCMenu menuWithItems:menu1,menu2,menu3,menu4,nil];
-     [menu alignItemsVerticallyWithPadding:-20];
-     [menu setPosition:ccp(7*size.width/24, 9*size.height/20)];
-     [self addChild:menu z:4 tag:TAG__CHOICEMENU];
-     */
+    NSLog(@"chenyl");
 }
 
--(void)update:(ccTime)delta
+-(void)rotateWrench:(Building *) building//转动扳手
 {
-    [playerResource setFood:addFood];
-    [playerResource setOil:addOil];
-    [playerResource setSteel:addSteel];
-    [playerResource setOre:addOre];
-    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.Oil]];
-    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.Food]];
-    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.Steel]];
-    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.Ore]];
+    NSLog(@"rotateWrench1");
+    CCSprite *wrench=[CCSprite spriteWithFile:@"wrench.png"];
+    wrench.position=ccp(building.BuildSprite.position.x-50,building.BuildSprite.position.y+10);
+    [self addChild:wrench z:3];
+    
+    CCAction *rotate1=[CCRotateBy actionWithDuration:0.5 angle:60];
+    CCAction *rotate2=[CCRotateBy actionWithDuration:0.5 angle:-60];
+    NSLog(@"rotateWrench2");
+    CCAction *repeat=[CCRepeat actionWithAction:[CCSequence actions:rotate1,rotate2 ,nil] times:5];//mark
+    NSLog(@"rotateWrench3");
+    CCAction *delete=[CCCallFuncN actionWithTarget:self selector:@selector(deleteWrench:)];
+    NSLog(@"rotateWrench4");
+    wrench.tag =building.key;
+    [wrench runAction:[CCSequence actions:repeat,delete, nil]];
+    
 }
+-(void)deleteWrench:(id)sender //删除扳手
+{
+    NSLog(@"deleteWrench");
+    CCSprite *delete = (CCSprite *)sender;
+    int key = delete.tag;
+    NSLog(@"key :%d",key);
+    Building *tempBuilding;
+    for (Building *building  in buildings)
+    {
+        if(building.key == key)
+        {
+            tempBuilding =building;
+        }
+    }
+    
+    
+    
+    CCParticleSystem *systerm=[CCParticleGalaxy node];
+    systerm.position=tempBuilding.BuildSprite.position;
+    systerm.contentSize=CGSizeMake(50,50);
+    systerm.duration=0.5f;
+    [self addChild: systerm z:2];
+    CCSprite *levelOfbuilding=[CCSprite spriteWithFile:@"level1.png"];
+    levelOfbuilding.position=ccp(tempBuilding.BuildSprite.position.x+20, tempBuilding.BuildSprite.position.y-30);
+    [self addChild:levelOfbuilding z:2 tag:key];
+    [self removeChild:sender cleanup:YES];
+}
+-(void)saveToServer:(CGPoint *)point withPng:(NSString *)png
+{
+    NSLog(@"invoke");
+    
+    NSNumber *myx = [NSNumber numberWithFloat:point->x];
+    NSNumber *myy = [NSNumber numberWithFloat:point->y];
+    
+    
+    
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            name, @"username",
+                            channel, @"rid",
+                            myx, @"pointx",
+                            myy, @"pointy",
+                            png,@"png",
+                            @"military",@"category",
+                            nil];
+   /* [Pomelo requestWithRoute:@"connector.entryHandler.addArchitecture" andParams:params andCallback:^(NSDictionary *result)
+    {
+        NSArray *userList = [result objectForKey:@"users"];
+        for (NSString *name2 in userList) {
+            NSLog(@"%@",name2);
+            
+            
+        }
+        
+    }];
+    */
+    
+    
+    
+}
+
+-(void)delete:(id)sender  //删除建筑
+{
+    
+    CCMenuItemFont *item =(CCMenuItemFont*) sender;
+    int key = item.tag;
+    [self removeChildByTag:103 cleanup:YES];
+    
+    for (Building *building  in buildings)
+    {
+        if(building.key == key)
+        {
+            CGPoint tempxy = building.BuildSprite.position;
+            
+            //删除
+            // [buildings removeObject:building];
+            [self removeChild:building.BuildSprite cleanup:YES];
+            
+            //配置
+            building.png =@"tags.png";
+            building.level = 0;
+            building.BuildSprite =[CCSprite spriteWithFile:@"tags.png"];
+            building.BuildSprite.position =tempxy;
+            //添加
+            // [buildings addObject:building];
+            [self addChild:building.BuildSprite z:2];
+            
+            
+            [self removeChildByTag:building.key cleanup:YES];
+            
+            //plist操作
+            [Util modifyPng:building.png ByKey:building.key];
+            
+        }
+        
+    }
+}
+-(void)upgrade:(id)sender  //升级建筑
+{
+    //删除面板
+    [self removeChildByTag:103 cleanup:YES];
+    
+    CCMenuItemFont *item =(CCMenuItemFont*) sender;
+    int key = item.tag;
+    
+    Building * tempBuilding;
+    for (Building *building  in buildings)
+    {
+        if(building.key == key)
+        {
+            building.level++;
+            tempBuilding = building;
+        }
+    }
+    //粒子系统
+    CCParticleSystem *systerm=[CCParticleGalaxy node];
+    systerm.position=tempBuilding.BuildSprite.position;
+    systerm.contentSize=CGSizeMake(50,50);
+    systerm.duration=0.5f;
+    [self addChild: systerm z:2];
+    if (tempBuilding.level>=18) {
+        tempBuilding.level=18;
+    }
+    
+    [self removeChildByTag:tempBuilding.key cleanup:YES];
+    
+    CCSprite *levelOfbuilding=[CCSprite spriteWithFile:[NSString stringWithFormat:@"level%d.png",tempBuilding.level]];
+    levelOfbuilding.tag=tempBuilding.key;
+    levelOfbuilding.position=ccp(tempBuilding.BuildSprite.position.x+20, tempBuilding.BuildSprite.position.y-30);
+    [self addChild:levelOfbuilding z:2];
+    
+    
+}
+//-(void)sceneTransition:(id)sender  //转换到军事区
+//{
+////     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Do you sure you want to leave?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes" ,@"No", nil];
+////    [alert show];
+//    CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
+//    [[CCDirector sharedDirector] replaceScene:tran];
+//
+//
+//}
+//-(void)sceneTransition2:(id)sender
+//{
+//    CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[HelloWorldLayer scene] withColor:ccWHITE];
+//    [[CCDirector sharedDirector] replaceScene:tran];
+//}
+//-(void)alertView:(UIAlertView*)actionsheet //uikit 的应用 （试验）  弹出提示按钮
+//   clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (buttonIndex==0) {
+//
+//    }
+//    else if (buttonIndex==1) {
+//        //ResourceScene是资源区？chenyl
+//        CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
+//        [[CCDirector sharedDirector] replaceScene:tran];
+//    }
+//    else{
+//
+//    }
+//}
+-(void) event1:(UITapGestureRecognizer *)gesture
+{
+    [self removeChildByTag:20 cleanup:YES];
+    [self removeChildByTag:3 cleanup:YES];
+    NSLog(@"invoke event1");
+    
+    for (Building *building  in buildings)
+    {
+        if(building.key == gesture.view.tag)
+        {
+            CGPoint tempxy = building.BuildSprite.position;
+            
+            //删除
+            //[buildings removeObject:building];
+            [self removeChild:building.BuildSprite cleanup:YES];
+            NSLog(@"invoke event1 __if");
+            //配置
+            building.png =@"ipad_b9.png";
+            building.level = 1;
+            building.BuildSprite =[CCSprite spriteWithFile:@"ipad_b9.png"];
+            NSLog(@"invoke event1 __if 1.1");
+            building.BuildSprite.position =tempxy;
+            NSLog(@"invoke event1 __if 1.2");
+            NSLog(@"invoke event1 __if2");
+            //添加
+            //[buildings addObject:building];
+            [self addChild:building.BuildSprite z:2];
+            
+            //plist操作
+            [Util modifyPng:building.png ByKey:building.key]; //bug
+            
+            
+            NSLog(@"invoke  event1 __if3");
+            
+            
+            
+            [self rotateWrench:building];
+        }
+        
+    }
+    
+    
+}
+-(void) event2:(UITapGestureRecognizer *)gesture
+{
+    [self removeChildByTag:20 cleanup:YES];
+    [self removeChildByTag:3 cleanup:YES];
+    NSLog(@"invoke event1");
+    
+    for (Building *building  in buildings)
+    {
+        if(building.key == gesture.view.tag)
+        {
+            CGPoint tempxy = building.BuildSprite.position;
+            
+            //删除
+            //[buildings removeObject:building];
+            [self removeChild:building.BuildSprite cleanup:YES];
+            NSLog(@"invoke event1 __if");
+            //配置
+            building.png =@"ipad_b15.png";
+            building.level = 1;
+            building.BuildSprite =[CCSprite spriteWithFile:@"ipad_b15.png"];
+            NSLog(@"invoke event1 __if 1.1");
+            building.BuildSprite.position =tempxy;
+            NSLog(@"invoke event1 __if 1.2");
+            NSLog(@"invoke event1 __if2");
+            //添加
+            //[buildings addObject:building];
+            [self addChild:building.BuildSprite z:2];
+            
+            //plist操作
+            [Util modifyPng:building.png ByKey:building.key]; //bug
+            
+            
+            NSLog(@"invoke  event1 __if3");
+            
+            
+            
+            [self rotateWrench:building];
+        }
+        
+    }
+    
+}
+-(void) event3:(UITapGestureRecognizer *)gesture
+{
+    [self removeChildByTag:20 cleanup:YES];
+    [self removeChildByTag:3 cleanup:YES];
+    NSLog(@"invoke event1");
+    
+    for (Building *building  in buildings)
+    {
+        if(building.key == gesture.view.tag)
+        {
+            CGPoint tempxy = building.BuildSprite.position;
+            
+            //删除
+            //[buildings removeObject:building];
+            [self removeChild:building.BuildSprite cleanup:YES];
+            NSLog(@"invoke event1 __if");
+            //配置
+            building.png =@"ipad_b12.png";
+            building.level = 1;
+            building.BuildSprite =[CCSprite spriteWithFile:@"ipad_b12.png"];
+            NSLog(@"invoke event1 __if 1.1");
+            building.BuildSprite.position =tempxy;
+            NSLog(@"invoke event1 __if 1.2");
+            NSLog(@"invoke event1 __if2");
+            //添加
+            //[buildings addObject:building];
+            [self addChild:building.BuildSprite z:2];
+            
+            //plist操作
+            [Util modifyPng:building.png ByKey:building.key]; //bug
+            
+            
+            NSLog(@"invoke  event1 __if3");
+            
+            
+            
+            [self rotateWrench:building];
+        }
+        
+    }
+    
+}
+-(void) event4:(UITapGestureRecognizer *)gesture
+{
+    [self removeChildByTag:20 cleanup:YES];
+    [self removeChildByTag:3 cleanup:YES];
+    NSLog(@"invoke event1");
+    
+    for (Building *building  in buildings)
+    {
+        if(building.key == gesture.view.tag)
+        {
+            CGPoint tempxy = building.BuildSprite.position;
+            
+            //删除
+            //[buildings removeObject:building];
+            [self removeChild:building.BuildSprite cleanup:YES];
+            
+            //配置
+            building.png =@"ipad_b18.png";
+            building.level = 1;
+            building.BuildSprite =[CCSprite spriteWithFile:@"ipad_b18.png"];
+            NSLog(@"invoke event1 __if 1.1");
+            building.BuildSprite.position =tempxy;
+            
+            //添加
+            //[buildings addObject:building];
+            [self addChild:building.BuildSprite z:2];
+            
+            //plist操作
+            [Util modifyPng:building.png ByKey:building.key]; //bug
+            
+            
+            NSLog(@"invoke  event1 __if3");
+            
+            
+            
+            [self rotateWrench:building];
+        }
+        
+    }
+}
+// on "dealloc" you need to release all your retained objects
+
 -(void) initAddNumOfResource
 {
     addFood=0;
     addOil=0;
     addOre=0;
     addSteel=0;
-}
--(void)rotateWrench//转动扳手
-{
-    CCSprite *wrench=[CCSprite spriteWithFile:@"wrench.png"];
-    wrench.position=ccp(selSprite.position.x-40,selSprite.position.y+40);
-    [self addChild:wrench z:2 tag:19 ];
-    
-    CCAction *rotate1=[CCRotateBy actionWithDuration:0.5 angle:60];
-    CCAction *rotate2=[CCRotateBy actionWithDuration:0.5 angle:-60];
-    CCAction *repeat=[CCRepeat actionWithAction:[CCSequence actions:rotate1,rotate2 ,nil] times:5];
-    CCAction *delete=[CCCallFuncN actionWithTarget:self selector:@selector(deleteWrench:)];
-    [wrench runAction:[CCSequence actions:repeat,delete, nil]];
-    
-}
--(void)deleteWrench:(id)sender //删除扳手
-{   CCParticleSystem *systerm=[CCParticleGalaxy node];
-    systerm.position=selSprite.position;
-    systerm.contentSize=CGSizeMake(50,50);
-    systerm.duration=0.5f;
-    [self addChild: systerm z:2];
-    CCSprite *levelOfbuilding=[CCSprite spriteWithFile:@"level0.png"];
-    levelOfbuilding.position=ccp(selSprite.position.x+50, selSprite.position.y-20);
-    [self addChild:levelOfbuilding z:2];
-    [self removeChild:sender cleanup:YES];
-}
--(void)delete:(id)sender  //删除建筑
-{
-    [self removeChildByTag:103 cleanup:YES];
-    [self removeChild:selSprite  cleanup:YES];
-    [buildingSprites removeObject:selSprite ];
-    
-}
--(void)upgrade:(id)sender  //升级建筑
-{
-    CCParticleSystem *systerm=[CCParticleGalaxy node];
-    systerm.position=selSprite.position;
-    systerm.contentSize=CGSizeMake(50,50);
-    systerm.duration=0.5f;
-    [self addChild: systerm z:2];
-    int levelNum=1;
-    CCSprite *levelOfbuilding=[CCSprite spriteWithFile:[NSString stringWithFormat:@"level%d.png",levelNum]];
-    levelOfbuilding.position=ccp(selSprite.position.x+50, selSprite.position.y-20);
-    [self addChild:levelOfbuilding z:2];
-    [self removeChildByTag:103 cleanup:YES];
-    //[self removeChild:selSprite cleanup:YES];
-}
-
--(void) event1:(UITapGestureRecognizer *)gesture
-{
-    addFood+=50;
-    CCSprite *sprite;
-    for(sprite in tagSprites)
-    {
-        if (sprite==selSprite) {
-            sprite=selSprite;
-        }
-    }
-    
-    [self removeChildByTag:20 cleanup:YES];
-    [self removeChildByTag:3 cleanup:YES];
-    self.isTouchEnabled=YES;
-    CCSprite *Build=[CCSprite spriteWithFile:@"农田.png"];
-    [buildingSprites addObject:Build];
-    Build.position=selSprite.position;
-    [self addChild:Build z:2];
-    [self rotateWrench];
-    
-}
--(void) event2:(UITapGestureRecognizer *)gesture
-{
-    addOil+=50;
-    CCSprite *sprite;
-    for(sprite in tagSprites)
-    {
-        if (sprite==selSprite) {
-            sprite=selSprite;
-        }
-    }
-    [self removeChildByTag:20 cleanup:YES];
-    [self removeChildByTag:3 cleanup:YES];
-    self.isTouchEnabled=YES;
-    CCSprite *Build=[CCSprite spriteWithFile:@"石油厂.png"];
-    [buildingSprites addObject:Build];
-    Build.position=selSprite.position;
-    [self addChild:Build z:2];
-    [self rotateWrench];
-    
-    CGPoint myp = Build.position;
-    //[self saveToServer:&myp withPng:@"石油厂.png"];
-}
--(void) event3:(UITapGestureRecognizer *)gesture
-{
-    addSteel+=50;
-    CCSprite *sprite;
-    for(sprite in tagSprites)
-    {
-        if (sprite==selSprite) {
-            sprite=selSprite;
-        }
-    }
-    [self removeChildByTag:20 cleanup:YES];
-    [self removeChildByTag:3 cleanup:YES];
-    self.isTouchEnabled=YES;
-    CCSprite *Build=[CCSprite spriteWithFile:@"钢铁厂.png"];
-    [buildingSprites addObject:Build];
-    Build.position=selSprite.position;
-    [self addChild:Build z:2];
-    [self rotateWrench];
-    
-    CGPoint myp = Build.position;
-    //[self saveToServer:&myp withPng:@"钢铁厂.png"];
-    
-}
--(void) event4:(UITapGestureRecognizer *)gesture
-{
-    addOre+=50;
-    CCSprite *sprite;
-    for(sprite in tagSprites)
-    {
-        if (sprite==selSprite) {
-            sprite=selSprite;
-        }
-    }
-    [self removeChildByTag:20 cleanup:YES];
-    [self removeChildByTag:3 cleanup:YES];
-    self.isTouchEnabled=YES;
-    CCSprite *Build=[CCSprite spriteWithFile:@"稀矿场.png"];
-    [buildingSprites addObject:Build];
-    Build.position=selSprite.position;
-    [self addChild:Build z:2];
-    [self rotateWrench];
-    
-    CGPoint myp = Build.position;
-    //[self saveToServer:&myp withPng:@"稀矿场.png"];
 }
 @end

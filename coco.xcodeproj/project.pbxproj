@@ -28,7 +28,7 @@
 		2A34DE0F16F79F450097AE56 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A34DE0E16F79F450097AE56 /* MainController.m */; };
 		2A6E9DF616F81049002C1239 /* 右侧导航条.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A6E9DF516F81049002C1239 /* 右侧导航条.png */; };
 		2A7D928716F9E49100BD1C5B /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D928616F9E49100BD1C5B /* Building.m */; };
-		2A7D928A16F9E95200BD1C5B /* NavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D928916F9E95200BD1C5B /* NavigationView.m */; };
+		2A7D928A16F9E95200BD1C5B /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D928916F9E95200BD1C5B /* MainView.m */; };
 		2A7D928E16F9ED6300BD1C5B /* ReadyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D928D16F9ED6300BD1C5B /* ReadyCode.m */; };
 		2A7D929816F9F16100BD1C5B /* MilitaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D929716F9F16100BD1C5B /* MilitaryView.m */; };
 		2AD8145716F45EC1000F2337 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD8145616F45EC1000F2337 /* Util.m */; };
@@ -475,8 +475,8 @@
 		2A6E9DF516F81049002C1239 /* 右侧导航条.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右侧导航条.png"; sourceTree = "<group>"; };
 		2A7D928516F9E49100BD1C5B /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
 		2A7D928616F9E49100BD1C5B /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
-		2A7D928816F9E95200BD1C5B /* NavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationView.h; sourceTree = "<group>"; };
-		2A7D928916F9E95200BD1C5B /* NavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationView.m; sourceTree = "<group>"; };
+		2A7D928816F9E95200BD1C5B /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		2A7D928916F9E95200BD1C5B /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		2A7D928C16F9ED6300BD1C5B /* ReadyCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadyCode.h; sourceTree = "<group>"; };
 		2A7D928D16F9ED6300BD1C5B /* ReadyCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadyCode.m; sourceTree = "<group>"; };
 		2A7D929616F9F16100BD1C5B /* MilitaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MilitaryView.h; sourceTree = "<group>"; };
@@ -983,6 +983,7 @@
 		2A7D928116F9E34A00BD1C5B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				ACEF913D16E60A5900DD7120 /* DataList.plist */,
 				DC08803815BDA94A0044A820 /* AppDelegate.m */,
 				DC08803715BDA94A0044A820 /* AppDelegate.h */,
 				DC08803B15BDA94A0044A820 /* RootViewController.m */,
@@ -1075,7 +1076,6 @@
 		2A7D929316F9EEA400BD1C5B /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				ACEF913D16E60A5900DD7120 /* DataList.plist */,
 				DC08804015BDA94A0044A820 /* GameConfig.h */,
 			);
 			name = Config;
@@ -1085,7 +1085,7 @@
 			isa = PBXGroup;
 			children = (
 				2A7D929716F9F16100BD1C5B /* MilitaryView.m */,
-				2A7D928916F9E95200BD1C5B /* NavigationView.m */,
+				2A7D928916F9E95200BD1C5B /* MainView.m */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -1094,7 +1094,7 @@
 			isa = PBXGroup;
 			children = (
 				2A7D929616F9F16100BD1C5B /* MilitaryView.h */,
-				2A7D928816F9E95200BD1C5B /* NavigationView.h */,
+				2A7D928816F9E95200BD1C5B /* MainView.h */,
 			);
 			name = head;
 			sourceTree = "<group>";
@@ -2066,7 +2066,7 @@
 				2A34DE0F16F79F450097AE56 /* MainController.m in Sources */,
 				AC3293E216F8998300DC1D21 /* tagInformation.m in Sources */,
 				2A7D928716F9E49100BD1C5B /* Building.m in Sources */,
-				2A7D928A16F9E95200BD1C5B /* NavigationView.m in Sources */,
+				2A7D928A16F9E95200BD1C5B /* MainView.m in Sources */,
 				2A7D928E16F9ED6300BD1C5B /* ReadyCode.m in Sources */,
 				2A7D929816F9F16100BD1C5B /* MilitaryView.m in Sources */,
 			);

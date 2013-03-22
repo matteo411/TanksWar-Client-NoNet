@@ -6,11 +6,11 @@
 //
 //
 
-#import "NavigationView.h"
+#import "MainView.h"
+#import "MainController.h"
+@implementation MainView
 
-@implementation NavigationView
-
--(CCUIViewWrapper *)Navigation
+-(CCUIViewWrapper *)Navigation:(CCNode*) self1
 {
     //添加右侧导航栏目
     NSLog(@"3");
@@ -40,7 +40,7 @@
     image1.layer.borderColor=[[UIColor whiteColor]CGColor];
     image1.layer.borderWidth=2;
     image1.userInteractionEnabled=YES;
-    UITapGestureRecognizer *tapGestyre1=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sceneTransition:)];
+    UITapGestureRecognizer *tapGestyre1=[[UITapGestureRecognizer alloc] initWithTarget:self1 action:@selector(sceneTransition:)];
     [image1 addGestureRecognizer:tapGestyre1];
     [scroll addSubview:image1];
     
@@ -57,7 +57,7 @@
     image2.layer.borderColor=[[UIColor whiteColor]CGColor];
     image2.layer.borderWidth=2;
     image2.userInteractionEnabled=YES;
-    UITapGestureRecognizer *tapGestyre2=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sceneTransition2:)];
+    UITapGestureRecognizer *tapGestyre2=[[UITapGestureRecognizer alloc] initWithTarget:self1 action:@selector(sceneTransition2:)];
     [image2 addGestureRecognizer:tapGestyre2];
     [scroll addSubview:image2];
     
@@ -72,4 +72,6 @@
     
     return wrapper;
 }
+
+
 @end

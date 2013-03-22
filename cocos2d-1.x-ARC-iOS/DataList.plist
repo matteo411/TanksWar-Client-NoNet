@@ -10,7 +10,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>1</integer>
+			<integer>1000</integer>
 			<key>x</key>
 			<integer>113</integer>
 			<key>y</key>
@@ -22,7 +22,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>2</integer>
+			<integer>1001</integer>
 			<key>x</key>
 			<integer>44</integer>
 			<key>y</key>
@@ -34,7 +34,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>3</integer>
+			<integer>1002</integer>
 			<key>x</key>
 			<integer>231</integer>
 			<key>y</key>
@@ -46,7 +46,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>4</integer>
+			<integer>1003</integer>
 			<key>x</key>
 			<integer>52</integer>
 			<key>y</key>
@@ -58,7 +58,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>5</integer>
+			<integer>1004</integer>
 			<key>x</key>
 			<integer>500</integer>
 			<key>y</key>
@@ -70,7 +70,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>6</integer>
+			<integer>1005</integer>
 			<key>x</key>
 			<integer>636</integer>
 			<key>y</key>
@@ -82,7 +82,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>7</integer>
+			<integer>1006</integer>
 			<key>x</key>
 			<integer>818</integer>
 			<key>y</key>
@@ -94,7 +94,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>8</integer>
+			<integer>1007</integer>
 			<key>x</key>
 			<integer>907</integer>
 			<key>y</key>
@@ -106,7 +106,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>9</integer>
+			<integer>1008</integer>
 			<key>x</key>
 			<integer>530</integer>
 			<key>y</key>
@@ -118,7 +118,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>10</integer>
+			<integer>1009</integer>
 			<key>x</key>
 			<integer>662</integer>
 			<key>y</key>
@@ -130,7 +130,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>11</integer>
+			<integer>1010</integer>
 			<key>x</key>
 			<integer>758</integer>
 			<key>y</key>
@@ -142,7 +142,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>12</integer>
+			<integer>1011</integer>
 			<key>x</key>
 			<integer>481</integer>
 			<key>y</key>
@@ -154,7 +154,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>13</integer>
+			<integer>1012</integer>
 			<key>x</key>
 			<integer>649</integer>
 			<key>y</key>
@@ -166,7 +166,7 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>14</integer>
+			<integer>1013</integer>
 			<key>x</key>
 			<integer>294</integer>
 			<key>y</key>
@@ -178,11 +178,194 @@
 			<key>png</key>
 			<string>tags.png</string>
 			<key>key</key>
-			<integer>15</integer>
+			<integer>1014</integer>
 			<key>x</key>
 			<integer>447</integer>
 			<key>y</key>
 			<integer>285</integer>
+		</dict>
+	</array>
+	<key>resource</key>
+	<array>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1100</integer>
+			<key>x</key>
+			<integer>200</integer>
+			<key>y</key>
+			<integer>300</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1101</integer>
+			<key>x</key>
+			<integer>50</integer>
+			<key>y</key>
+			<integer>150</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1102</integer>
+			<key>x</key>
+			<integer>300</integer>
+			<key>y</key>
+			<integer>100</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1103</integer>
+			<key>x</key>
+			<integer>50</integer>
+			<key>y</key>
+			<integer>150</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1104</integer>
+			<key>x</key>
+			<integer>500</integer>
+			<key>y</key>
+			<integer>200</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1105</integer>
+			<key>x</key>
+			<integer>700</integer>
+			<key>y</key>
+			<integer>100</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1106</integer>
+			<key>x</key>
+			<integer>800</integer>
+			<key>y</key>
+			<integer>200</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1107</integer>
+			<key>x</key>
+			<integer>900</integer>
+			<key>y</key>
+			<integer>400</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1108</integer>
+			<key>x</key>
+			<integer>600</integer>
+			<key>y</key>
+			<integer>670</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1109</integer>
+			<key>x</key>
+			<integer>670</integer>
+			<key>y</key>
+			<integer>820</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1110</integer>
+			<key>x</key>
+			<integer>888</integer>
+			<key>y</key>
+			<integer>484</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1111</integer>
+			<key>x</key>
+			<integer>481</integer>
+			<key>y</key>
+			<integer>520</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1112</integer>
+			<key>x</key>
+			<integer>472</integer>
+			<key>y</key>
+			<integer>386</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1113</integer>
+			<key>x</key>
+			<integer>350</integer>
+			<key>y</key>
+			<integer>368</integer>
+		</dict>
+		<dict>
+			<key>level</key>
+			<integer>0</integer>
+			<key>png</key>
+			<string>tags.png</string>
+			<key>key</key>
+			<integer>1114</integer>
+			<key>x</key>
+			<integer>447</integer>
+			<key>y</key>
+			<integer>340</integer>
 		</dict>
 	</array>
 </dict>

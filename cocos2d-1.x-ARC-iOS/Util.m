@@ -29,21 +29,59 @@
 
 +(BOOL) modifyPng:(NSString*) png ByKey:(int)key
 {
+    NSLog(@"invoke");
+    NSLog(@"png:%@,key:%d",png,key);
     BOOL result = false;
-    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:@"DataList.plist"];
-    //根据路径获取test.plist的全部内容
-    NSMutableDictionary *data= [[[NSMutableDictionary alloc]initWithContentsOfFile:path]mutableCopy];
-    //获取初一班的信息
-    NSMutableArray *nodes = [data objectForKey:@"nodes"];
+    NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:@"DataList.plist"];//[self getActuralPath:@"DataList.plist"];
+    NSLog(@"filePath:%@",filePath);
+    NSMutableDictionary *fileDic;
+        NSString *fileName = @"DataList.plist";
+//    NSArray *paths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
     
-    for (NSMutableDictionary *node in nodes) {
+    if(![[NSFileManager defaultManager] fileExistsAtPath:filePath])
+    {
+        NSLog(@"文件不存在");
+        fileDic = [NSMutableDictionary dictionaryWithContentsOfFile:[self getActuralPath:fileName]];
+    }else
+    {
+        fileDic =[[NSMutableDictionary alloc]initWithContentsOfFile:filePath];
+        NSMutableArray *nodes = [fileDic objectForKey:@"nodes"];
+        for (NSMutableDictionary *node in nodes) {
+            NSLog(@"%d",[[node objectForKey:@"key"] intValue]);
+            if ([[node objectForKey:@"key"] intValue] == key) {
+                [node removeObjectForKey:@"png"];
+                [node setObject:png forKey:@"png"];
+                BOOL fileresult = [fileDic writeToFile:filePath atomically:YES];
+                NSLog(@"fileresult:%d",fileresult);
+                //[data writeToFile:path atomically:NO];
+                NSLog(@"for1");
+                NSLog(@"%@",node);
+                result = true;
+            }
+        }
+        
+    }
+  
+    
+    
+    
+    
+    NSString *path2 = [self getActuralPath:@"DataList.plist"];//[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:@"DataList.plist"];
+    //根据路径获取test.plist的全部内容
+    NSMutableDictionary *data2= [[[NSMutableDictionary alloc]initWithContentsOfFile:path2]mutableCopy];
+    //获取初一班的信息
+    NSMutableArray *nodes2 = [data2 objectForKey:@"nodes"];
+    for (NSMutableDictionary *node in nodes2) {
         if ([[node objectForKey:@"key"] intValue] == key) {
-            [node setValue:png forKey:@"png"];
-            [data writeToFile:path atomically:YES];
-            result = true;
+             NSLog(@"for2");
+            NSLog(@"%@",node);
         }
     }
+    
     return result;
-  
+    
+   
 }
 @end

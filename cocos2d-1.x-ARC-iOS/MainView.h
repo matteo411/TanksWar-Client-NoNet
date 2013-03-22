@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "CCUIViewWrapper.h"
-@interface NavigationView : NSObject
+@interface MainView : NSObject
 
--(CCUIViewWrapper *)Navigation;
+-(CCUIViewWrapper *)Navigation:(CCNode*) self1;
 @end

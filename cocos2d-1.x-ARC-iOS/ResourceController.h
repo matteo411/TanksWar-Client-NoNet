@@ -13,14 +13,22 @@
 #import "Util.h"
 @interface ResourceController: CCLayer {
     CGPoint Tpoint;
+    
+    //标记玩家选中的精灵
     CCSprite *selSprite;
-    NSMutableArray *tagSprites;
-    NSMutableArray *buildingSprites;
+    
+    //    NSMutableArray *tagSprites;
+    NSMutableArray *buildings;
     Resources *playerResource;
-    NSString *host;//connection服务器的host
-    NSInteger port;//connection服务器的port
-    NSString *name;//当前用户的用户名
-    NSString *channel;//频道
+    
+    //connection服务器的host
+    NSString *host;
+    //connection服务器的port
+    NSInteger port;
+    //当前用户的用户名
+    NSString *name;
+    //频道
+    NSString *channel;
     NSArray *resources;
     CCLabelTTF *labelOfFood;
     CCLabelTTF *labelOfOil;
@@ -30,7 +38,6 @@
     int addOil;
     int addOre;
     int addSteel;
-    
 }
 +(CCScene *) scene;
 

@@ -54,16 +54,17 @@
         NSLog(@"invoke10");
         for (NSMutableDictionary* node in nodes)//读取坐标点
         {
-            NSLog(@"%@",node);
+//            NSLog(@"%@",node);
             Building *building=[[Building alloc]init];
             NSString* png = [node objectForKey:@"png"];
+            NSLog(@"png=%@",png);
              NSLog(@"invoke10.4");
-            building.BuildSprite=[CCSprite spriteWithFile:png rect:CGRectMake(0, 0, 47, 66) ];//mark!!!
+            building.BuildSprite=[CCSprite spriteWithFile:png ];//mark!!!
             NSLog(@"invoke10.5");
             building.BuildSprite.position = ccp([[node objectForKey:@"x"]floatValue],[[node objectForKey:@"y"]floatValue]);
             building.key =[[node objectForKey:@"key"] intValue];
             building.level=[[node objectForKey:@"level"] intValue];
-            building.png = [node objectForKey:@"png"];
+            building.png =png;
             [buildings addObject:building];
             
             [self addChild:building.BuildSprite z:2];
@@ -72,7 +73,7 @@
         
         //玩家资源
         playerResource=[[Resources alloc] init];
-        [playerResource initialazation];
+        [playerResource initialize];
 
         CCSprite *BackGround=[CCSprite spriteWithFile:@"ipad_reszonebkg.png" rect:CGRectMake(0, 0, 1024, 768)];
         BackGround.anchorPoint=ccp(0, 0);
@@ -139,7 +140,18 @@
     labelOfOre.position=ccp(800, 700);
     [labelOfOre setColor:ccRED];
     [self addChild:labelOfOre z:3 tag:101];
-//    [self schedule:@selector(update:)interval:10 ];
+    [self schedule:@selector(updateLabel:)interval:10 ];
+}
+-(void)updateLabel:(ccTime)delta
+{
+    [playerResource setFood:addFood];
+    [playerResource setOil:addOil];
+    [playerResource setSteel:addSteel];
+    [playerResource setOre:addOre];
+    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.Oil]];
+    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.Food]];
+    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.Steel]];
+    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.Ore]];
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
@@ -147,15 +159,15 @@
     CGPoint point;
     point=[self convertTouchToNodeSpace:touch];
     [self selectSpriteForTouch:point];
-    return TRUE;//？？？ chenyl
-
+    return TRUE;//
 }
 -(void)selectSpriteForTouch:(CGPoint) point
 {
     
      //NSLog(@"point:%f,%f",point.x,point.y);
     for (Building *building  in buildings) {
-        if (CGRectContainsPoint(building.BuildSprite.boundingBox, point)) {
+        if (CGRectContainsPoint(building.BuildSprite.boundingBox, point))
+        {
             if([building.png isEqualToString:@"tags.png"])
             {
                 [self ChoicePanel:building.key];
@@ -299,6 +311,11 @@
     wrench.tag =building.key;
     [wrench runAction:[CCSequence actions:repeat,delete, nil]];
     
+    //plist操作
+    NSLog(@"before modifyPng" );
+    [Util modifyPng:building.png ByKey:building.key]; //bug
+    
+    
 }
 -(void)deleteWrench:(id)sender //删除扳手
 {
@@ -362,37 +379,37 @@
 
 -(void)delete:(id)sender  //删除建筑
 {
-    NSLog(@"invoke delete");
+    
     CCMenuItemFont *item =(CCMenuItemFont*) sender;
      int key = item.tag;
     [self removeChildByTag:103 cleanup:YES];
-    NSLog(@"invoke delete2");
+   
     for (Building *building  in buildings)
     {
         if(building.key == key)
         {
             CGPoint tempxy = building.BuildSprite.position;
-            NSLog(@"invoke delete3");
+            
             //删除
            // [buildings removeObject:building];
             [self removeChild:building.BuildSprite cleanup:YES];
-            NSLog(@"invoke delete4");
+           
             //配置
             building.png =@"tags.png";
             building.level = 0;
             building.BuildSprite =[CCSprite spriteWithFile:@"tags.png"];
             building.BuildSprite.position =tempxy;
-            NSLog(@"invoke delete5");
-            //添加
+                        //添加
            // [buildings addObject:building];
             [self addChild:building.BuildSprite z:2];
-            NSLog(@"invoke delete6");
+           
             
             [self removeChildByTag:building.key cleanup:YES];
             
+           
             //plist操作
             [Util modifyPng:building.png ByKey:building.key];
-            NSLog(@"invoke delete7");
+            
         }
         
     }       
@@ -404,8 +421,6 @@
     
     CCMenuItemFont *item =(CCMenuItemFont*) sender;
     int key = item.tag;
-    
-    int levelNum;
     
     Building * tempBuilding;
     for (Building *building  in buildings)
@@ -422,66 +437,21 @@
     systerm.contentSize=CGSizeMake(50,50);
     systerm.duration=0.5f;
     [self addChild: systerm z:2];
-    
-//    //得到当前建筑level
-//    for (Building *building  in buildings)
-//    {
-//        if(building.key == key)
-//        {
-//            levelNum = building.level;
-//        }
-//    }
-    
+    if (tempBuilding.level>=18) {
+        tempBuilding.level=18;
+    }
+
+    [self removeChildByTag:tempBuilding.key cleanup:YES];
     
     CCSprite *levelOfbuilding=[CCSprite spriteWithFile:[NSString stringWithFormat:@"level%d.png",tempBuilding.level]];
-
+    levelOfbuilding.tag=tempBuilding.key;
     levelOfbuilding.position=ccp(tempBuilding.BuildSprite.position.x+20, tempBuilding.BuildSprite.position.y-30);
     [self addChild:levelOfbuilding z:2];
    
     
 }
-//-(void)sceneTransition:(id)sender  //转换到军事区
-//{
-////     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Do you sure you want to leave?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes" ,@"No", nil];
-////    [alert show];
-//    CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
-//    [[CCDirector sharedDirector] replaceScene:tran];
-//    
-//   
-//}
-//-(void)sceneTransition2:(id)sender
-//{
-//    CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[HelloWorldLayer scene] withColor:ccWHITE];
-//    [[CCDirector sharedDirector] replaceScene:tran];
-//}
-//-(void)alertView:(UIAlertView*)actionsheet //uikit 的应用 （试验）  弹出提示按钮
-//   clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    if (buttonIndex==0) {
-//        
-//    }
-//    else if (buttonIndex==1) {
-//        //ResourceScene是资源区？chenyl
-//        CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
-//        [[CCDirector sharedDirector] replaceScene:tran];
-//    }
-//    else{
-//        
-//    }
-//}
 
--(void)update:(ccTime)delta
-{
-    [playerResource setFood:addFood];
-    [playerResource setOil:addOil];
-    [playerResource setSteel:addSteel];
-    [playerResource setOre:addOre];
-    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.Oil]];
-    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.Food]];
-    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.Steel]];
-    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.Ore]];
-}
--(void) event1:(UITapGestureRecognizer *)gesture 
+-(void) event1:(UITapGestureRecognizer *)gesture
 {
     [self removeChildByTag:20 cleanup:YES];
     [self removeChildByTag:3 cleanup:YES];
@@ -509,8 +479,7 @@
             //[buildings addObject:building];
             [self addChild:building.BuildSprite z:2];
             
-            //plist操作
-            [Util modifyPng:building.png ByKey:building.key]; //bug
+            
             
             
             NSLog(@"invoke  event1 __if3");
@@ -552,8 +521,7 @@
             //[buildings addObject:building];
             [self addChild:building.BuildSprite z:2];
             
-            //plist操作
-            [Util modifyPng:building.png ByKey:building.key]; //bug
+            
             
             
             NSLog(@"invoke  event1 __if3");
@@ -594,8 +562,7 @@
             //[buildings addObject:building];
             [self addChild:building.BuildSprite z:2];
             
-            //plist操作
-            [Util modifyPng:building.png ByKey:building.key]; //bug
+           
             
             
             NSLog(@"invoke  event1 __if3");
@@ -623,21 +590,19 @@
             //删除
             //[buildings removeObject:building];
             [self removeChild:building.BuildSprite cleanup:YES];
-            NSLog(@"invoke event1 __if");
+            
             //配置
             building.png =@"ipad_b18.png";
             building.level = 1;
             building.BuildSprite =[CCSprite spriteWithFile:@"ipad_b18.png"];
             NSLog(@"invoke event1 __if 1.1");
             building.BuildSprite.position =tempxy;
-            NSLog(@"invoke event1 __if 1.2");
-            NSLog(@"invoke event1 __if2");
+           
             //添加
             //[buildings addObject:building];
             [self addChild:building.BuildSprite z:2];
             
-            //plist操作
-            [Util modifyPng:building.png ByKey:building.key]; //bug
+            
             
             
             NSLog(@"invoke  event1 __if3");
