@@ -34,13 +34,6 @@
         
         
         
-//        CGSize size = [[UIScreen mainScreen] bounds].size;
-//        CCProgressTimer *ct=[CCProgressTimer progressWithFile:@"Icon.png"];
-//        ct.position=ccp( size.width /2 , size.height/2);
-//        
-//        ct.percentage = 100; //当前进度
-//        ct.type=kCCProgressTimerTypeHorizontalBarLR;//进度条的显示样式
-//        [self addChild:ct z:3 tag:9110];
         
         
         
@@ -59,6 +52,8 @@
 	return self;
     
 }
+
+
 
 -(void)sceneTransition:(int)sender  //转换到军事区
 {

@@ -26,6 +26,7 @@
 		2A10368A169AEB55001311F1 /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A103684169AEB55001311F1 /* SocketIOTransportWebsocket.m */; };
 		2A10368B169AEB55001311F1 /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A103686169AEB55001311F1 /* SocketIOTransportXHR.m */; };
 		2A34DE0F16F79F450097AE56 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A34DE0E16F79F450097AE56 /* MainController.m */; };
+		2A5D467516FC9A0600604862 /* 进度条.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5D467416FC9A0600604862 /* 进度条.png */; };
 		2A6E9DF616F81049002C1239 /* 右侧导航条.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A6E9DF516F81049002C1239 /* 右侧导航条.png */; };
 		2A7D928716F9E49100BD1C5B /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D928616F9E49100BD1C5B /* Building.m */; };
 		2A7D928A16F9E95200BD1C5B /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D928916F9E95200BD1C5B /* MainView.m */; };
@@ -472,6 +473,7 @@
 		2A103686169AEB55001311F1 /* SocketIOTransportXHR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportXHR.m; sourceTree = "<group>"; };
 		2A34DE0D16F79F450097AE56 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		2A34DE0E16F79F450097AE56 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
+		2A5D467416FC9A0600604862 /* 进度条.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "进度条.png"; sourceTree = "<group>"; };
 		2A6E9DF516F81049002C1239 /* 右侧导航条.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右侧导航条.png"; sourceTree = "<group>"; };
 		2A7D928516F9E49100BD1C5B /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
 		2A7D928616F9E49100BD1C5B /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
@@ -1346,6 +1348,7 @@
 		DC087EE315BDA9470044A820 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2A5D467416FC9A0600604862 /* 进度条.png */,
 				AC563F9C16F97ADB0094E1AF /* UpGrade */,
 				2A942C1916F8A327007B3148 /* buildingResource */,
 				AC3293DE16F8995B00DC1D21 /* fire.png */,
@@ -2033,6 +2036,7 @@
 				AC29E4E316F97CB300ABC999 /* ipad_b12.png in Resources */,
 				AC29E4E416F97CB300ABC999 /* ipad_b15.png in Resources */,
 				AC29E4E516F97CB300ABC999 /* ipad_b18.png in Resources */,
+				2A5D467516FC9A0600604862 /* 进度条.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

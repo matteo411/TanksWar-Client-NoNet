@@ -34,9 +34,14 @@
 	return scene;
 }
 
+
+
 -(id) init
 {   
 	if( (self=[super init])) {
+        
+       
+        
         
         buildings=[[NSMutableArray alloc] init];
        
@@ -296,6 +301,11 @@
 
 -(void)rotateWrench:(Building *) building//转动扳手
 {
+    
+    
+    
+    
+    
     NSLog(@"rotateWrench1");
     CCSprite *wrench=[CCSprite spriteWithFile:@"wrench.png"];
     wrench.position=ccp(building.BuildSprite.position.x-50,building.BuildSprite.position.y+10);
@@ -310,15 +320,66 @@
     NSLog(@"rotateWrench4");
     wrench.tag =building.key;
     [wrench runAction:[CCSequence actions:repeat,delete, nil]];
+        
+    //进度条
+    CCProgressTimer *ct=[CCProgressTimer progressWithFile:@"进度条.png"];
+    ct.position=ccp( building.BuildSprite.position.x-building.BuildSprite.boundingBox.size.height/4,building.BuildSprite.position.y+building.BuildSprite.boundingBox.size.width/4);
+    ct.percentage = 0; //当前进度
+   
+    [self addChild:ct z:3 tag:building.key+500];
     
-    //plist操作
-    NSLog(@"before modifyPng" );
+    //[self updateTimerdg:building];
+    
+    
+    CCSequence *timerAction = [CCSequence actions:[CCProgressTo actionWithDuration:5 percent:100.f], nil];
+    ct.type = kCCProgressTimerTypeHorizontalBarLR;
+    
+    
+    
+    [ct runAction:timerAction];
+    
+    
     [Util modifyPng:building.png ByKey:building.key]; //bug
+    
+   
     
     
 }
+
+
+
+-(void)updateTimer:(id) sender{
+    NSLog(@"invoke updateTimer");
+
+    CCNode *temp=(CCNode *) sender;
+    int tempKey=temp.tag;
+    Building *tempBuilding;
+    for (Building *building  in buildings)
+    {
+        if(building.key == tempKey)
+        {
+            tempBuilding =building;
+        }
+    }
+
+    NSLog(@"key:%d",tempKey );
+    NSLog(@"invoke updateTimer");
+    CCProgressTimer* ct=(CCProgressTimer*)[self getChildByTag:tempBuilding.key+500];
+    ct.percentage= ct.percentage+20;
+    if (ct.percentage >=100) {
+        [self unschedule:@selector(updateTimer:)];
+        [self removeChild:ct cleanup:YES];
+       
+    }
+    
+    
+    
+   
+}
 -(void)deleteWrench:(id)sender //删除扳手
 {
+    
+   
     NSLog(@"deleteWrench");
    CCSprite *delete = (CCSprite *)sender;
     int key = delete.tag;
@@ -343,6 +404,12 @@
     levelOfbuilding.position=ccp(tempBuilding.BuildSprite.position.x+20, tempBuilding.BuildSprite.position.y-30);
     [self addChild:levelOfbuilding z:2 tag:key];
     [self removeChild:sender cleanup:YES];
+    
+    
+    [self removeChildByTag:key+500 cleanup:YES];
+    
+   
+    
 }
 -(void)saveToServer:(CGPoint *)point withPng:(NSString *)png
 {

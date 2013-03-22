@@ -32,7 +32,7 @@
     NSLog(@"invoke");
     NSLog(@"png:%@,key:%d",png,key);
     BOOL result = false;
-    NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:@"DataList.plist"];//[self getActuralPath:@"DataList.plist"];
+    NSString *filePath=[self getActuralPath:@"DataList.plist"]; //= [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:@"DataList.plist"];//;
     NSLog(@"filePath:%@",filePath);
     NSMutableDictionary *fileDic;
         NSString *fileName = @"DataList.plist";
