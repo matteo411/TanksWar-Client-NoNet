@@ -53,13 +53,16 @@
     
 }
 
+
 -(void)sceneTransition:(int)sender
 {
+    
     [self removeChildByTag:97 cleanup:YES];
     militaryController = [[MilitaryController alloc]init];
     [self addChild:militaryController z:3 tag:97];
     
 }
+
 
 -(void)sceneTransition2:(int)sender  //转换到军事区
 {

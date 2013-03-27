@@ -13,7 +13,6 @@
 #import "AppDelegate.h"
 #import "Resources.h"
 #import "ResourceController.h"
-#import "tagInformation.h"
 #import "Util.h"
 
 // HelloWorldLayer
@@ -47,6 +46,8 @@
     int addOil;
     int addOre;
     int addSteel;
+    CCLayer * armyLayer;
+    int trainNum;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child

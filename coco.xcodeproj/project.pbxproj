@@ -33,6 +33,10 @@
 		2A7D928A16F9E95200BD1C5B /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D928916F9E95200BD1C5B /* MainView.m */; };
 		2A7D928E16F9ED6300BD1C5B /* ReadyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D928D16F9ED6300BD1C5B /* ReadyCode.m */; };
 		2A7D929816F9F16100BD1C5B /* MilitaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D929716F9F16100BD1C5B /* MilitaryView.m */; };
+		2AD505AF1702EAA900BF7D5B /* a_d1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD505AE1702EAA900BF7D5B /* a_d1.png */; };
+		2AD505B31702EAC400BF7D5B /* a_d3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD505B01702EAC400BF7D5B /* a_d3.png */; };
+		2AD505B41702EAC400BF7D5B /* a_d4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD505B11702EAC400BF7D5B /* a_d4.png */; };
+		2AD505B51702EAC400BF7D5B /* a_d2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD505B21702EAC400BF7D5B /* a_d2.png */; };
 		2AD8145716F45EC1000F2337 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD8145616F45EC1000F2337 /* Util.m */; };
 		AC1DA46516EAE8AD0014F3FE /* SWScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1DA46416EAE8AD0014F3FE /* SWScrollView.m */; };
 		AC29E4E216F97CB300ABC999 /* ipad_b9.png in Resources */ = {isa = PBXBuildFile; fileRef = AC29E4DE16F97CB300ABC999 /* ipad_b9.png */; };
@@ -485,6 +489,10 @@
 		2A7D928D16F9ED6300BD1C5B /* ReadyCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadyCode.m; sourceTree = "<group>"; };
 		2A7D929616F9F16100BD1C5B /* MilitaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MilitaryView.h; sourceTree = "<group>"; };
 		2A7D929716F9F16100BD1C5B /* MilitaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MilitaryView.m; sourceTree = "<group>"; };
+		2AD505AE1702EAA900BF7D5B /* a_d1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_d1.png; sourceTree = "<group>"; };
+		2AD505B01702EAC400BF7D5B /* a_d3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_d3.png; sourceTree = "<group>"; };
+		2AD505B11702EAC400BF7D5B /* a_d4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_d4.png; sourceTree = "<group>"; };
+		2AD505B21702EAC400BF7D5B /* a_d2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_d2.png; sourceTree = "<group>"; };
 		2AD8145516F45EC1000F2337 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		2AD8145616F45EC1000F2337 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		AC1DA46316EAE8AD0014F3FE /* SWScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWScrollView.h; sourceTree = "<group>"; };
@@ -987,6 +995,10 @@
 		2A5D467616FC9D3A00604862 /* Military */ = {
 			isa = PBXGroup;
 			children = (
+				2AD505B01702EAC400BF7D5B /* a_d3.png */,
+				2AD505B11702EAC400BF7D5B /* a_d4.png */,
+				2AD505B21702EAC400BF7D5B /* a_d2.png */,
+				2AD505AE1702EAA900BF7D5B /* a_d1.png */,
 				AC563F8616F97A3C0094E1AF /* armory.png */,
 				AC563EFF16F956850094E1AF /* armory_item.png */,
 			);
@@ -2049,6 +2061,10 @@
 				AC29E4E516F97CB300ABC999 /* ipad_b18.png in Resources */,
 				2A5D467816FCA39400604862 /* 进度条.png in Resources */,
 				2A5D46AA16FCAA1A00604862 /* Default.png in Resources */,
+				2AD505AF1702EAA900BF7D5B /* a_d1.png in Resources */,
+				2AD505B31702EAC400BF7D5B /* a_d3.png in Resources */,
+				2AD505B41702EAC400BF7D5B /* a_d4.png in Resources */,
+				2AD505B51702EAC400BF7D5B /* a_d2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
