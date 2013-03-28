@@ -48,6 +48,7 @@
     int addSteel;
     CCLayer * armyLayer;
     int trainNum;
+    NSMutableArray *countDownLabel;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child

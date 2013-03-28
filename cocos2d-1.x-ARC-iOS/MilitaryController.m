@@ -34,15 +34,13 @@
 	return scene;
 }
 
-
-
 -(id) init
 {   
 	if( (self=[super init])) {
         
        
         
-        
+        countDownLabel=[[NSMutableArray alloc]init];
         buildings=[[NSMutableArray alloc] init];
        
         //初始化tags
@@ -101,21 +99,23 @@
 //资源的计算
       
         
-        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];//触摸代理 
-
+    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+        
+      //self.isTouchEnabled=YES;第二种触摸方法（可以以后实现）-
+        
         CCSprite *topTable=[CCSprite spriteWithFile:@"ipad_helpup.png"];
         topTable.position=ccp(500,750);
           topTable.opacity=150;
         [self addChild:topTable z:2];
-
+        [self schedule:@selector(countDownLabelupDate) interval:1];
         
         
-	}
+	} 
 	return self;
  
 }
 
--(void)addLabel
+-(void)addLabel//加上最上面的资源显示栏
 {
     
     CCSprite *foodImage=[CCSprite spriteWithFile:@"bl_3s.png"];
@@ -156,7 +156,8 @@
     [self addChild:labelOfOre z:3 tag:101];
     [self schedule:@selector(updateLabel:)interval:10 ];
 }
--(void)updateLabel:(ccTime)delta 
+
+-(void)updateLabel:(ccTime)delta//资源栏数值更新
 {
     [playerResource setFood:addFood];
     [playerResource setOil:addOil];
@@ -168,14 +169,17 @@
     [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.Ore]];
 }
 
--(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+-(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event//触摸方法
 {
+   
     CGPoint point;
     point=[self convertTouchToNodeSpace:touch];
+    NSLog(@"%f,%f",point.x,point.y);
     [self selectSpriteForTouch:point];
     return TRUE;//
 }
--(void)selectSpriteForTouch:(CGPoint) point
+
+-(void)selectSpriteForTouch:(CGPoint) point//选择触摸点
 {
     
      //NSLog(@"point:%f,%f",point.x,point.y);
@@ -202,9 +206,10 @@
     }
     
 }
--(void)armoryHandle:(Building*) building
+
+-(void)armoryHandle:(Building*) building//军事管理菜单
 {
-    self.isTouchEnabled=NO;
+
     NSLog(@"armoryHandle");
     [CCMenuItemFont setFontName:@"Marker Felt"];
     [CCMenuItemFont setFontSize:20];
@@ -219,10 +224,12 @@
     [menu alignItemsHorizontally];
     [self addChild:menu z:3 tag:103];
 }
--(void)control:(id)sender
+
+-(void)control:(id)sender//军事区造兵面板
 {
     [self removeChildByTag:103 cleanup:YES];
-    self.isTouchEnabled=NO;
+   
+    
     CGSize size = [[CCDirector sharedDirector] winSize];
     CCSprite *Panel=[CCSprite spriteWithFile:@"panel.png"];
     Panel.position=ccp(size.width/2, size.height/2);
@@ -326,14 +333,16 @@
     [self addChild:menu z:3 tag:202 ];
 
 }
--(void)backToMilitoryZone
+-(void)backToMilitoryZone//从军事区面板回到军事区
 {
     [self removeChildByTag:3 cleanup:NO];
     [self removeChildByTag:20 cleanup:NO];
     [self removeChildByTag:202 cleanup:YES];
-    self.isTouchEnabled=YES;
+    
+    
 }
--(void)GoToArmyPanel
+
+-(void)GoToArmyPanel//显示兵力菜单（未完成）
 {
     CCNode *node=[self getChildByTag:20];
     node.visible=NO;
@@ -343,7 +352,8 @@
     armyLayer.visible=YES;
     
 }
--(void)trainSoldier:(UITapGestureRecognizer *)gesture
+   
+-(void)trainSoldier:(UITapGestureRecognizer *)gesture//训练士兵面板
 {
     NSLog(@"trainsoldier1");
     //ccmenu  返回  和叉掉
@@ -434,7 +444,8 @@
 
     
 }
--(IBAction)sliderChangeValue:(id)sender
+
+-(IBAction)sliderChangeValue:(id)sender//滑动改变兵力值
 {
     [self removeChildByTag:205 cleanup:YES];
     UITextField *textView=[[UITextField alloc] initWithFrame:CGRectMake(0, 0,50, 30)];
@@ -455,7 +466,8 @@
 
     
 }
--(void)BacktTo:(id)sender
+
+-(void)BacktTo:(id)sender//返回到造兵面板
 {
     [self removeChildByTag:200 cleanup:NO];
     CCNode *wrapper=[self getChildByTag:20];
@@ -463,7 +475,8 @@
     wrapper.visible=YES;
     
 }
--(void)Confirm:(id)sender
+
+-(void)Confirm:(id)sender//训练确认
 {
     [self removeChildByTag:200 cleanup:NO];
     CCNode *wrapper=[self getChildByTag:20];
@@ -472,16 +485,18 @@
     wrapper.visible=YES;
     NSLog(@"train:%d",playerResource.Oil);
     [playerResource setFood:-50*trainNum];
-    playerResource.Steel-=trainNum*50;
-    playerResource.Food-=trainNum*50;
-    playerResource.Ore-=trainNum*50;
+    [playerResource setOil:-50*trainNum];
+    [playerResource  setSteel:-50*trainNum ];
+    [playerResource setOre:-50*trainNum];
     NSLog(@"train:%d",playerResource.Oil);
     [self deleteResource];
     
 }
--(void)buildingHandle:(Building *) building//建筑
+
+-(void)buildingHandle:(Building *) building//普通建筑管理
 {
-    //self.isTouchEnabled=NO;
+   
+    
     [CCMenuItemFont setFontName:@"Marker Felt"];
     [CCMenuItemFont setFontSize:20];
     CCMenuItemFont  *Delete=[CCMenuItemFont itemFromString:@"拆除" target:self selector:@selector(delete:)];
@@ -493,8 +508,10 @@
     [menu alignItemsHorizontally];
     [self addChild:menu z:3 tag:103];
 }
+
 -(void) ChoicePanel:(int)key//选择面板  building!!!!!!
 { 
+   
     
     CGSize size = [[CCDirector sharedDirector] winSize];
     CCSprite *Panel=[CCSprite spriteWithFile:@"panel.png"];
@@ -593,12 +610,8 @@
     NSLog(@"chenyl");
 }
 
--(void)rotateWrench:(Building *) building//转动扳手
+-(void)rotateWrench:(Building *) building//转动扳手  加入进度条  加入倒计时器
 {
-    
-    
-    
-    
     
     NSLog(@"rotateWrench1");
     CCSprite *wrench=[CCSprite spriteWithFile:@"wrench.png"];
@@ -625,22 +638,47 @@
     //[self updateTimerdg:building];
     
     
+    
     CCSequence *timerAction = [CCSequence actions:[CCProgressTo actionWithDuration:5 percent:100.f], nil];
     ct.type = kCCProgressTimerTypeHorizontalBarLR;
     
-    
+    int buildtime=5;
     
     [ct runAction:timerAction];
     
     NSNumber* buildingLevel = [[NSNumber alloc] initWithInt:building.level];
     [Util modifyPng:building.png andLevel:buildingLevel  ByKey:building.key]; //bug
     
-   
+    CCLabelTTF *countDown=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(80, 40) alignment:UITextAlignmentLeft fontName:@"Arial" fontSize:24];
+    [countDown setString:[NSString stringWithFormat: @"%.2d:%.2d",buildtime/60,buildtime%60]];
+    [countDownLabel addObject:countDown];
+    countDown.color=ccRED;
+    countDown.position=ccp(850, 650-countDownLabel.count*40);
+    [self addChild:countDown z:2 tag:buildtime+5000];
+    
     
     
 }
-
-
+-(void)countDownLabelupDate
+{
+    
+    NSLog(@"hello label1");
+    
+    for (int num=countDownLabel.count; num>=1; num--)
+    {
+        NSLog(@"hello label2  %d",num);
+        CCLabelTTF *countDown=[countDownLabel objectAtIndex:num-1];
+        NSLog(@"hello label3");
+        countDown.tag--;
+        NSLog(@"hello label4");
+        [countDown setString:[NSString stringWithFormat:@"%.2d:%.2d",(countDown.tag-5000)/60,(countDown.tag-5000)%60]];
+         NSLog(@"hello label5");
+        if (countDown.tag==5000) {
+            [countDownLabel removeObjectAtIndex:num-1];
+            [self removeChild:countDown cleanup:YES];
+        }
+    }
+}
 
 -(void)updateTimer:(id) sender{
     NSLog(@"invoke updateTimer");
@@ -669,7 +707,8 @@
     
     
    
-}
+}//进度条控制
+
 -(void)deleteWrench:(id)sender //删除扳手
 {
     
@@ -705,6 +744,7 @@
    
     
 }
+
 -(void)saveToServer:(CGPoint *)point withPng:(NSString *)png
 {
     NSLog(@"invoke");
@@ -776,6 +816,7 @@
         
     }       
 }
+
 -(void)upgrade:(id)sender  //升级建筑
 {
     //删除面板
@@ -846,6 +887,7 @@
             
             NSLog(@"invoke  event1 __if3");
            
+          
             
             
             [self rotateWrench:building];
@@ -978,13 +1020,15 @@
 }
 // on "dealloc" you need to release all your retained objects
 
--(void) initAddNumOfResource
+
+-(void) initAddNumOfResource//资源增加变量
 {
     addFood=100;
     addOil=100;
     addOre=100;
     addSteel=100;
 }
+
 -(void)deleteResource
 {
     [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.Oil]];
