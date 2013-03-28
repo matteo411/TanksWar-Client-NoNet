@@ -27,7 +27,7 @@
     return nodes;
 }
 
-+(BOOL) modifyPng:(NSString*) png ByKey:(int)key
++(BOOL) modifyPng:(NSString*) png andLevel:(NSNumber*) level ByKey:(int)key
 {
     NSLog(@"invoke");
     NSLog(@"png:%@,key:%d",png,key);
@@ -53,6 +53,8 @@
             if ([[node objectForKey:@"key"] intValue] == key) {
                 [node removeObjectForKey:@"png"];
                 [node setObject:png forKey:@"png"];
+                [node removeObjectForKey:@"level"];
+                [node setObject:level forKey:@"level"];
                 BOOL fileresult = [fileDic writeToFile:filePath atomically:YES];
                 NSLog(@"fileresult:%d",fileresult);
                 //[data writeToFile:path atomically:NO];

@@ -73,6 +73,15 @@
             [buildings addObject:building];
             
             [self addChild:building.BuildSprite z:2];
+            
+            //初始化建筑等级
+            if(building.level >0)
+            {
+            CCSprite *levelOfbuilding=[CCSprite spriteWithFile:[NSString stringWithFormat:@"level%d.png",building.level]];
+            levelOfbuilding.tag=building.key;
+            levelOfbuilding.position=ccp(building.BuildSprite.position.x+20, building.BuildSprite.position.y-30);
+            [self addChild:levelOfbuilding z:2];
+            }
         }
         NSLog(@"invoke11");
         
@@ -623,8 +632,8 @@
     
     [ct runAction:timerAction];
     
-    
-    [Util modifyPng:building.png ByKey:building.key]; //bug
+    NSNumber* buildingLevel = [[NSNumber alloc] initWithInt:building.level];
+    [Util modifyPng:building.png andLevel:buildingLevel  ByKey:building.key]; //bug
     
    
     
@@ -760,7 +769,8 @@
             
            
             //plist操作
-            [Util modifyPng:building.png ByKey:building.key];
+            NSNumber* buildingLevel = [[NSNumber alloc] initWithInt:building.level];
+            [Util modifyPng:building.png andLevel: buildingLevel ByKey:building.key];
             
         }
         

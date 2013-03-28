@@ -313,7 +313,7 @@
     [ct runAction:timerAction];
     
     
-    [Util modifyPng:building.png ByKey:building.key]; //bug
+    [Util modifyPng:building.png  andLevel:[[NSNumber alloc] initWithInt:building.level]  ByKey:building.key]; //bug
     
     
     
@@ -449,7 +449,7 @@
             [self removeChildByTag:building.key cleanup:YES];
             
             //plist操作
-            [Util modifyPng:building.png ByKey:building.key];
+            [Util modifyPng:building.png andLevel:[[NSNumber alloc] initWithInt:building.level]  ByKey:building.key];
             
         }
         
@@ -549,7 +549,7 @@
             [self addChild:building.BuildSprite z:2];
             
             //plist操作
-            [Util modifyPng:building.png ByKey:building.key]; //bug
+            [Util modifyPng:building.png andLevel:[[NSNumber alloc] initWithInt:building.level]  ByKey:building.key]; //bug
             
             
             NSLog(@"invoke  event1 __if3");
@@ -592,7 +592,7 @@
             [self addChild:building.BuildSprite z:2];
             
             //plist操作
-            [Util modifyPng:building.png ByKey:building.key]; //bug
+            [Util modifyPng:building.png andLevel:[[NSNumber alloc] initWithInt:building.level]  ByKey:building.key]; //bug
             
             
             NSLog(@"invoke  event1 __if3");
@@ -634,7 +634,7 @@
             [self addChild:building.BuildSprite z:2];
             
             //plist操作
-            [Util modifyPng:building.png ByKey:building.key]; //bug
+            [Util modifyPng:building.png andLevel:[[NSNumber alloc] initWithInt:building.level]  ByKey:building.key]; //bug
             
             
             NSLog(@"invoke  event1 __if3");
@@ -675,7 +675,7 @@
             [self addChild:building.BuildSprite z:2];
             
             //plist操作
-            [Util modifyPng:building.png ByKey:building.key]; //bug
+            [Util modifyPng:building.png andLevel:[[NSNumber alloc] initWithInt:building.level]  ByKey:building.key]; //bug
             
             
             NSLog(@"invoke  event1 __if3");
