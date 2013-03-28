@@ -10,7 +10,7 @@
 		0E075F0416AF1E8A00ABD9D0 /* Resources.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E075F0216AF1E8A00ABD9D0 /* Resources.h */; };
 		0E075F0516AF1E8A00ABD9D0 /* Resources.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E075F0316AF1E8A00ABD9D0 /* Resources.m */; };
 		0E075F0616AF1E8A00ABD9D0 /* Resources.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E075F0316AF1E8A00ABD9D0 /* Resources.m */; };
-		0E0DE17E16AF6AAC007AFF32 /* ResourceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE17D16AF6AAC007AFF32 /* ResourceController.m */; };
+		0E0DE17E16AF6AAC007AFF32 /* ResourceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE17D16AF6AAC007AFF32 /* ResourceLayer.m */; };
 		0E0DE18616AF713F007AFF32 /* tags.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E0DE18516AF713F007AFF32 /* tags.png */; };
 		2A103663169AE87F001311F1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A103662169AE87F001311F1 /* Security.framework */; };
 		2A103665169AE885001311F1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A103664169AE885001311F1 /* CFNetwork.framework */; };
@@ -25,7 +25,7 @@
 		2A103689169AEB55001311F1 /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A103681169AEB55001311F1 /* SocketIOPacket.m */; };
 		2A10368A169AEB55001311F1 /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A103684169AEB55001311F1 /* SocketIOTransportWebsocket.m */; };
 		2A10368B169AEB55001311F1 /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A103686169AEB55001311F1 /* SocketIOTransportXHR.m */; };
-		2A34DE0F16F79F450097AE56 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A34DE0E16F79F450097AE56 /* MainController.m */; };
+		2A34DE0F16F79F450097AE56 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A34DE0E16F79F450097AE56 /* MainScene.m */; };
 		2A5D467816FCA39400604862 /* 进度条.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5D467716FCA39400604862 /* 进度条.png */; };
 		2A5D46AA16FCAA1A00604862 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A5D46A916FCAA1A00604862 /* Default.png */; };
 		2A6E9DF616F81049002C1239 /* 右侧导航条.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A6E9DF516F81049002C1239 /* 右侧导航条.png */; };
@@ -33,6 +33,8 @@
 		2A7D928A16F9E95200BD1C5B /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D928916F9E95200BD1C5B /* MainView.m */; };
 		2A7D928E16F9ED6300BD1C5B /* ReadyCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D928D16F9ED6300BD1C5B /* ReadyCode.m */; };
 		2A7D929816F9F16100BD1C5B /* MilitaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D929716F9F16100BD1C5B /* MilitaryView.m */; };
+		2A7FE48C17043F2400075D9C /* MilitaryBuildingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FE48B17043F2400075D9C /* MilitaryBuildingLayer.m */; };
+		2A7FE49217046C0900075D9C /* MilitaryBuildingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FE49117046C0900075D9C /* MilitaryBuildingView.m */; };
 		2AD505AF1702EAA900BF7D5B /* a_d1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD505AE1702EAA900BF7D5B /* a_d1.png */; };
 		2AD505B31702EAC400BF7D5B /* a_d3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD505B01702EAC400BF7D5B /* a_d3.png */; };
 		2AD505B41702EAC400BF7D5B /* a_d4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD505B11702EAC400BF7D5B /* a_d4.png */; };
@@ -254,7 +256,7 @@
 		DC08803615BDA94A0044A820 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC08803515BDA94A0044A820 /* main.m */; };
 		DC08803915BDA94A0044A820 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC08803815BDA94A0044A820 /* AppDelegate.m */; };
 		DC08803C15BDA94A0044A820 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC08803B15BDA94A0044A820 /* RootViewController.m */; };
-		DC08803F15BDA94A0044A820 /* MilitaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC08803E15BDA94A0044A820 /* MilitaryController.m */; };
+		DC08803F15BDA94A0044A820 /* MilitaryLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DC08803E15BDA94A0044A820 /* MilitaryLayer.m */; };
 		DC08804B15BDA95C0044A820 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC087EDE15BDA9470044A820 /* Foundation.framework */; };
 		DC08805515BDA9760044A820 /* libcocos2d-library.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC08804A15BDA95C0044A820 /* libcocos2d-library.a */; };
 		DC08813315BDA9820044A820 /* CCAction.h in Headers */ = {isa = PBXBuildFile; fileRef = DC08805815BDA9820044A820 /* CCAction.h */; };
@@ -448,8 +450,8 @@
 /* Begin PBXFileReference section */
 		0E075F0216AF1E8A00ABD9D0 /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resources.h; sourceTree = "<group>"; };
 		0E075F0316AF1E8A00ABD9D0 /* Resources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Resources.m; sourceTree = "<group>"; };
-		0E0DE17C16AF6AAC007AFF32 /* ResourceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceController.h; sourceTree = "<group>"; };
-		0E0DE17D16AF6AAC007AFF32 /* ResourceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceController.m; sourceTree = "<group>"; };
+		0E0DE17C16AF6AAC007AFF32 /* ResourceLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceLayer.h; sourceTree = "<group>"; };
+		0E0DE17D16AF6AAC007AFF32 /* ResourceLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceLayer.m; sourceTree = "<group>"; };
 		0E0DE18516AF713F007AFF32 /* tags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tags.png; sourceTree = "<group>"; };
 		2A103662169AE87F001311F1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2A103664169AE885001311F1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -476,8 +478,8 @@
 		2A103684169AEB55001311F1 /* SocketIOTransportWebsocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportWebsocket.m; sourceTree = "<group>"; };
 		2A103685169AEB55001311F1 /* SocketIOTransportXHR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportXHR.h; sourceTree = "<group>"; };
 		2A103686169AEB55001311F1 /* SocketIOTransportXHR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportXHR.m; sourceTree = "<group>"; };
-		2A34DE0D16F79F450097AE56 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
-		2A34DE0E16F79F450097AE56 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
+		2A34DE0D16F79F450097AE56 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
+		2A34DE0E16F79F450097AE56 /* MainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScene.m; sourceTree = "<group>"; };
 		2A5D467716FCA39400604862 /* 进度条.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "进度条.png"; sourceTree = "<group>"; };
 		2A5D46A916FCAA1A00604862 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2A6E9DF516F81049002C1239 /* 右侧导航条.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右侧导航条.png"; sourceTree = "<group>"; };
@@ -489,6 +491,10 @@
 		2A7D928D16F9ED6300BD1C5B /* ReadyCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadyCode.m; sourceTree = "<group>"; };
 		2A7D929616F9F16100BD1C5B /* MilitaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MilitaryView.h; sourceTree = "<group>"; };
 		2A7D929716F9F16100BD1C5B /* MilitaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MilitaryView.m; sourceTree = "<group>"; };
+		2A7FE48A17043F2400075D9C /* MilitaryBuildingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MilitaryBuildingLayer.h; sourceTree = "<group>"; };
+		2A7FE48B17043F2400075D9C /* MilitaryBuildingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MilitaryBuildingLayer.m; sourceTree = "<group>"; };
+		2A7FE49017046C0900075D9C /* MilitaryBuildingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MilitaryBuildingView.h; sourceTree = "<group>"; };
+		2A7FE49117046C0900075D9C /* MilitaryBuildingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MilitaryBuildingView.m; sourceTree = "<group>"; };
 		2AD505AE1702EAA900BF7D5B /* a_d1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_d1.png; sourceTree = "<group>"; };
 		2AD505B01702EAC400BF7D5B /* a_d3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_d3.png; sourceTree = "<group>"; };
 		2AD505B11702EAC400BF7D5B /* a_d4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_d4.png; sourceTree = "<group>"; };
@@ -720,8 +726,8 @@
 		DC08803815BDA94A0044A820 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DC08803A15BDA94A0044A820 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		DC08803B15BDA94A0044A820 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		DC08803D15BDA94A0044A820 /* MilitaryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MilitaryController.h; sourceTree = "<group>"; };
-		DC08803E15BDA94A0044A820 /* MilitaryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MilitaryController.m; sourceTree = "<group>"; };
+		DC08803D15BDA94A0044A820 /* MilitaryLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MilitaryLayer.h; sourceTree = "<group>"; };
+		DC08803E15BDA94A0044A820 /* MilitaryLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MilitaryLayer.m; sourceTree = "<group>"; };
 		DC08804015BDA94A0044A820 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		DC08804A15BDA95C0044A820 /* libcocos2d-library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcocos2d-library.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC08805815BDA9820044A820 /* CCAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAction.h; sourceTree = "<group>"; };
@@ -1038,8 +1044,8 @@
 		2A7D928316F9E35C00BD1C5B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2A7D929516F9EECD00BD1C5B /* head */,
-				2A7D929416F9EEC600BD1C5B /* source */,
+				2A7FE48917043BC700075D9C /* Military */,
+				2A7FE48817043BBB00075D9C /* Main */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1047,8 +1053,9 @@
 		2A7D928416F9E36300BD1C5B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2A7D929116F9EE5B00BD1C5B /* head */,
-				2A7D929216F9EE6100BD1C5B /* source */,
+				2A7FE48517043ACD00075D9C /* Main */,
+				2A7FE48617043AEB00075D9C /* Military */,
+				2A7FE48717043B3200075D9C /* Resource */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1078,26 +1085,6 @@
 			name = source;
 			sourceTree = "<group>";
 		};
-		2A7D929116F9EE5B00BD1C5B /* head */ = {
-			isa = PBXGroup;
-			children = (
-				2A34DE0D16F79F450097AE56 /* MainController.h */,
-				DC08803D15BDA94A0044A820 /* MilitaryController.h */,
-				0E0DE17C16AF6AAC007AFF32 /* ResourceController.h */,
-			);
-			name = head;
-			sourceTree = "<group>";
-		};
-		2A7D929216F9EE6100BD1C5B /* source */ = {
-			isa = PBXGroup;
-			children = (
-				2A34DE0E16F79F450097AE56 /* MainController.m */,
-				DC08803E15BDA94A0044A820 /* MilitaryController.m */,
-				0E0DE17D16AF6AAC007AFF32 /* ResourceController.m */,
-			);
-			name = source;
-			sourceTree = "<group>";
-		};
 		2A7D929316F9EEA400BD1C5B /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -1106,22 +1093,53 @@
 			name = Config;
 			sourceTree = "<group>";
 		};
-		2A7D929416F9EEC600BD1C5B /* source */ = {
+		2A7FE48517043ACD00075D9C /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				2A7D929716F9F16100BD1C5B /* MilitaryView.m */,
-				2A7D928916F9E95200BD1C5B /* MainView.m */,
+				2A34DE0D16F79F450097AE56 /* MainScene.h */,
+				2A34DE0E16F79F450097AE56 /* MainScene.m */,
 			);
-			name = source;
+			name = Main;
 			sourceTree = "<group>";
 		};
-		2A7D929516F9EECD00BD1C5B /* head */ = {
+		2A7FE48617043AEB00075D9C /* Military */ = {
+			isa = PBXGroup;
+			children = (
+				DC08803D15BDA94A0044A820 /* MilitaryLayer.h */,
+				DC08803E15BDA94A0044A820 /* MilitaryLayer.m */,
+				2A7FE48A17043F2400075D9C /* MilitaryBuildingLayer.h */,
+				2A7FE48B17043F2400075D9C /* MilitaryBuildingLayer.m */,
+			);
+			name = Military;
+			sourceTree = "<group>";
+		};
+		2A7FE48717043B3200075D9C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				0E0DE17C16AF6AAC007AFF32 /* ResourceLayer.h */,
+				0E0DE17D16AF6AAC007AFF32 /* ResourceLayer.m */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		2A7FE48817043BBB00075D9C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2A7D928816F9E95200BD1C5B /* MainView.h */,
+				2A7D928916F9E95200BD1C5B /* MainView.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		2A7FE48917043BC700075D9C /* Military */ = {
 			isa = PBXGroup;
 			children = (
 				2A7D929616F9F16100BD1C5B /* MilitaryView.h */,
-				2A7D928816F9E95200BD1C5B /* MainView.h */,
+				2A7D929716F9F16100BD1C5B /* MilitaryView.m */,
+				2A7FE49017046C0900075D9C /* MilitaryBuildingView.h */,
+				2A7FE49117046C0900075D9C /* MilitaryBuildingView.m */,
 			);
-			name = head;
+			name = Military;
 			sourceTree = "<group>";
 		};
 		2A942C1916F8A327007B3148 /* buildingResource */ = {
@@ -2078,7 +2096,7 @@
 				DC08803615BDA94A0044A820 /* main.m in Sources */,
 				DC08803915BDA94A0044A820 /* AppDelegate.m in Sources */,
 				DC08803C15BDA94A0044A820 /* RootViewController.m in Sources */,
-				DC08803F15BDA94A0044A820 /* MilitaryController.m in Sources */,
+				DC08803F15BDA94A0044A820 /* MilitaryLayer.m in Sources */,
 				2A103670169AEB30001311F1 /* Pomelo.m in Sources */,
 				2A103671169AEB30001311F1 /* PomeloProtocol.m in Sources */,
 				2A103679169AEB48001311F1 /* base64.c in Sources */,
@@ -2090,17 +2108,19 @@
 				2A10368A169AEB55001311F1 /* SocketIOTransportWebsocket.m in Sources */,
 				2A10368B169AEB55001311F1 /* SocketIOTransportXHR.m in Sources */,
 				0E075F0516AF1E8A00ABD9D0 /* Resources.m in Sources */,
-				0E0DE17E16AF6AAC007AFF32 /* ResourceController.m in Sources */,
+				0E0DE17E16AF6AAC007AFF32 /* ResourceLayer.m in Sources */,
 				AC622CAC16E9B9790030E4E7 /* CCUIViewWrapper.m in Sources */,
 				AC622CB216E9CCF20030E4E7 /* SlidingMenuGrid.m in Sources */,
 				AC1DA46516EAE8AD0014F3FE /* SWScrollView.m in Sources */,
 				2AD8145716F45EC1000F2337 /* Util.m in Sources */,
-				2A34DE0F16F79F450097AE56 /* MainController.m in Sources */,
+				2A34DE0F16F79F450097AE56 /* MainScene.m in Sources */,
 				AC3293E216F8998300DC1D21 /* tagInformation.m in Sources */,
 				2A7D928716F9E49100BD1C5B /* Building.m in Sources */,
 				2A7D928A16F9E95200BD1C5B /* MainView.m in Sources */,
 				2A7D928E16F9ED6300BD1C5B /* ReadyCode.m in Sources */,
 				2A7D929816F9F16100BD1C5B /* MilitaryView.m in Sources */,
+				2A7FE48C17043F2400075D9C /* MilitaryBuildingLayer.m in Sources */,
+				2A7FE49217046C0900075D9C /* MilitaryBuildingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

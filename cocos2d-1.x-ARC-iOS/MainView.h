@@ -11,5 +11,5 @@
 #import "CCUIViewWrapper.h"
 @interface MainView : NSObject
 
--(CCUIViewWrapper *)Navigation:(CCNode*) self1;
+-(void *)Navigation:(CCNode*) self1;
 @end

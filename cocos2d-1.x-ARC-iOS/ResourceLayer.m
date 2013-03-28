@@ -6,17 +6,17 @@
 //  Copyright 2013年 __MyCompanyName__. All rights reserved.
 //
 
-#import "ResourceController.h"
+#import "ResourceLayer.h"
 #import "CCUIViewWrapper.h"
 #import "Building.h"
-@implementation ResourceController
+@implementation ResourceLayer
 +(CCScene *) scene
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	ResourceController *layer = [ResourceController node];
+	ResourceLayer *layer = [ResourceLayer node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -322,34 +322,7 @@
 
 
 
--(void)updateTimer:(id) sender{
-    NSLog(@"invoke updateTimer");
-    
-    CCNode *temp=(CCNode *) sender;
-    int tempKey=temp.tag;
-    Building *tempBuilding;
-    for (Building *building  in buildings)
-    {
-        if(building.key == tempKey)
-        {
-            tempBuilding =building;
-        }
-    }
-    
-    NSLog(@"key:%d",tempKey );
-    NSLog(@"invoke updateTimer");
-    CCProgressTimer* ct=(CCProgressTimer*)[self getChildByTag:tempBuilding.key+500];
-    ct.percentage= ct.percentage+20;
-    if (ct.percentage >=100) {
-        [self unschedule:@selector(updateTimer:)];
-        [self removeChild:ct cleanup:YES];
-        
-    }
-    
-    
-    
-    
-}
+
 -(void)deleteWrench:(id)sender //删除扳手
 {
     

@@ -131,4 +131,48 @@
 //static int  TAG__UPDATEBUILD=103;
 //static int TAG__PANEL=3;
 //static int TAG__CHOICEMENU=4;
+
+
+////connection服务器的host
+//NSString *host;
+////connection服务器的port
+//NSInteger port;
+////当前用户的用户名
+//NSString *name;
+////频道
+//NSString *channel;
+
+//-(void)saveToServer:(CGPoint *)point withPng:(NSString *)png
+//{
+//    NSLog(@"invoke");
+//    
+//    NSNumber *myx = [NSNumber numberWithFloat:point->x];
+//    NSNumber *myy = [NSNumber numberWithFloat:point->y];
+//    
+//    
+//    
+//    
+//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+//                            name, @"username",
+//                            channel, @"rid",
+//                            myx, @"pointx",
+//                            myy, @"pointy",
+//                            png,@"png",
+//                            @"military",@"category",
+//                            nil];
+//    [pomelo requestWithRoute:@"connector.entryHandler.addArchitecture" andParams:params andCallback:^(NSDictionary *result){
+//        NSArray *userList = [result objectForKey:@"users"];
+//        for (NSString *name2 in userList) {
+//            NSLog(@"%@",name2);
+//            
+//            
+//        }
+//        
+//    }];
+//    
+//    
+//    
+//    
+//}
+
 @end

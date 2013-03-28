@@ -7,10 +7,10 @@
 //
 
 #import "MainView.h"
-#import "MainController.h"
+#import "MainScene.h"
 @implementation MainView
 
--(CCUIViewWrapper *)Navigation:(CCNode*) self1
+-(void *)Navigation:(CCNode*) self1
 {
     //添加右侧导航栏目
     NSLog(@"3");
@@ -69,8 +69,8 @@
     scroll.contentSize=CGSizeMake(scroll.frame.size.width+1, scroll.frame.size.height);//节点（内容）的大小
     CCUIViewWrapper *wrapper=[CCUIViewWrapper wrapperForUIView:scroll];
     wrapper.position=ccp(0,size.height/rightSize);
+    [self1 addChild:wrapper z:4 tag:99];
     
-    return wrapper;
 }
 
 

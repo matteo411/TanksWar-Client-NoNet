@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "ResourceController.h"
-#import "MilitaryController.h"
+#import "ResourceLayer.h"
+#import "MilitaryLayer.h"
 
-@interface MainController : CCLayer {
-    ResourceController *resourceController;
-    MilitaryController *militaryController;
+@interface MainScene : CCLayer {
+    ResourceLayer *resourceLayer;
+    MilitaryLayer *militaryLayer;
 }
 +(CCScene *) scene;
 @end
