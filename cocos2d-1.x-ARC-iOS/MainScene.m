@@ -38,7 +38,7 @@
       
         
      
-        militaryLayer = [[MilitaryLayer alloc]init];
+        militaryLayer = [MilitaryLayer node];
         [self addChild:militaryLayer z:1 tag:97];
         
         
@@ -51,18 +51,29 @@
 
 -(void)sceneTransition:(int)sender
 {
-    
+    //删除资源区
+    [self removeChildByTag:98 cleanup:YES];
+    //删除军事区底图层
     [self removeChildByTag:97 cleanup:YES];
-    militaryLayer = [[MilitaryLayer alloc]init];
+    //删除军事区建筑层
+    [self removeChildByTag:333 cleanup:YES];
+    
+    militaryLayer = [MilitaryLayer node];
     [self addChild:militaryLayer z:1 tag:97];
     
 }
 
 
--(void)sceneTransition2:(int)sender  //转换到军事区
+-(void)sceneTransition2:(int)sender  
 {
+    //删除资源区
     [self removeChildByTag:98 cleanup:YES];
-    resourceLayer = [[ResourceLayer alloc]init];    
+    //删除军事区底图层
+    [self removeChildByTag:97 cleanup:YES];
+    //删除军事区建筑层
+    [self removeChildByTag:333 cleanup:YES];
+    
+    resourceLayer = [ResourceLayer node];
     [self addChild:resourceLayer z:1 tag:98];
 }
 

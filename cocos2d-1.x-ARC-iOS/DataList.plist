@@ -2,7 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>nodes</key>
+	<key>resource</key>
+	<dict>
+		<key>food</key>
+		<integer>1000</integer>
+		<key>steel</key>
+		<integer>1000</integer>
+		<key>oil</key>
+		<integer>1000</integer>
+		<key>ore</key>
+		<integer>1000</integer>
+		<key>food_increase</key>
+		<integer>10</integer>
+		<key>steel_increase</key>
+		<integer>10</integer>
+		<key>oil_increase</key>
+		<integer>10</integer>
+		<key>ore_increase</key>
+		<integer>10</integer>
+	</dict>
+	<key>military_area</key>
 	<array>
 		<dict>
 			<key>level</key>
@@ -185,7 +204,7 @@
 			<integer>285</integer>
 		</dict>
 	</array>
-	<key>resource</key>
+	<key>resource_area</key>
 	<array>
 		<dict>
 			<key>level</key>

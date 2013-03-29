@@ -27,18 +27,24 @@
     return nodes;
 }
 
++(NSDictionary *) getNodeDictionaryByNodeName:(NSString *)  nodeName
+{
+    NSString *filename=@"DataList.plist";
+    NSDictionary *dict=[NSDictionary dictionaryWithContentsOfFile:[Util getActuralPath:filename]];
+    NSDictionary *nodes=[dict objectForKey:nodeName];
+    
+    return nodes;
+}
+
 +(BOOL) modifyPng:(NSString*) png andLevel:(NSNumber*) level ByKey:(int)key
 {
-    NSLog(@"invoke");
-    NSLog(@"png:%@,key:%d",png,key);
+    NSString *fileName = @"DataList.plist";
     BOOL result = false;
-    NSString *filePath=[self getActuralPath:@"DataList.plist"]; //= [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:@"DataList.plist"];//;
-    NSLog(@"filePath:%@",filePath);
+    NSString *filePath=[self getActuralPath:fileName]; 
+    
     NSMutableDictionary *fileDic;
-        NSString *fileName = @"DataList.plist";
-//    NSArray *paths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+       
+
     
     if(![[NSFileManager defaultManager] fileExistsAtPath:filePath])
     {
@@ -47,7 +53,7 @@
     }else
     {
         fileDic =[[NSMutableDictionary alloc]initWithContentsOfFile:filePath];
-        NSMutableArray *nodes = [fileDic objectForKey:@"nodes"];
+        NSMutableArray *nodes = [fileDic objectForKey:@"military_area"];
         for (NSMutableDictionary *node in nodes) {
             NSLog(@"%d",[[node objectForKey:@"key"] intValue]);
             if ([[node objectForKey:@"key"] intValue] == key) {
@@ -65,25 +71,119 @@
         }
         
     }
-  
-    
-    
-    
-    
-    NSString *path2 = [self getActuralPath:@"DataList.plist"];//[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:@"DataList.plist"];
-    //根据路径获取test.plist的全部内容
-    NSMutableDictionary *data2= [[[NSMutableDictionary alloc]initWithContentsOfFile:path2]mutableCopy];
-    //获取初一班的信息
-    NSMutableArray *nodes2 = [data2 objectForKey:@"nodes"];
-    for (NSMutableDictionary *node in nodes2) {
-        if ([[node objectForKey:@"key"] intValue] == key) {
-             NSLog(@"for2");
-            NSLog(@"%@",node);
-        }
-    }
     
     return result;
     
    
+}
+
++(BOOL) writeResourceToPlist:(Resources*) playerResource
+{
+    NSString *fileName = @"DataList.plist";
+    BOOL result = false;
+    NSString *filePath=[self getActuralPath:fileName];
+    
+    NSMutableDictionary *fileDic;
+    
+    if(![[NSFileManager defaultManager] fileExistsAtPath:filePath])
+    {
+        NSLog(@"文件不存在");
+        fileDic = [NSMutableDictionary dictionaryWithContentsOfFile:[self getActuralPath:fileName]];
+    }else
+    {
+        fileDic =[[NSMutableDictionary alloc]initWithContentsOfFile:filePath];
+        NSMutableDictionary *resource = [fileDic objectForKey:@"resource"];
+        
+        [resource setObject:[NSNumber numberWithInt:playerResource.food] forKey:@"food"];
+        [resource setObject:[NSNumber numberWithInt:playerResource.oil] forKey:@"oil"];
+        [resource setObject:[NSNumber numberWithInt:playerResource.steel] forKey:@"steel"];
+        [resource setObject:[NSNumber numberWithInt:playerResource.ore] forKey:@"ore"];
+        [resource setObject:[NSNumber numberWithInt:playerResource.food_increase] forKey:@"food_increase"];
+        [resource setObject:[NSNumber numberWithInt:playerResource.oil_increase] forKey:@"oil_increase"];
+        [resource setObject:[NSNumber numberWithInt:playerResource.steel_increase] forKey:@"steel_increase"];
+        [resource setObject:[NSNumber numberWithInt:playerResource.ore_increase] forKey:@"ore_increase"];
+        
+        BOOL fileresult = [fileDic writeToFile:filePath atomically:YES];
+        result = fileresult;
+        
+    }
+    return result;
+}
+
+
++(BOOL) addIncreaseToResource
+{
+    NSString *fileName = @"DataList.plist";
+    BOOL result = false;
+    NSString *filePath=[self getActuralPath:fileName];
+    
+    NSMutableDictionary *fileDic;
+    
+    if(![[NSFileManager defaultManager] fileExistsAtPath:filePath])
+    {
+        NSLog(@"文件不存在");
+        fileDic = [NSMutableDictionary dictionaryWithContentsOfFile:[self getActuralPath:fileName]];
+    }else
+    {
+        fileDic =[[NSMutableDictionary alloc]initWithContentsOfFile:filePath];
+        NSMutableDictionary *resource = [fileDic objectForKey:@"resource"];
+         
+        [resource setObject:[NSNumber numberWithInt:[[resource objectForKey:@"food"] intValue] +[[resource objectForKey:@"food_increase"] intValue]] forKey:@"food"];
+        [resource setObject:[NSNumber numberWithInt:[[resource objectForKey:@"oil"] intValue] +[[resource objectForKey:@"oil_increase"] intValue]] forKey:@"oil"];
+        [resource setObject:[NSNumber numberWithInt:[[resource objectForKey:@"steel"] intValue] +[[resource objectForKey:@"steel_increase"] intValue]] forKey:@"steel"];
+        [resource setObject:[NSNumber numberWithInt:[[resource objectForKey:@"ore"] intValue] +[[resource objectForKey:@"ore_increase"] intValue]] forKey:@"ore"];
+        
+        BOOL fileresult = [fileDic writeToFile:filePath atomically:YES];
+        result = fileresult;
+        
+    }
+    return result;
+
+}
+
+
++(BOOL) consumeResource:(NSDictionary *)consumeResource
+{
+    NSString *fileName = @"DataList.plist";
+    BOOL result = false;
+    NSString *filePath=[self getActuralPath:fileName];
+    
+    NSMutableDictionary *fileDic;
+    
+    if(![[NSFileManager defaultManager] fileExistsAtPath:filePath])
+    {
+        NSLog(@"文件不存在");
+        fileDic = [NSMutableDictionary dictionaryWithContentsOfFile:[self getActuralPath:fileName]];
+    }else
+    {
+        fileDic =[[NSMutableDictionary alloc]initWithContentsOfFile:filePath];
+        NSMutableDictionary *resource = [fileDic objectForKey:@"resource"];
+
+        int plist_food = [[resource objectForKey:@"food"] intValue];
+        int plist_oil = [[resource objectForKey:@"oil"] intValue];
+        int plist_steel = [[resource objectForKey:@"steel"] intValue];
+        int plist_ore = [[resource objectForKey:@"ore"] intValue];
+        
+        int consume_food = [[consumeResource objectForKey:@"food"] intValue];
+        int consume_oil = [[consumeResource objectForKey:@"oil"] intValue];
+        int consume_steel = [[consumeResource objectForKey:@"steel"] intValue];
+        int consume_ore = [[consumeResource objectForKey:@"ore"] intValue];
+        
+        if (plist_food >= consume_food && plist_oil >= consume_oil && plist_ore >= consume_ore && plist_steel >=consume_steel) {
+            [resource setObject:[NSNumber numberWithInt:plist_food - consume_food] forKey:@"food"];
+            [resource setObject:[NSNumber numberWithInt:plist_oil - consume_oil] forKey:@"oil"];
+            [resource setObject:[NSNumber numberWithInt:plist_steel - consume_steel] forKey:@"steel"];
+            [resource setObject:[NSNumber numberWithInt:plist_ore - consume_ore] forKey:@"ore"];
+             BOOL fileresult = [fileDic writeToFile:filePath atomically:YES];
+            result = true;
+        }
+       
+        
+       
+        
+        
+    }
+    return result;
+
 }
 @end

@@ -34,14 +34,7 @@
     
     Resources *playerResource;
     
-    int addFood;
-    int addOil;
-    int addOre;
-    int addSteel;
-    
-    
-    
-     NSMutableArray *countDownLabel;
+    NSMutableArray *countDownLabel;
     
     
     //自己的view

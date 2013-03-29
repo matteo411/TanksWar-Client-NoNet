@@ -28,11 +28,14 @@
 {
 	if( (self=[super init])) {
         
+        //触摸代理 kCCMenuTouchPriority 优先级最高
+        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:kCCMenuTouchPriority swallowsTouches:YES];
+        
         buildings=[[NSMutableArray alloc] init];
         
         
         
-        NSArray *nodes = [Util getNodelistByNodeName:@"resource"];
+        NSArray *nodes = [Util getNodelistByNodeName:@"resource_area"];
         NSLog(@"invoke10");
         for (NSMutableDictionary* node in nodes)//读取坐标点
         {
@@ -68,7 +71,7 @@
         //资源的计算
         
         
-        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];//触摸代理
+        
         
         CCSprite *topTable=[CCSprite spriteWithFile:@"ipad_helpup.png"];
         topTable.position=ccp(500,750);
@@ -97,25 +100,25 @@
     [self addChild:OreImage z:3];
     
     labelOfFood=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.Food]];
+    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.food]];
     labelOfFood.position=ccp(200, 700);
     [self addChild:labelOfFood z:3 tag:101];
     [labelOfFood setColor:ccRED];
     
     labelOfOil=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100)  alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.Oil]];
+    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.oil]];
     labelOfOil.position=ccp(400, 700);
     [labelOfOil setColor:ccRED];
     [self addChild:labelOfOil z:3 tag:101];
     
     labelOfSteel=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.Steel]];
+    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.steel]];
     labelOfSteel.position=ccp(600, 700);
     [labelOfSteel setColor:ccRED];
     [self addChild:labelOfSteel z:3 tag:101];
     
     labelOfOre=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.Ore]];
+    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.ore]];
     labelOfOre.position=ccp(800, 700);
     [labelOfOre setColor:ccRED];
     [self addChild:labelOfOre z:3 tag:101];
@@ -123,14 +126,14 @@
 }
 -(void)updateLabel:(ccTime)delta
 {
-    [playerResource setFood:addFood];
+    [playerResource setFood:addFood];   
     [playerResource setOil:addOil];
     [playerResource setSteel:addSteel];
     [playerResource setOre:addOre];
-    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.Oil]];
-    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.Food]];
-    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.Steel]];
-    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.Ore]];
+    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.oil]];
+    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.food]];
+    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.steel]];
+    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.ore]];
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event

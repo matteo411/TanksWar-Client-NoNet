@@ -47,30 +47,21 @@
         buildings =[militaryBuildingView addBuildings:self];
                 
 
-        [self initAddNumOfResource];
+        
         [self addLabel];
+        
          [self schedule:@selector(countDownLabelupDate) interval:1];
-    
+        
+        
+
     }
     
     return self;
 }
 
-//资源增加变量
--(void) initAddNumOfResource
-{
-    addFood=100;
-    addOil=100;
-    addOre=100;
-    addSteel=100;
-}
--(void)deleteResource
-{
-    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.Oil]];
-    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.Food]];
-    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.Steel]];
-    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.Ore]];
-}
+
+
+
 
 //加上最上面的资源显示栏
 -(void)addLabel
@@ -89,42 +80,41 @@
     [self addChild:OreImage z:3];
     
     labelOfFood=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.Food]];
+    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.food]];
     labelOfFood.position=ccp(200, 700);
     [self addChild:labelOfFood z:3 tag:101];
     [labelOfFood setColor:ccRED];
     
     labelOfOil=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100)  alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.Oil]];
+    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.oil]];
     labelOfOil.position=ccp(400, 700);
     [labelOfOil setColor:ccRED];
     [self addChild:labelOfOil z:3 tag:101];
     
     labelOfSteel=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.Steel]];
+    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.steel]];
     labelOfSteel.position=ccp(600, 700);
     [labelOfSteel setColor:ccRED];
     [self addChild:labelOfSteel z:3 tag:101];
     
     labelOfOre=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(150, 100) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.Ore]];
+    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.ore]];
     labelOfOre.position=ccp(800, 700);
     [labelOfOre setColor:ccRED];
     [self addChild:labelOfOre z:3 tag:101];
     
-    [self schedule:@selector(updateLabel:)interval:10 ];
+    [self schedule:@selector(updateLabel:)interval:1 ];
 }
 
 -(void)updateLabel:(ccTime)delta//资源栏数值更新
 {
-    [playerResource setFood:addFood];
-    [playerResource setOil:addOil];
-    [playerResource setSteel:addSteel];
-    [playerResource setOre:addOre];
-    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.Oil]];
-    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.Food]];
-    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.Steel]];
-    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.Ore]];
+ 
+    [Util addIncreaseToResource];
+    [playerResource initialize];
+    [labelOfOil setString:[NSString stringWithFormat:@"%i",playerResource.oil]];
+    [labelOfFood setString:[NSString stringWithFormat:@"%i",playerResource.food]];
+    [labelOfSteel setString:[NSString stringWithFormat:@"%i",playerResource.steel]];
+    [labelOfOre setString:[NSString stringWithFormat:@"%i",playerResource.ore]];
 }
 -(void)countDownLabelupDate
 {
@@ -456,18 +446,26 @@
 //训练确认
 -(void)Confirm:(id)sender
 {
+    NSLog(@"invoke Confirm");
     [self removeChildByTag:200 cleanup:NO];
     CCNode *wrapper=[self getChildByTag:20];
     [self removeChildByTag:205 cleanup:YES];
     
     wrapper.visible=YES;
    
-    [playerResource setFood:-50*trainNum];
-    [playerResource setOil:-50*trainNum];
-    [playerResource setSteel:-50*trainNum ];
-    [playerResource setOre:-50*trainNum];
-    [self deleteResource];
-    
+    NSMutableDictionary* consumeResource = [[NSMutableDictionary alloc] init];
+    [consumeResource setObject:[NSNumber numberWithInt:50*trainNum] forKey:@"food"];
+    [consumeResource setObject:[NSNumber numberWithInt:50*trainNum] forKey:@"oil"];
+    [consumeResource setObject:[NSNumber numberWithInt:50*trainNum] forKey:@"steel"];
+    [consumeResource setObject:[NSNumber numberWithInt:50*trainNum] forKey:@"ore"];
+    BOOL result = [Util consumeResource:consumeResource];
+    if (result) {
+        NSLog(@"训练成功");
+    }else
+    {
+        NSLog(@"资源不够，训练失败");
+    }
+   
 }
 
 

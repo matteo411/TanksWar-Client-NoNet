@@ -14,7 +14,7 @@
 {
     
     NSMutableArray * buildings = [[NSMutableArray alloc] init];
-    NSArray *nodes = [Util getNodelistByNodeName:@"nodes"];
+    NSArray *nodes = [Util getNodelistByNodeName:@"military_area"];
     for (NSMutableDictionary* node in nodes)//读取坐标点
     {
         Building *building=[[Building alloc]init];
