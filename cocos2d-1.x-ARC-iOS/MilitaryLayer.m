@@ -42,7 +42,7 @@
 
 -(id) init
 {   
-	if( (self=[super init])) {
+	if( (self=[super init])){
         
        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
         
@@ -53,13 +53,10 @@
         //添加资源背景
         [militaryView addResourceBkg:self];
         
-        
-        
         //初始化建筑层
         [self removeChildByTag:333 cleanup:YES];
         MilitaryBuildingLayer* militaryBuildingLayer = [MilitaryBuildingLayer node];
         [self addChild:militaryBuildingLayer z:4 tag:333];
-        
         
                
 	} 
@@ -69,6 +66,7 @@
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event//触摸方法
 {
+    [self removeChildByTag:333 cleanup:YES];
     
     CGPoint point;
     point=[self convertTouchToNodeSpace:touch];

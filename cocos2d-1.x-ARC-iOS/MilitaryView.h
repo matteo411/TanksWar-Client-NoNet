@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Building.h"
+#import "Util.h"
 @interface MilitaryView : NSObject
 
 
 -(void *)addBkg:(CCNode*) selfNode;
 
 -(void *)addResourceBkg:(CCNode*) selfNode;
+
 @end

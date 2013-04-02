@@ -12,6 +12,7 @@
 		0E075F0616AF1E8A00ABD9D0 /* Resources.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E075F0316AF1E8A00ABD9D0 /* Resources.m */; };
 		0E0DE17E16AF6AAC007AFF32 /* ResourceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE17D16AF6AAC007AFF32 /* ResourceLayer.m */; };
 		0E0DE18616AF713F007AFF32 /* tags.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E0DE18516AF713F007AFF32 /* tags.png */; };
+		18F837E21709B7E20036C31E /* ArmyLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F837E11709B7E20036C31E /* ArmyLayer.m */; };
 		2A103663169AE87F001311F1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A103662169AE87F001311F1 /* Security.framework */; };
 		2A103665169AE885001311F1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A103664169AE885001311F1 /* CFNetwork.framework */; };
 		2A103667169AE890001311F1 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A103666169AE890001311F1 /* libicucore.dylib */; };
@@ -453,6 +454,8 @@
 		0E0DE17C16AF6AAC007AFF32 /* ResourceLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceLayer.h; sourceTree = "<group>"; };
 		0E0DE17D16AF6AAC007AFF32 /* ResourceLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceLayer.m; sourceTree = "<group>"; };
 		0E0DE18516AF713F007AFF32 /* tags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tags.png; sourceTree = "<group>"; };
+		18F837E01709B7E20036C31E /* ArmyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArmyLayer.h; sourceTree = "<group>"; };
+		18F837E11709B7E20036C31E /* ArmyLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArmyLayer.m; sourceTree = "<group>"; };
 		2A103662169AE87F001311F1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2A103664169AE885001311F1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2A103666169AE890001311F1 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -1109,6 +1112,8 @@
 				DC08803E15BDA94A0044A820 /* MilitaryLayer.m */,
 				2A7FE48A17043F2400075D9C /* MilitaryBuildingLayer.h */,
 				2A7FE48B17043F2400075D9C /* MilitaryBuildingLayer.m */,
+				18F837E01709B7E20036C31E /* ArmyLayer.h */,
+				18F837E11709B7E20036C31E /* ArmyLayer.m */,
 			);
 			name = Military;
 			sourceTree = "<group>";
@@ -2121,6 +2126,7 @@
 				2A7D929816F9F16100BD1C5B /* MilitaryView.m in Sources */,
 				2A7FE48C17043F2400075D9C /* MilitaryBuildingLayer.m in Sources */,
 				2A7FE49217046C0900075D9C /* MilitaryBuildingView.m in Sources */,
+				18F837E21709B7E20036C31E /* ArmyLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

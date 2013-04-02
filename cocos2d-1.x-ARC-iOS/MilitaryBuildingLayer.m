@@ -42,11 +42,15 @@
         [playerResource initialize];
         buildings=[[NSMutableArray alloc] init];
         
+        isPanelExist=NO;//判断当前是否存在控制面板
         
         militaryBuildingView = [[MilitaryBuildingView alloc] init];
         buildings =[militaryBuildingView addBuildings:self];
                 
-
+        armyLayer=[[ArmyLayer alloc]init];
+       // armyLayer.zOrder=4;
+        [self addChild:armyLayer z:4 tag:334];
+        armyLayer.visible=NO;
         
         [self addLabel];
         
@@ -119,8 +123,6 @@
 -(void)countDownLabelupDate
 {
     
-    
-    
     for (int num=countDownLabel.count; num>=1; num--)
     {
         
@@ -133,6 +135,10 @@
         if (countDown.tag==5000) {
             [countDownLabel removeObjectAtIndex:num-1];
             [self removeChild:countDown cleanup:YES];
+            for (int num=countDownLabel.count; num>=1; num--)
+            {
+                countDown.position=ccp(850, 650-countDownLabel.count*40);
+            }
         }
     }
 }
@@ -149,14 +155,18 @@
 
 -(void)selectSpriteForTouch:(CGPoint) point//选择触摸点
 {
-    for (Building *building  in buildings) {
-        if (CGRectContainsPoint(building.BuildSprite.boundingBox, point))
+    for (Building *building  in buildings)
+    {
+        if (CGRectContainsPoint(building.BuildSprite.boundingBox, point)&&isPanelExist==NO)
         {
+            isPanelExist=YES;
             if([building.png isEqualToString:@"tags.png"])
             {
                 [self ChoicePanel:building.key];
+                //isTouchTheBuilding=YES;
                 return;
-            }else
+            }
+            else
             {
                 if ([building.png isEqualToString:@"armory.png"])
                 {
@@ -169,6 +179,19 @@
             }
             
         }
+    }
+    if (isPanelExist==YES)
+    {
+        CCSprite *PanelBg = [self getChildByTag:3];
+        if (!CGRectContainsPoint(PanelBg.boundingBox, point)) {
+        [self removeChildByTag:3 cleanup:NO];
+        [self removeChildByTag:20 cleanup:NO];
+        [self removeChildByTag:202 cleanup:YES];
+            isPanelExist=NO;
+            armyLayer.visible=NO;
+        }
+        
+        //CCSprite *PanelBg=[s]
     }
     
 }
@@ -304,6 +327,8 @@
     [self removeChildByTag:20 cleanup:NO];
     [self removeChildByTag:202 cleanup:YES];
     
+    isPanelExist=NO;
+    armyLayer.visible=NO;
     
 }
 
@@ -352,11 +377,11 @@
     //[self addChild:OreImage z:3];
     
     
-    CCLabelTTF *labelofFoodonMenu,*labelOfOilonMenu,*labelOfOreonMenu,*labelOfSteelonMenu;
+    
     labelofFoodonMenu=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(80, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:14];
     [labelofFoodonMenu setString:@":50"];
     labelofFoodonMenu.position=ccp(460, 335);
-    [node addChild:labelofFoodonMenu    ];
+    [node addChild:labelofFoodonMenu  ];
     //[self addChild:labelofFoodonMenu z:3 tag:202];
     
     labelOfOilonMenu=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(80, 50)  alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:14];
@@ -401,7 +426,7 @@
     
     [wrapper1 setRotation:90];
     wrapper1.position=ccp(330, 600);
-    [node addChild:wrapper1];
+    [node addChild:wrapper1 ];
     
     //[node addChild:wrapper2];
     [self addChild:node z:3];
@@ -425,7 +450,10 @@
     UISlider *slider=(UISlider*)sender;
     int sliderValue=(int)(slider.value+0.5);
     slider.value=sliderValue;
-    
+    [labelofFoodonMenu setString:[NSString stringWithFormat:@":%d",50*sliderValue]];
+    [labelOfOilonMenu setString:[NSString stringWithFormat:@":%d",50*sliderValue]];
+    [labelOfOreonMenu setString:[NSString stringWithFormat:@":%d",50*sliderValue]];
+    [labelOfSteelonMenu setString:[NSString stringWithFormat:@":%d",50*sliderValue]];
     textView.text=[NSString stringWithFormat:@"%d", (int)slider.value];
     trainNum=sliderValue;
     [self addChild:wrapper2 z:3 tag:205];
@@ -461,10 +489,13 @@
     BOOL result = [Util consumeResource:consumeResource];
     if (result) {
         NSLog(@"训练成功");
+        [armyLayer setTrainingLabel:1 Value:trainNum TrainTime:10];
     }else
     {
         NSLog(@"资源不够，训练失败");
     }
+    
+    
    
 }
 
@@ -539,7 +570,7 @@
 {
     int gestureviewtag = gesture.view.tag;
     Building* building =[militaryBuildingView event:self tag:gestureviewtag png:@"armory.png" buildings:buildings];
-    [self rotateWrench:building]; 
+    [self rotateWrench:building];
 }
 -(void) event2:(UITapGestureRecognizer *)gesture
 {
@@ -562,7 +593,7 @@
 }
 -(void)rotateWrench:(Building *) building//转动扳手  加入进度条  加入倒计时器
 {
-    
+       isPanelExist=NO;
     //转动扳手
     [militaryBuildingView rotateWrench:self building:building];
     

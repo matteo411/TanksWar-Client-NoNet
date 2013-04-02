@@ -14,16 +14,17 @@
 #import "SWScrollView.h"
 #import "Resources.h"
 #import "MilitaryLayer.h"
-
+#import "ArmyLayer.h"
 #import "ResourceLayer.h"
 #import "MilitaryBuildingView.h"
 @interface MilitaryBuildingLayer : CCLayer {
     
+    BOOL  isPanelExist;
     
     //建筑
     NSMutableArray *buildings;
     
-    CCLayer * armyLayer;
+    ArmyLayer * armyLayer;
     
     int trainNum;
     
@@ -35,7 +36,7 @@
     Resources *playerResource;
     
     NSMutableArray *countDownLabel;
-    
+    CCLabelTTF *labelofFoodonMenu,*labelOfOilonMenu,*labelOfOreonMenu,*labelOfSteelonMenu;
     
     //自己的view
     MilitaryBuildingView *militaryBuildingView;

@@ -14,7 +14,7 @@
 #import "MilitaryLayer.h"
 #import "MilitaryBuildingLayer.h"
 #import "MilitaryView.h"
-
+#import "ArmyLayer.h"
 
 
 //<PomeloDelegate>
@@ -23,18 +23,10 @@
     
 
     CGPoint Tpoint;
-
- 
    
     NSArray *resources;
    
    
-    
-    
-    
-   
-   
-
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
