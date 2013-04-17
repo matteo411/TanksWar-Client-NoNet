@@ -49,7 +49,7 @@
 //    [label1 setBackgroundColor:[UIColor clearColor]];
     
     
-    UIImageView* label1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"军事区nav.png"]];
+    UIImageView* label1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"军事区navegation.png"]];
     label1.frame = CGRectMake(0, 0, 76, 83);
     
 //    bgview.center=ccp(384,45);
@@ -73,7 +73,7 @@
 //    UILabel *label2=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 50, 50)];
 //    label2.text = @"资源区";
 //    [label2 setBackgroundColor:[UIColor clearColor]];
-    UIImageView* label2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"资源区nav.png"]];
+    UIImageView* label2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"资源区navegation.png"]];
     label2.frame = CGRectMake(0, 0, 76, 83);
     [image2 addSubview:label2];
     
