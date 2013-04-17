@@ -36,34 +36,45 @@
     
     // size.width/nodecount*(nodecount-1)。。。。。chenyl
     UIView *image1=[[UIView alloc] initWithFrame:CGRectMake( bgview.frame.size.width/nodecount*(nodecount-1), 9, bgview.frame.size.width/nodecount, bgview.frame.size.height-10)];
-    image1.backgroundColor=[UIColor colorWithRed:1 green:0 blue:0 alpha:1];
-    image1.layer.borderColor=[[UIColor whiteColor]CGColor];
+    image1.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    image1.layer.borderColor=[[UIColor colorWithRed:0 green:0 blue:0 alpha:0] CGColor];//[[UIColor whiteColor]CGColor];
     image1.layer.borderWidth=2;
     image1.userInteractionEnabled=YES;
     UITapGestureRecognizer *tapGestyre1=[[UITapGestureRecognizer alloc] initWithTarget:self1 action:@selector(sceneTransition:)];
     [image1 addGestureRecognizer:tapGestyre1];
     [scroll addSubview:image1];
     
-    UILabel *label1=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 50, 50)];
-    label1.text = @"军事区";
-    [label1 setBackgroundColor:[UIColor clearColor]];
+//    UILabel *label1=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 50, 50)];
+//    label1.text = @"军事区";
+//    [label1 setBackgroundColor:[UIColor clearColor]];
+    
+    
+    UIImageView* label1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"军事区nav.png"]];
+    label1.frame = CGRectMake(0, 0, 76, 83);
+    
+//    bgview.center=ccp(384,45);
+    
+    
+    
     [image1 addSubview:label1];
     
     
     
     
     UIView *image2=[[UIView alloc] initWithFrame:CGRectMake(bgview.frame.size.width/nodecount*(nodecount-2), 9, bgview.frame.size.width/nodecount, bgview.frame.size.height-10)];
-    image2.backgroundColor=[UIColor colorWithRed:1 green:1 blue:0 alpha:1];
-    image2.layer.borderColor=[[UIColor whiteColor]CGColor];
+    image2.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    image2.layer.borderColor=[[UIColor colorWithRed:0 green:0 blue:0 alpha:0] CGColor];//[[UIColor whiteColor]CGColor];
     image2.layer.borderWidth=2;
     image2.userInteractionEnabled=YES;
     UITapGestureRecognizer *tapGestyre2=[[UITapGestureRecognizer alloc] initWithTarget:self1 action:@selector(sceneTransition2:)];
     [image2 addGestureRecognizer:tapGestyre2];
     [scroll addSubview:image2];
     
-    UILabel *label2=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 50, 50)];
-    label2.text = @"资源区";
-    [label2 setBackgroundColor:[UIColor clearColor]];
+//    UILabel *label2=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 50, 50)];
+//    label2.text = @"资源区";
+//    [label2 setBackgroundColor:[UIColor clearColor]];
+    UIImageView* label2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"资源区nav.png"]];
+    label2.frame = CGRectMake(0, 0, 76, 83);
     [image2 addSubview:label2];
     
     scroll.contentSize=CGSizeMake(scroll.frame.size.width+1, scroll.frame.size.height);//节点（内容）的大小
