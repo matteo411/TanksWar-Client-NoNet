@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Resources.h"
-#import "MilitaryLayer.h"
+#import "MilitarySence.h"
 #import "Util.h"
-@interface ResourceLayer: CCLayer {
+@interface ResourceSence: CCLayer {
     CGPoint Tpoint;
     
     //标记玩家选中的精灵

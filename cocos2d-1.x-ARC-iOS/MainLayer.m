@@ -6,19 +6,20 @@
 //  Copyright 2013年 __MyCompanyName__. All rights reserved.
 //
 
-#import "MainScene.h"
+#import "MainLayer.h"
 #import "CCUIViewWrapper.h"
 #import "SWScrollView.h"
 #import "MainView.h"
 
-@implementation MainScene
+
+@implementation MainLayer
 +(CCScene *) scene
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	MainScene *layer = [MainScene node];
+	MainLayer *layer = [MainLayer node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -38,9 +39,7 @@
       
         
      
-        militaryLayer = [MilitaryLayer node];
-        [self addChild:militaryLayer z:1 tag:97];
-        
+       
         
        ;
     }
@@ -51,32 +50,28 @@
 
 -(void)sceneTransition:(int)sender
 {
-    //删除资源区
-    [self removeChildByTag:98 cleanup:YES];
-    //删除军事区底图层
-    [self removeChildByTag:97 cleanup:YES];
-    //删除军事区建筑层
-    [self removeChildByTag:333 cleanup:YES];
     
-    militaryLayer = [MilitaryLayer node];
-    [self addChild:militaryLayer z:1 tag:97];
+       
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1 scene:[MilitarySence scene] ]];
+    
     
 }
 
 
 -(void)sceneTransition2:(int)sender  
 {
-    //删除资源区
-    [self removeChildByTag:98 cleanup:YES];
-    //删除军事区底图层
-    [self removeChildByTag:97 cleanup:YES];
-    //删除军事区建筑层
-    [self removeChildByTag:333 cleanup:YES];
-    
-    resourceLayer = [ResourceLayer node];
-    [self addChild:resourceLayer z:1 tag:98];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1 scene:[ResourceSence scene] ]];
+
 }
 
+-(void)sceneTransition3:(int)sender
+{
+   
+  [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1 scene:[WorldSence scene] ]];
 
+    
+    
+
+}
 
 @end

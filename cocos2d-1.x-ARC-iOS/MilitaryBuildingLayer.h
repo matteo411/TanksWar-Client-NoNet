@@ -13,9 +13,9 @@
 #import "CCUIViewWrapper.h"
 #import "SWScrollView.h"
 #import "Resources.h"
-#import "MilitaryLayer.h"
+#import "MilitarySence.h"
 #import "ArmyLayer.h"
-#import "ResourceLayer.h"
+#import "ResourceSence.h"
 #import "MilitaryBuildingView.h"
 @interface MilitaryBuildingLayer : CCLayer {
     

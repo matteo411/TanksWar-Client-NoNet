@@ -11,14 +11,14 @@
 #import "cocos2d.h"
 #import "Pomelo.h"
 #import "AppDelegate.h"
-#import "MilitaryLayer.h"
+#import "MilitarySence.h"
 #import "MilitaryBuildingLayer.h"
 #import "MilitaryView.h"
 #import "ArmyLayer.h"
-
+#import "MainLayer.h"
 
 //<PomeloDelegate>
-@interface MilitaryLayer : CCLayer
+@interface MilitarySence : CCLayer
 {
     
 

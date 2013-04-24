@@ -9,13 +9,13 @@
 
 // Import the interfaces
 #import "SlidingMenuGrid.h"
-#import "MilitaryLayer.h"
+#import "MilitarySence.h"
 #import <math.h>
 #import "CCUIViewWrapper.h"
 #import "SWScrollView.h"
 
 // HelloWorldLayer implementation
-@implementation MilitaryLayer
+@implementation MilitarySence
 @synthesize pomelo; 
 @synthesize name;
 @synthesize channel;
@@ -25,11 +25,14 @@
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	MilitaryLayer *layer = [MilitaryLayer node];
+	MilitarySence *layer = [MilitarySence node];
     
+    MainLayer *mainLayer = [MainLayer node];
+
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
+    [scene addChild: mainLayer];
 	
 //    MilitaryBuildingLayer* militaryBuildingLayer = [MilitaryBuildingLayer node];
 //    [scene addChild:militaryBuildingLayer z:4];
