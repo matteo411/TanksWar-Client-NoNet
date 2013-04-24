@@ -248,6 +248,7 @@
     CCMenuItemFont  *Delete=[CCMenuItemFont itemFromString:@"拆除" target:selfNode selector:@selector(delete:)];
     CCMenuItemFont *upGrade=[CCMenuItemFont itemFromString:@"升级" target:selfNode selector:@selector(upgrade:)];
     
+    
     Delete.tag= upGrade.tag = building.key;
     
     CCMenu *menu=[CCMenu menuWithItems: Control,Delete,upGrade,nil];

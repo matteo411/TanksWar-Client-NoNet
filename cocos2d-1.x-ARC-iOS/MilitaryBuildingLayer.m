@@ -262,7 +262,7 @@
     menuPic2.frame=CGRectMake(20, 20, 40, 40);
     menuPic2.transform =CGAffineTransformMakeRotation(M_PI*0.5);
     menuPic2.userInteractionEnabled=YES;
-    UITapGestureRecognizer *singleTap2 =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event2:)];
+    UITapGestureRecognizer *singleTap2 =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(trainSoldier:)];
     [menuPic2 addGestureRecognizer:singleTap2];
     //singleTap2.view.tag = key;
     UIView *image2=[[UIView alloc] initWithFrame:CGRectMake(85, 0, 85, 595)];
@@ -278,7 +278,7 @@
     menuPic3.frame=CGRectMake(20, 20, 40, 40);
     menuPic3.transform =CGAffineTransformMakeRotation(M_PI*0.5);
     menuPic3.userInteractionEnabled=YES;
-    UITapGestureRecognizer *singleTap3 =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event3:)];
+    UITapGestureRecognizer *singleTap3 =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(trainSoldier:)];
     [menuPic3 addGestureRecognizer:singleTap3];
     //singleTap3.view.tag = key;
     UIView *image3=[[UIView alloc] initWithFrame:CGRectMake(170, 0, 85, 595)];
@@ -293,7 +293,7 @@
     menuPic4.frame=CGRectMake(20, 20, 40, 40);
     menuPic4.transform =CGAffineTransformMakeRotation(M_PI*0.5);
     menuPic4.userInteractionEnabled=YES;
-    UITapGestureRecognizer *singleTap4 =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(event4:)];
+    UITapGestureRecognizer *singleTap4 =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(trainSoldier:)];
     [menuPic4 addGestureRecognizer:singleTap4];
     //singleTap4.view.tag = key;
     UIView *image4=[[UIView alloc] initWithFrame:CGRectMake(255, 0, 85 , 595)];
@@ -312,8 +312,12 @@
     CCLabelTTF *Confirm=[CCLabelTTF labelWithString:@"返回" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
     CCMenuItemLabel *menu10=[CCMenuItemLabel itemWithLabel:Back target:self selector:@selector(GoToArmyPanel)];
     CCMenuItemLabel *menu11=[CCMenuItemLabel itemWithLabel:Confirm target:self selector:@selector(backToMilitoryZone)];
-    CCMenu *menu=[CCMenu menuWithItems:menu10, menu11,nil];
-    [menu alignItemsHorizontallyWithPadding:0];
+    CCMenu *menu=[CCMenu menuWithItems:menu10,nil];
+    CCMenu *menuBack=[CCMenu menuWithItems:menu11, nil];
+    
+    [menuBack setPosition:ccp(810, 540)];
+    [menuBack setOpacity:0];
+    [self addChild:menuBack z:3 tag:203];
     
     [menu setPosition:CGPointMake(400,550)];
     [self addChild:menu z:3 tag:202 ];
@@ -326,6 +330,9 @@
     [self removeChildByTag:3 cleanup:NO];
     [self removeChildByTag:20 cleanup:NO];
     [self removeChildByTag:202 cleanup:YES];
+    [self removeChildByTag:203 cleanup:YES];
+    [self removeChildByTag:200 cleanup:YES];
+    [self removeChildByTag:205 cleanup:YES];
     
     isPanelExist=NO;
     armyLayer.visible=NO;
@@ -336,9 +343,6 @@
 //显示兵力菜单（未完成）
 -(void)GoToArmyPanel
 {
-    CCNode *node=[self getChildByTag:20];
-    node.visible=NO;
-    
     CCNode *wrapper=[self getChildByTag:20];
     wrapper.visible=NO;
     armyLayer.visible=YES;
@@ -360,47 +364,47 @@
     [node addChild:image];
     //[self addChild:image z:5 tag:201];
     CCSprite *foodImage=[CCSprite spriteWithFile:@"bl_3s.png"];
-    foodImage.position=ccp(400, 350);
+    foodImage.position=ccp(300, 350);
     [node addChild:foodImage];
     //[self addChild:foodImage z:3];
     CCSprite *OilImage=[CCSprite spriteWithFile:@"bl_4s.png"];
-    OilImage.position=ccp(400, 320);
+    OilImage.position=ccp(300, 320);
     [node addChild:OilImage];
     //[self addChild:OilImage z:3];
     CCSprite *SteelImage=[CCSprite spriteWithFile:@"bl_5s.png"];
-    SteelImage.position=ccp(400, 290);
+    SteelImage.position=ccp(300, 290);
     [node addChild:SteelImage];
     //[self addChild:SteelImage z:3];
     CCSprite *OreImage=[CCSprite spriteWithFile:@"bl_6s.png"];
     [node addChild:OreImage];
-    OreImage.position=ccp(400, 260);
+    OreImage.position=ccp(300, 260);
     //[self addChild:OreImage z:3];
     
     
     
     labelofFoodonMenu=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(80, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:14];
     [labelofFoodonMenu setString:@":50"];
-    labelofFoodonMenu.position=ccp(460, 335);
+    labelofFoodonMenu.position=ccp(360, 335);
     [node addChild:labelofFoodonMenu  ];
     //[self addChild:labelofFoodonMenu z:3 tag:202];
     
     labelOfOilonMenu=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(80, 50)  alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:14];
     [labelOfOilonMenu setString:@":50"];
     [node addChild:labelOfOilonMenu];
-    labelOfOilonMenu.position=ccp(460, 305);
+    labelOfOilonMenu.position=ccp(360, 305);
     
     //[self addChild:labelOfOilonMenu z:3 tag:203];
     
     labelOfSteelonMenu=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(80, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:14];
     [labelOfSteelonMenu setString:@":50"];
     [node addChild:labelOfSteelonMenu];
-    labelOfSteelonMenu.position=ccp(460, 275);
+    labelOfSteelonMenu.position=ccp(360, 275);
     
     //[self addChild:labelOfSteelonMenu z:3 tag:204];
     
     labelOfOreonMenu=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(80, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:14];
     [labelOfOreonMenu setString:@":50"];
-    labelOfOreonMenu.position=ccp(460, 245);
+    labelOfOreonMenu.position=ccp(360, 245);
     [node addChild:labelOfOreonMenu];
     //[self addChild:labelOfOreonMenu z:3 tag:205];
     
@@ -476,10 +480,8 @@
 {
     NSLog(@"invoke Confirm");
     [self removeChildByTag:200 cleanup:NO];
-    CCNode *wrapper=[self getChildByTag:20];
     [self removeChildByTag:205 cleanup:YES];
-    
-    wrapper.visible=YES;
+    armyLayer.visible=YES;
    
     NSMutableDictionary* consumeResource = [[NSMutableDictionary alloc] init];
     [consumeResource setObject:[NSNumber numberWithInt:50*trainNum] forKey:@"food"];
