@@ -32,7 +32,7 @@
     if( (self=[super init])) {
         
         //触摸优先
-        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:kCCMenuTouchPriority swallowsTouches:YES];
+        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-1 swallowsTouches:YES];
         
         
         countDownLabel=[[NSMutableArray alloc]init];
@@ -54,6 +54,9 @@
         
         [self addLabel];
         
+        
+       
+        
          [self schedule:@selector(countDownLabelupDate) interval:1];
         
         
@@ -66,7 +69,17 @@
 
 
 
-
+-(void)onExit{
+    [super onExit];
+    //[self isTouchEnabled:false];
+//    self.isTouchEnabled = false;
+    
+    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+        NSLog(@"invoke onExit1");
+    
+    
+    
+}
 //加上最上面的资源显示栏
 -(void)addLabel
 {
@@ -146,6 +159,7 @@
 //触摸方法
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    NSLog(@"building touch");
     
     CGPoint point;
     point=[self convertTouchToNodeSpace:touch];

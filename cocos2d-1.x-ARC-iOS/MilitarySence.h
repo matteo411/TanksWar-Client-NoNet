@@ -11,32 +11,32 @@
 #import "cocos2d.h"
 #import "Pomelo.h"
 #import "AppDelegate.h"
-#import "MilitarySence.h"
-#import "MilitaryBuildingLayer.h"
-#import "MilitaryView.h"
-#import "ArmyLayer.h"
-#import "MainLayer.h"
 
+typedef enum
+{
+	LayerTagMilitaryBkgLayer,
+	LayerTagMilitaryBuildingLayer,
+} MilitarySenceTags;
+
+@class MilitaryBkgLayer;
+@class MilitaryBuildingLayer;
 //<PomeloDelegate>
 @interface MilitarySence : CCLayer
 {
-    
 
-    CGPoint Tpoint;
-   
-    NSArray *resources;
-   
    
 }
 
-// returns a CCScene that contains the HelloWorldLayer as the only child
+
++(MilitarySence*) sharedLayer;
+
+@property (readonly) MilitaryBkgLayer* militaryBkgLayer;
+@property (readonly) MilitaryBuildingLayer* militaryBuildingLayer;
+
+-(void) onExit;
 +(CCScene *) scene;
++(CGPoint) locationFromTouch:(UITouch*)touch;
++(CGPoint) locationFromTouches:(NSSet *)touches;
+//+(Resources *)getPlayerResource;
 
-+(Resources *)getPlayerResource;
-
-
-
-@property (weak, nonatomic) Pomelo *pomelo;
-@property(strong,nonatomic)NSString *name;
-@property(strong,nonatomic)NSString *channel;
 @end

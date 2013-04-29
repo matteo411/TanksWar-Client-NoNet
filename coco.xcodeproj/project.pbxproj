@@ -45,6 +45,13 @@
 		2AD505B41702EAC400BF7D5B /* a_d4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD505B11702EAC400BF7D5B /* a_d4.png */; };
 		2AD505B51702EAC400BF7D5B /* a_d2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD505B21702EAC400BF7D5B /* a_d2.png */; };
 		2AD8145716F45EC1000F2337 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD8145616F45EC1000F2337 /* Util.m */; };
+		2AFD618D172E314E00B976B7 /* myself_coco.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AFD6187172E314E00B976B7 /* myself_coco.png */; };
+		2AFD618E172E314E00B976B7 /* robot.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AFD6188172E314E00B976B7 /* robot.png */; };
+		2AFD618F172E314E00B976B7 /* word_bkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AFD6189172E314E00B976B7 /* word_bkg.png */; };
+		2AFD6190172E314E00B976B7 /* 查看btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AFD618A172E314E00B976B7 /* 查看btn.png */; };
+		2AFD6191172E314E00B976B7 /* 世界区navegation.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AFD618B172E314E00B976B7 /* 世界区navegation.png */; };
+		2AFD6192172E314E00B976B7 /* 训练btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AFD618C172E314E00B976B7 /* 训练btn.png */; };
+		2AFD6195172E484200B976B7 /* MilitaryBkgLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFD6194172E484200B976B7 /* MilitaryBkgLayer.m */; };
 		AC1DA46516EAE8AD0014F3FE /* SWScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1DA46416EAE8AD0014F3FE /* SWScrollView.m */; };
 		AC29E4E216F97CB300ABC999 /* ipad_b9.png in Resources */ = {isa = PBXBuildFile; fileRef = AC29E4DE16F97CB300ABC999 /* ipad_b9.png */; };
 		AC29E4E316F97CB300ABC999 /* ipad_b12.png in Resources */ = {isa = PBXBuildFile; fileRef = AC29E4DF16F97CB300ABC999 /* ipad_b12.png */; };
@@ -513,6 +520,14 @@
 		2AD505B21702EAC400BF7D5B /* a_d2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a_d2.png; sourceTree = "<group>"; };
 		2AD8145516F45EC1000F2337 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		2AD8145616F45EC1000F2337 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		2AFD6187172E314E00B976B7 /* myself_coco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myself_coco.png; sourceTree = "<group>"; };
+		2AFD6188172E314E00B976B7 /* robot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = robot.png; sourceTree = "<group>"; };
+		2AFD6189172E314E00B976B7 /* word_bkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = word_bkg.png; sourceTree = "<group>"; };
+		2AFD618A172E314E00B976B7 /* 查看btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "查看btn.png"; sourceTree = "<group>"; };
+		2AFD618B172E314E00B976B7 /* 世界区navegation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "世界区navegation.png"; sourceTree = "<group>"; };
+		2AFD618C172E314E00B976B7 /* 训练btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "训练btn.png"; sourceTree = "<group>"; };
+		2AFD6193172E484200B976B7 /* MilitaryBkgLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MilitaryBkgLayer.h; sourceTree = "<group>"; };
+		2AFD6194172E484200B976B7 /* MilitaryBkgLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MilitaryBkgLayer.m; sourceTree = "<group>"; };
 		AC1DA46316EAE8AD0014F3FE /* SWScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWScrollView.h; sourceTree = "<group>"; };
 		AC1DA46416EAE8AD0014F3FE /* SWScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWScrollView.m; sourceTree = "<group>"; };
 		AC29E4DE16F97CB300ABC999 /* ipad_b9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_b9.png; sourceTree = "<group>"; };
@@ -1125,6 +1140,8 @@
 				2A7FE48B17043F2400075D9C /* MilitaryBuildingLayer.m */,
 				18F837E01709B7E20036C31E /* ArmyLayer.h */,
 				18F837E11709B7E20036C31E /* ArmyLayer.m */,
+				2AFD6193172E484200B976B7 /* MilitaryBkgLayer.h */,
+				2AFD6194172E484200B976B7 /* MilitaryBkgLayer.m */,
 			);
 			name = Military;
 			sourceTree = "<group>";
@@ -1413,6 +1430,12 @@
 		DC087EE315BDA9470044A820 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2AFD6187172E314E00B976B7 /* myself_coco.png */,
+				2AFD6188172E314E00B976B7 /* robot.png */,
+				2AFD6189172E314E00B976B7 /* word_bkg.png */,
+				2AFD618A172E314E00B976B7 /* 查看btn.png */,
+				2AFD618B172E314E00B976B7 /* 世界区navegation.png */,
+				2AFD618C172E314E00B976B7 /* 训练btn.png */,
 				2AB169E8171E948B000CDAD4 /* 军事区navegation.png */,
 				2AB169E9171E948B000CDAD4 /* 资源区navegation.png */,
 				2AB169E4171E8EF3000CDAD4 /* 军事区nav.png */,
@@ -2117,6 +2140,12 @@
 				2AB169E7171E8EF3000CDAD4 /* 资源区nav.png in Resources */,
 				2AB169EA171E948B000CDAD4 /* 军事区navegation.png in Resources */,
 				2AB169EB171E948B000CDAD4 /* 资源区navegation.png in Resources */,
+				2AFD618D172E314E00B976B7 /* myself_coco.png in Resources */,
+				2AFD618E172E314E00B976B7 /* robot.png in Resources */,
+				2AFD618F172E314E00B976B7 /* word_bkg.png in Resources */,
+				2AFD6190172E314E00B976B7 /* 查看btn.png in Resources */,
+				2AFD6191172E314E00B976B7 /* 世界区navegation.png in Resources */,
+				2AFD6192172E314E00B976B7 /* 训练btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2157,6 +2186,7 @@
 				2A7FE49217046C0900075D9C /* MilitaryBuildingView.m in Sources */,
 				18F837E21709B7E20036C31E /* ArmyLayer.m in Sources */,
 				ACDB83A6172801D700DE8246 /* WorldSence.m in Sources */,
+				2AFD6195172E484200B976B7 /* MilitaryBkgLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

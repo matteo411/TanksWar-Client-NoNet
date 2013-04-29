@@ -11,6 +11,7 @@
 #import "Resources.h"
 #import "MilitarySence.h"
 #import "Util.h"
+#import "MainLayer.h"
 @interface ResourceSence: CCLayer {
     CGPoint Tpoint;
     
@@ -40,5 +41,5 @@
     int addSteel;
 }
 +(CCScene *) scene;
-
+-(void) onExit;
 @end

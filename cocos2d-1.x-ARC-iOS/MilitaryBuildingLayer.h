@@ -44,5 +44,6 @@
     
 }
 //+(CCScene *) scene;
+-(void) onExit;
 
 @end

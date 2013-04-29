@@ -676,4 +676,14 @@
     addOre=0;
     addSteel=0;
 }
+
+
+-(void) onExit
+{
+    
+    [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+    [super onExit];
+    NSLog(@"invoke onExit4");
+    
+}
 @end

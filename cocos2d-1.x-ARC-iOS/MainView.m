@@ -86,7 +86,7 @@
     [scroll addSubview:image3];
     
   
-    UIImageView* label3 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"军事区navegation.png"]];
+    UIImageView* label3 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"世界区navegation.png"]];
     label3.frame = CGRectMake(0, 0, 76, 83);
     [image3 addSubview:label3];
 

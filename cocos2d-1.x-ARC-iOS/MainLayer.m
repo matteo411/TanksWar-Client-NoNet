@@ -51,7 +51,8 @@
 -(void)sceneTransition:(int)sender
 {
     
-       
+//       [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:100 swallowsTouches:YES];
+//[self setIsTouchEnabled:false];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1 scene:[MilitarySence scene] ]];
     
     
@@ -60,13 +61,16 @@
 
 -(void)sceneTransition2:(int)sender  
 {
+//    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:100 swallowsTouches:YES];
+//  [self setIsTouchEnabled:false];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1 scene:[ResourceSence scene] ]];
 
 }
 
 -(void)sceneTransition3:(int)sender
 {
-   
+//   [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:100 swallowsTouches:YES];
+//[self setIsTouchEnabled:false];
   [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1 scene:[WorldSence scene] ]];
 
     
