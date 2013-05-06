@@ -12,6 +12,10 @@
 		0E075F0616AF1E8A00ABD9D0 /* Resources.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E075F0316AF1E8A00ABD9D0 /* Resources.m */; };
 		0E0DE17E16AF6AAC007AFF32 /* ResourceSence.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE17D16AF6AAC007AFF32 /* ResourceSence.m */; };
 		0E0DE18616AF713F007AFF32 /* tags.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E0DE18516AF713F007AFF32 /* tags.png */; };
+		18101C791736C5C50041533E /* PlayerArmy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18101C781736C5C50041533E /* PlayerArmy.m */; };
+		186D44951734E4820098F5A3 /* WarControlLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 186D44941734E4820098F5A3 /* WarControlLayer.m */; };
+		186E1DC017368A5A0088929E /* RobotArmy.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E1DBF17368A590088929E /* RobotArmy.m */; };
+		186E1DC317369E810088929E /* FightSence.m in Sources */ = {isa = PBXBuildFile; fileRef = 186E1DC217369E810088929E /* FightSence.m */; };
 		18F837E21709B7E20036C31E /* ArmyLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F837E11709B7E20036C31E /* ArmyLayer.m */; };
 		2A103663169AE87F001311F1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A103662169AE87F001311F1 /* Security.framework */; };
 		2A103665169AE885001311F1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A103664169AE885001311F1 /* CFNetwork.framework */; };
@@ -466,6 +470,14 @@
 		0E0DE17C16AF6AAC007AFF32 /* ResourceSence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceSence.h; sourceTree = "<group>"; };
 		0E0DE17D16AF6AAC007AFF32 /* ResourceSence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceSence.m; sourceTree = "<group>"; };
 		0E0DE18516AF713F007AFF32 /* tags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tags.png; sourceTree = "<group>"; };
+		18101C771736C5C50041533E /* PlayerArmy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerArmy.h; sourceTree = "<group>"; };
+		18101C781736C5C50041533E /* PlayerArmy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerArmy.m; sourceTree = "<group>"; };
+		186D44931734E4820098F5A3 /* WarControlLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarControlLayer.h; sourceTree = "<group>"; };
+		186D44941734E4820098F5A3 /* WarControlLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarControlLayer.m; sourceTree = "<group>"; };
+		186E1DBE17368A590088929E /* RobotArmy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotArmy.h; sourceTree = "<group>"; };
+		186E1DBF17368A590088929E /* RobotArmy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RobotArmy.m; sourceTree = "<group>"; };
+		186E1DC117369E810088929E /* FightSence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FightSence.h; sourceTree = "<group>"; };
+		186E1DC217369E810088929E /* FightSence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FightSence.m; sourceTree = "<group>"; };
 		18F837E01709B7E20036C31E /* ArmyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArmyLayer.h; sourceTree = "<group>"; };
 		18F837E11709B7E20036C31E /* ArmyLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArmyLayer.m; sourceTree = "<group>"; };
 		2A103662169AE87F001311F1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -1374,6 +1386,14 @@
 			children = (
 				ACDB83A4172801D700DE8246 /* WorldSence.h */,
 				ACDB83A5172801D700DE8246 /* WorldSence.m */,
+				186D44931734E4820098F5A3 /* WarControlLayer.h */,
+				186D44941734E4820098F5A3 /* WarControlLayer.m */,
+				186E1DBE17368A590088929E /* RobotArmy.h */,
+				186E1DBF17368A590088929E /* RobotArmy.m */,
+				186E1DC117369E810088929E /* FightSence.h */,
+				186E1DC217369E810088929E /* FightSence.m */,
+				18101C771736C5C50041533E /* PlayerArmy.h */,
+				18101C781736C5C50041533E /* PlayerArmy.m */,
 			);
 			name = World;
 			sourceTree = "<group>";
@@ -2187,6 +2207,10 @@
 				18F837E21709B7E20036C31E /* ArmyLayer.m in Sources */,
 				ACDB83A6172801D700DE8246 /* WorldSence.m in Sources */,
 				2AFD6195172E484200B976B7 /* MilitaryBkgLayer.m in Sources */,
+				186D44951734E4820098F5A3 /* WarControlLayer.m in Sources */,
+				186E1DC017368A5A0088929E /* RobotArmy.m in Sources */,
+				186E1DC317369E810088929E /* FightSence.m in Sources */,
+				18101C791736C5C50041533E /* PlayerArmy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
