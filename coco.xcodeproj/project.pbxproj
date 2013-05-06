@@ -36,6 +36,8 @@
 		2A7D929816F9F16100BD1C5B /* MilitaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7D929716F9F16100BD1C5B /* MilitaryView.m */; };
 		2A7FE48C17043F2400075D9C /* MilitaryBuildingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FE48B17043F2400075D9C /* MilitaryBuildingLayer.m */; };
 		2A7FE49217046C0900075D9C /* MilitaryBuildingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FE49117046C0900075D9C /* MilitaryBuildingView.m */; };
+		2A925C3F172FEB91004AE7AF /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A925C3E172FEB91004AE7AF /* click.wav */; };
+		2A925C41172FEE4C004AE7AF /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A925C40172FEE4C004AE7AF /* background.wav */; };
 		2AB169E6171E8EF3000CDAD4 /* 军事区nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB169E4171E8EF3000CDAD4 /* 军事区nav.png */; };
 		2AB169E7171E8EF3000CDAD4 /* 资源区nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB169E5171E8EF3000CDAD4 /* 资源区nav.png */; };
 		2AB169EA171E948B000CDAD4 /* 军事区navegation.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB169E8171E948B000CDAD4 /* 军事区navegation.png */; };
@@ -510,6 +512,8 @@
 		2A7FE48B17043F2400075D9C /* MilitaryBuildingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MilitaryBuildingLayer.m; sourceTree = "<group>"; };
 		2A7FE49017046C0900075D9C /* MilitaryBuildingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MilitaryBuildingView.h; sourceTree = "<group>"; };
 		2A7FE49117046C0900075D9C /* MilitaryBuildingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MilitaryBuildingView.m; sourceTree = "<group>"; };
+		2A925C3E172FEB91004AE7AF /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.wav; sourceTree = "<group>"; };
+		2A925C40172FEE4C004AE7AF /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background.wav; sourceTree = "<group>"; };
 		2AB169E4171E8EF3000CDAD4 /* 军事区nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "军事区nav.png"; sourceTree = "<group>"; };
 		2AB169E5171E8EF3000CDAD4 /* 资源区nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "资源区nav.png"; sourceTree = "<group>"; };
 		2AB169E8171E948B000CDAD4 /* 军事区navegation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "军事区navegation.png"; sourceTree = "<group>"; };
@@ -1176,6 +1180,15 @@
 			name = Military;
 			sourceTree = "<group>";
 		};
+		2A925C3D172FEB6F004AE7AF /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				2A925C40172FEE4C004AE7AF /* background.wav */,
+				2A925C3E172FEB91004AE7AF /* click.wav */,
+			);
+			name = sound;
+			sourceTree = "<group>";
+		};
 		2A942C1916F8A327007B3148 /* buildingResource */ = {
 			isa = PBXGroup;
 			children = (
@@ -1430,6 +1443,7 @@
 		DC087EE315BDA9470044A820 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2A925C3D172FEB6F004AE7AF /* sound */,
 				2AFD6187172E314E00B976B7 /* myself_coco.png */,
 				2AFD6188172E314E00B976B7 /* robot.png */,
 				2AFD6189172E314E00B976B7 /* word_bkg.png */,
@@ -2146,6 +2160,8 @@
 				2AFD6190172E314E00B976B7 /* 查看btn.png in Resources */,
 				2AFD6191172E314E00B976B7 /* 世界区navegation.png in Resources */,
 				2AFD6192172E314E00B976B7 /* 训练btn.png in Resources */,
+				2A925C3F172FEB91004AE7AF /* click.wav in Resources */,
+				2A925C41172FEE4C004AE7AF /* background.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

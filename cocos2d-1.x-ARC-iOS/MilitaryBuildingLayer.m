@@ -7,8 +7,6 @@
 //
 
 #import "MilitaryBuildingLayer.h"
-
-
 @implementation MilitaryBuildingLayer
 
 
@@ -71,15 +69,9 @@
 
 -(void)onExit{
     [super onExit];
-    //[self isTouchEnabled:false];
-//    self.isTouchEnabled = false;
-    
     [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
-        NSLog(@"invoke onExit1");
-    
-    
-    
 }
+
 //加上最上面的资源显示栏
 -(void)addLabel
 {
@@ -176,12 +168,14 @@
             isPanelExist=YES;
             if([building.png isEqualToString:@"tags.png"])
             {
+                [Util playClickSound];
                 [self ChoicePanel:building.key];
                 //isTouchTheBuilding=YES;
                 return;
             }
             else
             {
+               [Util playClickSound];
                 if ([building.png isEqualToString:@"armory.png"])
                 {
                     [self armoryHandle:building];
@@ -228,6 +222,8 @@
 //军事区造兵面板
 -(void)control:(id)sender
 {
+    [Util playClickSound];
+    
     [self removeChildByTag:103 cleanup:YES];
     
     
@@ -368,7 +364,7 @@
 -(void)trainSoldier:(UITapGestureRecognizer *)gesture
 {
     //ccmenu  返回  和叉掉
-    
+    [Util playClickSound];
     CCNode *wrapper=[self getChildByTag:20];
     wrapper.visible=NO;
     CCLayer *node=[[CCLayer alloc] init];
@@ -482,6 +478,7 @@
 //返回到造兵面板
 -(void)BacktTo:(id)sender
 {
+    [Util playClickSound];
     [self removeChildByTag:200 cleanup:NO];
     CCNode *wrapper=[self getChildByTag:20];
     [self removeChildByTag:205 cleanup:NO];
@@ -492,6 +489,7 @@
 //训练确认
 -(void)Confirm:(id)sender
 {
+    [Util playClickSound];
     NSLog(@"invoke Confirm");
     [self removeChildByTag:200 cleanup:NO];
     [self removeChildByTag:205 cleanup:YES];
@@ -539,7 +537,7 @@
 //删除建筑
 -(void)delete:(id)sender  
 {
-    
+    [Util playClickSound];
     CCMenuItemFont *item =(CCMenuItemFont*) sender;
     int key = item.tag;
     
@@ -551,6 +549,7 @@
 //升级建筑
 -(void)upgrade:(id)sender  
 {
+    [Util playClickSound];
     //删除面板
     [self removeChildByTag:103 cleanup:YES];
     //得到当前建筑
@@ -584,24 +583,28 @@
 
 -(void) event1:(UITapGestureRecognizer *)gesture
 {
+    [Util playClickSound];
     int gestureviewtag = gesture.view.tag;
     Building* building =[militaryBuildingView event:self tag:gestureviewtag png:@"armory.png" buildings:buildings];
     [self rotateWrench:building];
 }
 -(void) event2:(UITapGestureRecognizer *)gesture
 {
+    [Util playClickSound];
     int gestureviewtag = gesture.view.tag;
     Building* building =[militaryBuildingView event:self tag:gestureviewtag png:@"ipad_b15.png" buildings:buildings];
     [self rotateWrench:building];
 }
 -(void) event3:(UITapGestureRecognizer *)gesture
 {
+    [Util playClickSound];
     int gestureviewtag = gesture.view.tag;
     Building* building =[militaryBuildingView event:self tag:gestureviewtag png:@"ipad_b12.png" buildings:buildings];
     [self rotateWrench:building];
 }
 -(void) event4:(UITapGestureRecognizer *)gesture
 {
+    [Util playClickSound];
     int gestureviewtag = gesture.view.tag;
     Building* building =[militaryBuildingView event:self tag:gestureviewtag png:@"ipad_b18.png" buildings:buildings];
     [self rotateWrench:building];

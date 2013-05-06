@@ -33,7 +33,7 @@ typedef enum
 @property (readonly) MilitaryBkgLayer* militaryBkgLayer;
 @property (readonly) MilitaryBuildingLayer* militaryBuildingLayer;
 
--(void) onExit;
+
 +(CCScene *) scene;
 +(CGPoint) locationFromTouch:(UITouch*)touch;
 +(CGPoint) locationFromTouches:(NSSet *)touches;

@@ -154,6 +154,7 @@
     //NSLog(@"point:%f,%f",point.x,point.y);
     for (Building *building  in buildings) {
         if (CGRectContainsPoint(building.BuildSprite.boundingBox, point)) {
+            [Util playClickSound];
             if([building.png isEqualToString:@"tags.png"])
             {
                 [self ChoicePanel:building.key];
@@ -282,11 +283,6 @@
 
 -(void)rotateWrench:(Building *) building//转动扳手
 {
-    
-    
-    
-    
-    
     NSLog(@"rotateWrench1");
     CCSprite *wrench=[CCSprite spriteWithFile:@"wrench.png"];
     wrench.position=ccp(building.BuildSprite.position.x-50,building.BuildSprite.position.y+10);
@@ -401,7 +397,7 @@
 
 -(void)delete:(id)sender  //删除建筑
 {
-    
+    [Util playClickSound];
     CCMenuItemFont *item =(CCMenuItemFont*) sender;
     int key = item.tag;
     [self removeChildByTag:103 cleanup:YES];
@@ -437,6 +433,7 @@
 }
 -(void)upgrade:(id)sender  //升级建筑
 {
+    [Util playClickSound];
     //删除面板
     [self removeChildByTag:103 cleanup:YES];
     
@@ -471,37 +468,9 @@
     
     
 }
-//-(void)sceneTransition:(id)sender  //转换到军事区
-//{
-////     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Do you sure you want to leave?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes" ,@"No", nil];
-////    [alert show];
-//    CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
-//    [[CCDirector sharedDirector] replaceScene:tran];
-//
-//
-//}
-//-(void)sceneTransition2:(id)sender
-//{
-//    CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[HelloWorldLayer scene] withColor:ccWHITE];
-//    [[CCDirector sharedDirector] replaceScene:tran];
-//}
-//-(void)alertView:(UIAlertView*)actionsheet //uikit 的应用 （试验）  弹出提示按钮
-//   clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    if (buttonIndex==0) {
-//
-//    }
-//    else if (buttonIndex==1) {
-//        //ResourceScene是资源区？chenyl
-//        CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
-//        [[CCDirector sharedDirector] replaceScene:tran];
-//    }
-//    else{
-//
-//    }
-//}
 -(void) event1:(UITapGestureRecognizer *)gesture
 {
+    [Util playClickSound];
     [self removeChildByTag:20 cleanup:YES];
     [self removeChildByTag:3 cleanup:YES];
     NSLog(@"invoke event1");
@@ -545,6 +514,7 @@
 }
 -(void) event2:(UITapGestureRecognizer *)gesture
 {
+    [Util playClickSound];
     [self removeChildByTag:20 cleanup:YES];
     [self removeChildByTag:3 cleanup:YES];
     NSLog(@"invoke event1");
@@ -587,6 +557,7 @@
 }
 -(void) event3:(UITapGestureRecognizer *)gesture
 {
+    [Util playClickSound];
     [self removeChildByTag:20 cleanup:YES];
     [self removeChildByTag:3 cleanup:YES];
     NSLog(@"invoke event1");
@@ -629,6 +600,7 @@
 }
 -(void) event4:(UITapGestureRecognizer *)gesture
 {
+    [Util playClickSound];
     [self removeChildByTag:20 cleanup:YES];
     [self removeChildByTag:3 cleanup:YES];
     NSLog(@"invoke event1");

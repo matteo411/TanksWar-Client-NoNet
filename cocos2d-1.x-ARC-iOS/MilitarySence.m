@@ -54,7 +54,6 @@ static MilitarySence* militarySenceInstance;
 {
 	if ((self = [super init]))
 	{
-		NSAssert(militarySenceInstance == nil, @"another MultiLayerScene is already in use!");
 		militarySenceInstance = self;
 		MilitaryBkgLayer* militaryBkgLayer = [MilitaryBkgLayer node];
 		[self addChild:militaryBkgLayer z:1 tag:LayerTagMilitaryBkgLayer];
@@ -71,15 +70,7 @@ static MilitarySence* militarySenceInstance;
 	return self;
 }
 
--(void) onExit
-{
-	CCLOG(@"%@: %@", NSStringFromSelector(_cmd), self);
-	
-	// The Layer will be gone now, to avoid crashes on further access it needs to be nil.
-	militarySenceInstance = nil;
-    [super onExit];
-	
-}
+
 
 
 +(CGPoint) locationFromTouch:(UITouch*)touch

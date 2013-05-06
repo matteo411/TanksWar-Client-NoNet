@@ -7,7 +7,7 @@
 //
 
 #import "Util.h"
-
+#import "SimpleAudioEngine.h"
 @implementation Util
 
 
@@ -185,5 +185,15 @@
     }
     return result;
 
+}
+
++(void)playClickSound
+{
+[[SimpleAudioEngine sharedEngine] playEffect:@"click.wav" pitch:12.0 pan:5.0 gain:2.0];
+}
+
++(void) playBkgSound
+{
+[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background.wav" loop:YES];
 }
 @end

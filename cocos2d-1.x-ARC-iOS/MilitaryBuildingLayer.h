@@ -17,6 +17,7 @@
 #import "ArmyLayer.h"
 #import "ResourceSence.h"
 #import "MilitaryBuildingView.h"
+#import "Util.h"
 @interface MilitaryBuildingLayer : CCLayer {
     
     BOOL  isPanelExist;

@@ -11,7 +11,7 @@
 #import "ResourceSence.h"
 #import "MilitarySence.h"
 #import "WorldSence.h"
-
+#import "Util.h"
 @interface MainLayer : CCLayer {
    
 }

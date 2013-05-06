@@ -12,6 +12,7 @@
 #import "MainView.h"
 
 
+
 @implementation MainLayer
 +(CCScene *) scene
 {
@@ -36,7 +37,7 @@
         //添加右侧导航栏目
         MainView *mainView = [[MainView alloc]init];
         [mainView Navigation:self]; //self是CCNode
-      
+        [Util playBkgSound];
         
      
        
@@ -50,9 +51,7 @@
 
 -(void)sceneTransition:(int)sender
 {
-    
-//       [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:100 swallowsTouches:YES];
-//[self setIsTouchEnabled:false];
+    [Util playClickSound];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1 scene:[MilitarySence scene] ]];
     
     
@@ -61,21 +60,21 @@
 
 -(void)sceneTransition2:(int)sender  
 {
-//    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:100 swallowsTouches:YES];
-//  [self setIsTouchEnabled:false];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1 scene:[ResourceSence scene] ]];
+  [Util playClickSound];
+[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1 scene:[ResourceSence scene] ]];
 
 }
 
 -(void)sceneTransition3:(int)sender
 {
-//   [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:100 swallowsTouches:YES];
-//[self setIsTouchEnabled:false];
+    [Util playClickSound];
   [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1 scene:[WorldSence scene] ]];
 
     
     
 
 }
+
+
 
 @end

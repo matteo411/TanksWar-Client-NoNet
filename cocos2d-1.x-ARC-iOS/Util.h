@@ -24,4 +24,8 @@
 +(BOOL) writeResourceToPlist:(NSDictionary *) playerResource;
 
 +(BOOL) consumeResource:(NSDictionary *)consumeResource;
+
++(void) playClickSound;
+
++(void)playBkgSound;
 @end
