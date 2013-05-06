@@ -71,6 +71,15 @@ static MilitarySence* militarySenceInstance;
 }
 
 
+-(void) onExit
+{
+	CCLOG(@"%@: %@", NSStringFromSelector(_cmd), self);
+	 [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+	// The Layer will be gone now, to avoid crashes on further access it needs to be nil.
+	militarySenceInstance = nil;
+    [super onExit];
+	
+}
 
 
 +(CGPoint) locationFromTouch:(UITouch*)touch

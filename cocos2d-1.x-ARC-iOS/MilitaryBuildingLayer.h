@@ -17,18 +17,21 @@
 #import "ArmyLayer.h"
 #import "ResourceSence.h"
 #import "MilitaryBuildingView.h"
+
 #import "Util.h"
+
+#import "PlayerArmy.h"
 @interface MilitaryBuildingLayer : CCLayer {
     
     BOOL  isPanelExist;
-    
+    PlayerArmy *playerArmy;
     //建筑
     NSMutableArray *buildings;
     
     ArmyLayer * armyLayer;
     
     int trainNum;
-    
+    int trainArmyType;
     CCLabelTTF *labelOfFood;
     CCLabelTTF *labelOfOil;
     CCLabelTTF *labelOfOre;

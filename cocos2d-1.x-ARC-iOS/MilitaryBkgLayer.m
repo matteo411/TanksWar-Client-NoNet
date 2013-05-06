@@ -62,7 +62,6 @@
 {
 	if( (self=[super init])){
         
-        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-1 swallowsTouches:YES];
         
         //初始化视图
         MilitaryView* militaryView = [[MilitaryView alloc] init];
@@ -81,17 +80,6 @@
 	}
 	return self;
     
-}
-
--(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event//触摸方法
-{
-    [self removeChildByTag:333 cleanup:YES];
-    
-    CGPoint point;
-    point=[self convertTouchToNodeSpace:touch];
-    NSLog(@" Military:%f,%f",point.x,point.y);
-    
-    return TRUE;//
 }
 
 

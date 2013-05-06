@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "PlayerArmy.h"
 
 @interface ArmyLayer : CCLayer
 {
-    CCLabelTTF *ArmyNumNow;
-    CCLabelTTF *ArmyNumTraining;
-    CCLabelTTF *countDownLabel;
-    CCSprite  * ArmyImage1, *ArmyImage2,*ArmyImage3 ,*ArmyImage4;
+    int NUM;
+    PlayerArmy *playArmy;
+    CCLabelTTF *ArmyNumNow[4];
+    CCLabelTTF *ArmyNumTraining[4];
+    CCLabelTTF *countDownLabel[4];
+    CCSprite  * ArmyImage[4];
 }
 
 -(id)init;
