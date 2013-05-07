@@ -13,7 +13,7 @@
 #import <math.h>
 #import "MilitaryBkgLayer.h"
 #import "MilitaryBuildingLayer.h"
-
+#import "Util.h"
 // HelloWorldLayer implementation
 @implementation MilitarySence
 
@@ -54,6 +54,8 @@ static MilitarySence* militarySenceInstance;
 {
 	if ((self = [super init]))
 	{
+        [Util playBkgSound];
+        
 		militarySenceInstance = self;
 		MilitaryBkgLayer* militaryBkgLayer = [MilitaryBkgLayer node];
 		[self addChild:militaryBkgLayer z:1 tag:LayerTagMilitaryBkgLayer];

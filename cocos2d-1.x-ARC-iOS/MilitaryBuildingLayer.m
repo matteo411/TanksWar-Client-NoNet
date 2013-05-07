@@ -371,6 +371,7 @@
     [self removeChildByTag:200 cleanup:YES];
     [self removeChildByTag:205 cleanup:YES];
     [self removeChildByTag:211 cleanup:YES];
+    [self removeChildByTag:103 cleanup:YES];
     isPanelExist=NO;
     armyLayer.visible=NO;
     

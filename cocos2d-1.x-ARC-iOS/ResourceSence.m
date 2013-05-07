@@ -31,7 +31,7 @@
 -(id) init
 {
 	if( (self=[super init])) {
-        
+        [Util playBkgSound];
         //触摸代理 kCCMenuTouchPriority 优先级最高
         [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:kCCMenuTouchPriority swallowsTouches:YES];
         
@@ -175,12 +175,12 @@
     //self.isTouchEnabled=NO;
     [CCMenuItemFont setFontName:@"Marker Felt"];
     [CCMenuItemFont setFontSize:20];
-    CCMenuItemFont  *Delete=[CCMenuItemFont itemFromString:@"拆除" target:self selector:@selector(delete:)];
-    CCMenuItemFont *upGrade=[CCMenuItemFont itemFromString:@"升级" target:self selector:@selector(upgrade:)];
+    CCMenuItemImage *Delete=[CCMenuItemImage itemFromNormalImage:@"拆除btn.png" selectedImage:nil target:self selector:@selector(delete:)];
+    CCMenuItemImage *upGrade=[CCMenuItemImage itemFromNormalImage:@"升级btn.png" selectedImage:nil target:self  selector:@selector(upgrade:)];
     Delete.tag= upGrade.tag = building.key;
     
     CCMenu *menu=[CCMenu menuWithItems:Delete,upGrade,nil];
-    [menu setPosition:ccp(building.BuildSprite.position.x+50, building.BuildSprite.position.y-50)];
+    [menu setPosition:ccp(building.BuildSprite.position.x-20, building.BuildSprite.position.y+30)];
     [menu alignItemsHorizontally];
     [self addChild:menu z:3 tag:103];
 }

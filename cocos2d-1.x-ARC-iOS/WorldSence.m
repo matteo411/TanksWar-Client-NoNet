@@ -7,8 +7,8 @@
 //
 
 #import "WorldSence.h"
-
-
+#import "SimpleAudioEngine.h"
+#import "Util.h"
 @implementation WorldSence
 
 +(CCScene *) scene
@@ -37,6 +37,7 @@
 -(id) init
 {
 	if( (self=[super init])){
+        [Util playBkgSound];
         playerArmy=[PlayerArmy getPlayerArmy ];
         robotArmy=[RobotArmy getRobotArmy];
         [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
@@ -53,12 +54,12 @@
 
         //添加玩家
         player=[CCSprite spriteWithFile:@"myself_coco.png" ];
-        player.position = ccp(81, 424);
+        player.position = ccp(81, 320);
         player.scale = 0.3;
         [self addChild:player z:2   tag:1 ];
         //添加机器人
         robot=[CCSprite spriteWithFile:@"robot.png" ];
-        robot.position = ccp(830, 265);
+        robot.position = ccp(830, 200);
         robot.scale = 0.3;
         [self addChild:robot z:2   tag:2 ];
 	}
@@ -91,13 +92,15 @@
 }
 -(void)choicePanelRobot
 {
-    CCLabelTTF *Back=[CCLabelTTF labelWithString:@"查看" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    CCLabelTTF *Confirm=[CCLabelTTF labelWithString:@"进攻" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    CCMenuItemLabel *menu10=[CCMenuItemLabel itemWithLabel:Back target:self selector:@selector(checkRobot)];
-    CCMenuItemLabel *menu11=[CCMenuItemLabel itemWithLabel:Confirm target:self selector:@selector(attackRobot)];
-    CCMenu *menu=[CCMenu menuWithItems:menu10,menu11,nil];
-    [menu alignItemsHorizontallyWithPadding:-10];
-    [menu setPosition:ccp(robot.position.x+40, robot.position.y-50)];
+//    CCLabelTTF *Back=[CCLabelTTF labelWithString:@"查看" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
+//    CCLabelTTF *Confirm=[CCLabelTTF labelWithString:@"进攻" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
+    CCMenuItemImage *Back=[CCMenuItemImage itemFromNormalImage:@"查看btn.png" selectedImage:nil target:self selector:@selector(checkRobot)];
+    CCMenuItemImage *Confirm=[CCMenuItemImage itemFromNormalImage:@"进攻btn.png" selectedImage:nil target:self selector:@selector(attackRobot)];
+//    CCMenuItemLabel *menu10=[CCMenuItemLabel itemWithLabel:Back target:self selector:@selector(checkRobot)];
+//    CCMenuItemLabel *menu11=[CCMenuItemLabel itemWithLabel:Confirm target:self selector:@selector(attackRobot)];
+    CCMenu *menu=[CCMenu menuWithItems:Back,Confirm,nil];
+    [menu alignItemsHorizontallyWithPadding:10];
+    [menu setPosition:ccp(robot.position.x, robot.position.y+70)];
 
     [self addChild:menu z:3 tag:202 ];
 }
@@ -116,13 +119,15 @@
 
 -(void)choicePanelPlayer
 {
-    CCLabelTTF *Back=[CCLabelTTF labelWithString:@"查看" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    CCLabelTTF *Confirm=[CCLabelTTF labelWithString:@"进入" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    CCMenuItemLabel *menu10=[CCMenuItemLabel itemWithLabel:Back target:self selector:@selector(checkPlayer)];
-    CCMenuItemLabel *menu11=[CCMenuItemLabel itemWithLabel:Confirm target:self selector:@selector(goToMilitaryScence)];
-    CCMenu *menu=[CCMenu menuWithItems:menu10,menu11,nil];
-    [menu alignItemsHorizontallyWithPadding:-10];
-    [menu setPosition:ccp(player.position.x+40, player.position.y-50)];
+//    CCLabelTTF *Back=[CCLabelTTF labelWithString:@"查看" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
+//    CCLabelTTF *Confirm=[CCLabelTTF labelWithString:@"进入" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
+//    CCMenuItemLabel *menu10=[CCMenuItemLabel itemWithLabel:Back target:self selector:@selector(checkPlayer)];
+//    CCMenuItemLabel *menu11=[CCMenuItemLabel itemWithLabel:Confirm target:self selector:@selector(goToMilitaryScence)];
+    CCMenuItemImage *Back=[CCMenuItemImage itemFromNormalImage:@"查看btn.png" selectedImage:nil target:self selector:@selector(checkPlayer)];
+    CCMenuItemImage *Confirm=[CCMenuItemImage itemFromNormalImage:@"进入btn.png" selectedImage:nil target:self selector:@selector(goToMilitaryScence)];
+    CCMenu *menu=[CCMenu menuWithItems:Back,Confirm,nil];
+    [menu alignItemsHorizontallyWithPadding:10];
+    [menu setPosition:ccp(player.position.x, player.position.y+70)];
     
     [self addChild:menu z:3 tag:202 ];
 }
@@ -242,7 +247,7 @@
 }
 -(void) onExit
 {
-    
+//    [SimpleAudioEngine sharedEngine] 
     [[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
     [super onExit];
     NSLog(@"invoke onExit4");

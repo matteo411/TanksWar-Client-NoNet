@@ -272,15 +272,18 @@
 {
     [CCMenuItemFont setFontName:@"Marker Felt"];
     [CCMenuItemFont setFontSize:20];
-    CCMenuItemFont *Control=[CCMenuItemFont itemFromString:@"管理" target:selfNode selector:@selector(control:)];
-    CCMenuItemFont  *Delete=[CCMenuItemFont itemFromString:@"拆除" target:selfNode selector:@selector(delete:)];
-    CCMenuItemFont *upGrade=[CCMenuItemFont itemFromString:@"升级" target:selfNode selector:@selector(upgrade:)];
+    CCMenuItemImage *Control=[CCMenuItemImage itemFromNormalImage:@"管理btn.png" selectedImage:nil target:selfNode    selector:@selector(control:)];
+    CCMenuItemImage *Delete=[CCMenuItemImage itemFromNormalImage:@"拆除btn.png" selectedImage:nil target:selfNode selector:@selector(delete:)];
+    CCMenuItemImage *upGrade=[CCMenuItemImage itemFromNormalImage:@"升级btn.png" selectedImage:nil target:selfNode selector:@selector(upgrade:)];
+//    CCMenuItemFont *Control=[CCMenuItemFont itemFromString:@"管理" target:selfNode selector:@selector(control:)];
+//    CCMenuItemFont  *Delete=[CCMenuItemFont itemFromString:@"拆除" target:selfNode selector:@selector(delete:)];
+//    CCMenuItemFont *upGrade=[CCMenuItemFont itemFromString:@"升级" target:selfNode selector:@selector(upgrade:)];
     
     
     Delete.tag= upGrade.tag = building.key;
     
     CCMenu *menu=[CCMenu menuWithItems: Control,Delete,upGrade,nil];
-    [menu setPosition:ccp(building.BuildSprite.position.x+50, building.BuildSprite.position.y-50)];
+    [menu setPosition:ccp(building.BuildSprite.position.x-20, building.BuildSprite.position.y+30)];
     [menu alignItemsHorizontally];
     [selfNode addChild:menu z:3 tag:103];
 }
@@ -289,12 +292,12 @@
 {
     [CCMenuItemFont setFontName:@"Marker Felt"];
     [CCMenuItemFont setFontSize:20];
-    CCMenuItemFont  *Delete=[CCMenuItemFont itemFromString:@"拆除" target:selfNode selector:@selector(delete:)];
-    CCMenuItemFont *upGrade=[CCMenuItemFont itemFromString:@"升级" target:selfNode selector:@selector(upgrade:)];
+    CCMenuItemImage *Delete=[CCMenuItemImage itemFromNormalImage:@"拆除btn.png" selectedImage:nil target:selfNode selector:@selector(delete:)];
+    CCMenuItemImage *upGrade=[CCMenuItemImage itemFromNormalImage:@"升级btn.png" selectedImage:nil target:selfNode selector:@selector(upgrade:)];
     Delete.tag= upGrade.tag = building.key;
     
     CCMenu *menu=[CCMenu menuWithItems:Delete,upGrade,nil];
-    [menu setPosition:ccp(building.BuildSprite.position.x+50, building.BuildSprite.position.y-50)];
+    [menu setPosition:ccp(building.BuildSprite.position.x-20, building.BuildSprite.position.y+30)];
     [menu alignItemsHorizontally];
     [selfNode addChild:menu z:3 tag:103];
 }

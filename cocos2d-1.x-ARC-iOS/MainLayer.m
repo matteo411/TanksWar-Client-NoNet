@@ -37,7 +37,7 @@
         //添加右侧导航栏目
         MainView *mainView = [[MainView alloc]init];
         [mainView Navigation:self]; //self是CCNode
-        [Util playBkgSound];
+        
         
      
        
