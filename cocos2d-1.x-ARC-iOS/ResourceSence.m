@@ -201,7 +201,7 @@
     label.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
     
     
-    label.text=@"介绍dhaskdjaslkdjlfhkdashfkjasdhfkjhaiuefhlkajfilehfaehfleifhkadfhaskfdb";   //设置label所显示的文本
+    label.text=@"农田为城市提供粮食生产";   //设置label所显示的文本
     
     label.textColor = [UIColor whiteColor];    //设置文本的颜色
     
@@ -229,6 +229,15 @@
     
     UIImage *menu2=[UIImage imageNamed:@"bl_4.png"];
     UIImageView *menuPic2=[[UIImageView alloc]initWithImage:menu2];
+    
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(-50, 300, 200, 20)];   //声明UIlbel并指定其位置和长宽
+    label2.backgroundColor = [UIColor clearColor];   //设置label的背景色，这里设置为透明色。
+    label2.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
+    label2.text=@"石油基地为城市提供石油生产";   //设置label所显示的文本
+    label2.textColor = [UIColor whiteColor];    //设置文本的颜色
+    label2.transform=CGAffineTransformMakeRotation(M_PI*0.5);
+    label2.textAlignment = UITextAlignmentCenter;     //设置文本在label中显示的位置，这里为居中。
+    
     menuPic2.frame=CGRectMake(20, 20, 40, 40);
     menuPic2.transform =CGAffineTransformMakeRotation(M_PI*0.5);
     menuPic2.userInteractionEnabled=YES;
@@ -239,6 +248,7 @@
     image2.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
     image2.layer.borderColor=[[UIColor blackColor]CGColor];
     image2.layer.borderWidth=2;
+    [image2 addSubview:label2];
     [image2 addSubview:menuPic2];
     [scroll addSubview:image2];
     
@@ -255,6 +265,15 @@
     image3.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
     image3.layer.borderColor=[[UIColor blackColor]CGColor];
     image3.layer.borderWidth=2;
+    
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(-50, 300, 200, 20)];   //声明UIlbel并指定其位置和长宽
+    label3.backgroundColor = [UIColor clearColor];   //设置label的背景色，这里设置为透明色。
+    label3.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
+    label3.text=@"钢铁厂为城市提供钢铁生产";   //设置label所显示的文本
+    label3.textColor = [UIColor whiteColor];    //设置文本的颜色
+    label3.transform=CGAffineTransformMakeRotation(M_PI*0.5);
+    label3.textAlignment = UITextAlignmentCenter;     //设置文本在label中显示的位置，这里为居中。
+     [image3 addSubview:label3];
     [image3 addSubview:menuPic3];
     [scroll addSubview:image3];
     
@@ -270,6 +289,15 @@
     image4.layer.borderColor=[[UIColor blackColor]CGColor];
     image4.layer.borderWidth=2;
     image4.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
+    
+    UILabel *label4 = [[UILabel alloc] initWithFrame:CGRectMake(-50, 300, 200, 20)];   //声明UIlbel并指定其位置和长宽
+    label4.backgroundColor = [UIColor clearColor];   //设置label的背景色，这里设置为透明色。
+    label4.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
+    label4.text=@"稀矿场为城市提供稀有矿石生产";   //设置label所显示的文本
+    label4.textColor = [UIColor whiteColor];    //设置文本的颜色
+    label4.transform=CGAffineTransformMakeRotation(M_PI*0.5);
+    label4.textAlignment = UITextAlignmentCenter;     //设置文本在label中显示的位置，这里为居中。
+    [image4 addSubview:label4];
     
     [image4 addSubview:menuPic4];
     [scroll addSubview:image4];

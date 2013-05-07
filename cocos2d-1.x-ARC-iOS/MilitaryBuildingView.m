@@ -55,17 +55,11 @@
     UIScrollView *scroll=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 340, 595)];
     scroll.backgroundColor=[UIColor  colorWithRed:1  green:1 blue:1 alpha:0];
     CGPoint nodeSize=ccp(340,595);
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(-50, 300, 200, 20)];   //声明UIlbel并指定其位置和长宽
-    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(-110, 200, 300, 20)];   //声明UIlbel并指定其位置和长宽
     label.backgroundColor = [UIColor clearColor];   //设置label的背景色，这里设置为透明色。
-    
     label.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
-    
-    
-    label.text=@"介绍dhaskdjaslkdjlfhkdashfkjasdhfkjhaiuefhlkajfilehfaehfleifhkadfhaskfdb";   //设置label所显示的文本
-    
+    label.text=@"军工厂是训练和武装部队的场所";   //设置label所显示的文本
     label.textColor = [UIColor whiteColor];    //设置文本的颜色
-    
     label.transform=CGAffineTransformMakeRotation(M_PI*0.5);
     label.textAlignment = UITextAlignmentCenter;     //设置文本在label中显示的位置，这里为居中。
     
@@ -90,7 +84,7 @@
     [scroll addSubview:image1];
     
     
-    UIImage *menu2=[UIImage imageNamed:@"bl_4.png"];
+    UIImage *menu2=[UIImage imageNamed:@"bl_21s.png"];
     UIImageView *menuPic2=[[UIImageView alloc]initWithImage:menu2];
     menuPic2.frame=CGRectMake(20, 20, 40, 40);
     menuPic2.transform =CGAffineTransformMakeRotation(M_PI*0.5);
@@ -102,11 +96,20 @@
     image2.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
     image2.layer.borderColor=[[UIColor blackColor]CGColor];
     image2.layer.borderWidth=2;
+    
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(-110, 200, 300, 20)];   //声明UIlbel并指定其位置和长宽
+    label2.backgroundColor = [UIColor clearColor];   //设置label的背景色，这里设置为透明色。
+    label2.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
+    label2.text=@"雷达站用来对敌军入侵进行预警";   //设置label所显示的文本
+    label2.textColor = [UIColor whiteColor];    //设置文本的颜色
+    label2.transform=CGAffineTransformMakeRotation(M_PI*0.5);
+    label2.textAlignment = UITextAlignmentCenter;     //设置文本在label中显示的位置，这里为居中。
+    [image2 addSubview:label2];
     [image2 addSubview:menuPic2];
     [scroll addSubview:image2];
     
     
-    UIImage *menu3=[UIImage imageNamed:@"bl_5.png"];
+    UIImage *menu3=[UIImage imageNamed:@"bl_2s.png"];
     UIImageView *menuPic3=[[UIImageView alloc]initWithImage:menu3];
     menuPic3.frame=CGRectMake(20, 20, 40, 40);
     menuPic3.transform =CGAffineTransformMakeRotation(M_PI*0.5);
@@ -118,10 +121,20 @@
     image3.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
     image3.layer.borderColor=[[UIColor blackColor]CGColor];
     image3.layer.borderWidth=2;
+    
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(-110, 200, 300, 20)];   //声明UIlbel并指定其位置和长宽
+    label3.backgroundColor = [UIColor clearColor];   //设置label的背景色，这里设置为透明色。
+    label3.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
+    label3.text=@"民居增加了城市内的人口上限";   //设置label所显示的文本
+    label3.textColor = [UIColor whiteColor];    //设置文本的颜色
+    label3.transform=CGAffineTransformMakeRotation(M_PI*0.5);
+    label3.textAlignment = UITextAlignmentCenter;     //设置文本在label中显示的位置，这里为居中。
+    [image3 addSubview:label3];
+    
     [image3 addSubview:menuPic3];
     [scroll addSubview:image3];
     
-    UIImage *menu4=[UIImage imageNamed:@"bl_6.png"];
+    UIImage *menu4=[UIImage imageNamed:@"bl_18.png"];
     UIImageView *menuPic4=[[UIImageView alloc]initWithImage:menu4];
     menuPic4.frame=CGRectMake(20, 20, 40, 40);
     menuPic4.transform =CGAffineTransformMakeRotation(M_PI*0.5);
@@ -134,6 +147,15 @@
     image4.layer.borderWidth=2;
     image4.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
     
+    UILabel *label4 = [[UILabel alloc] initWithFrame:CGRectMake(-110, 200, 300, 20)];   //声明UIlbel并指定其位置和长宽
+    label4.backgroundColor = [UIColor clearColor];   //设置label的背景色，这里设置为透明色。
+    label4.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
+    label4.text=@"停机坪是生产航空部队的建筑";   //设置label所显示的文本
+    label4.textColor = [UIColor whiteColor];    //设置文本的颜色
+    label4.transform=CGAffineTransformMakeRotation(M_PI*0.5);
+    label4.textAlignment = UITextAlignmentCenter;     //设置文本在label中显示的位置，这里为居中。
+    [image4 addSubview:label4];
+    
     [image4 addSubview:menuPic4];
     [scroll addSubview:image4];
     scroll.contentSize=CGSizeMake(nodeSize.x+2, nodeSize.y);
@@ -141,7 +163,13 @@
     wrapper.position=ccp(185,809);
     //wrapper.position=ccp(500,809);
     [selfNode addChild:wrapper z:4 tag:20];
-
+    CCLabelTTF *Confirm=[CCLabelTTF labelWithString:@"返回" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
+    CCMenuItemLabel *menu11=[CCMenuItemLabel itemWithLabel:Confirm target:selfNode selector:@selector(backToMilitoryZone)];
+    CCMenu *menuBack=[CCMenu menuWithItems:menu11, nil];
+    
+    [menuBack setPosition:ccp(810, 540)];
+    [menuBack setOpacity:0];
+    [selfNode addChild:menuBack z:4 tag:203];
 }
 
 

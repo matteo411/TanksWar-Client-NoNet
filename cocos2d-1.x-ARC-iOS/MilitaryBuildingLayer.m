@@ -192,11 +192,7 @@
     {
         CCSprite *PanelBg = [self getChildByTag:3];
         if (!CGRectContainsPoint(PanelBg.boundingBox, point)) {
-        [self removeChildByTag:3 cleanup:NO];
-        [self removeChildByTag:20 cleanup:NO];
-        [self removeChildByTag:202 cleanup:YES];
-            isPanelExist=NO;
-            armyLayer.visible=NO;
+            [self backToMilitoryZone];
         }
         
         //CCSprite *PanelBg=[s]
@@ -234,17 +230,15 @@
     UIScrollView *scroll=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 340, 595)];
     scroll.backgroundColor=[UIColor  colorWithRed:1  green:1 blue:1 alpha:0];
     CGPoint nodeSize=ccp(340,595);
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(-50, 300, 200, 20)];   //声明UIlbel并指定其位置和长宽
+//    CCLabelTTF *label4=[CCLabelTTF labelWithString:@"高级兵种，攻击力16，防御力16" dimensions:CGSizeMake(300, 50) alignment:UIAlertViewStyleDefault fontName:@"Helvetica-Bold" fontSize:18];
+//    label4.position=ccp(480, 470);
+//    [self addChild:label4 z:4 tag:211];
     
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(-110, 200, 300, 20)];   //声明UIlbel并指定其位置和长宽
     label.backgroundColor = [UIColor clearColor];   //设置label的背景色，这里设置为透明色。
-    
     label.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
-    
-    
-    label.text=@"介绍";   //设置label所显示的文本
-    
+    label.text=@"步兵是最简单的且最低等的兵种";   //设置label所显示的文本
     label.textColor = [UIColor whiteColor];    //设置文本的颜色
-    
     label.transform=CGAffineTransformMakeRotation(M_PI*0.5);
     label.textAlignment = UITextAlignmentCenter;     //设置文本在label中显示的位置，这里为居中。
     
@@ -279,6 +273,15 @@
     image2.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
     image2.layer.borderColor=[[UIColor blackColor]CGColor];
     image2.layer.borderWidth=2;
+    
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(-110, 200, 300, 20)];   //声明UIlbel并指定其位置和长宽
+    label2.backgroundColor = [UIColor clearColor];   //设置label的背景色，这里设置为透明色。
+    label2.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
+    label2.text=@"摩托化骑兵是骑着摩托车的士兵";   //设置label所显示的文本
+    label2.textColor = [UIColor whiteColor];    //设置文本的颜色
+    label2.transform=CGAffineTransformMakeRotation(M_PI*0.5);
+    label2.textAlignment = UITextAlignmentCenter;
+     [image2 addSubview:label2];
     [image2 addSubview:menuPic2];
     [scroll addSubview:image2];
     
@@ -295,6 +298,14 @@
     image3.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
     image3.layer.borderColor=[[UIColor blackColor]CGColor];
     image3.layer.borderWidth=2;
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(-110, 200, 300, 20)];   //声明UIlbel并指定其位置和长宽
+    label3.backgroundColor = [UIColor clearColor];   //设置label的背景色，这里设置为透明色。
+    label3.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
+    label3.text=@"装甲车是能够运送物资的兵种";   //设置label所显示的文本
+    label3.textColor = [UIColor whiteColor];    //设置文本的颜色
+    label3.transform=CGAffineTransformMakeRotation(M_PI*0.5);
+    label3.textAlignment = UITextAlignmentCenter;
+    [image3 addSubview:label3];
     [image3 addSubview:menuPic3];
     [scroll addSubview:image3];
     
@@ -309,6 +320,16 @@
     UIView *image4=[[UIView alloc] initWithFrame:CGRectMake(255, 0, 85 , 595)];
     image4.layer.borderColor=[[UIColor blackColor]CGColor];
     image4.layer.borderWidth=2;
+    
+    UILabel *label4 = [[UILabel alloc] initWithFrame:CGRectMake(-110, 200, 300, 20)];   //声明UIlbel并指定其位置和长宽
+    label4.backgroundColor = [UIColor clearColor];   //设置label的背景色，这里设置为透明色。
+    label4.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];   //设置label的字体和字体大小。
+    label4.text=@"轻型坦克是能攻击很给力的兵种";   //设置label所显示的文本
+    label4.textColor = [UIColor whiteColor];    //设置文本的颜色
+    label4.transform=CGAffineTransformMakeRotation(M_PI*0.5);
+    label4.textAlignment = UITextAlignmentCenter;
+    [image4 addSubview:label4];
+    
     image4.backgroundColor=[UIColor colorWithRed:0 green:0.5 blue:0.7 alpha:0.0];
     
     [image4 addSubview:menuPic4];
@@ -318,18 +339,21 @@
     wrapper.position=ccp(185,809);
     //wrapper.position=ccp(500,809);
     [self addChild:wrapper z:3 tag:20  ];
-    CCLabelTTF *Back=[CCLabelTTF labelWithString:@"查看" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
+    CCMenuItemImage *check=[CCMenuItemImage itemFromNormalImage:@"查看btn.png" selectedImage:nil target:self selector:@selector(GoToArmyPanel)];
+    
+//    CCLabelTTF *Back=[CCLabelTTF labelWithString:@"查看" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
     CCLabelTTF *Confirm=[CCLabelTTF labelWithString:@"返回" dimensions:CGSizeMake(100, 50) alignment:UIAlertViewStyleDefault fontName:@"Arial" fontSize:20];
-    CCMenuItemLabel *menu10=[CCMenuItemLabel itemWithLabel:Back target:self selector:@selector(GoToArmyPanel)];
+//    CCMenuItemLabel *menu10=[CCMenuItemLabel itemWithLabel:Back target:self selector:@selector(GoToArmyPanel)];
     CCMenuItemLabel *menu11=[CCMenuItemLabel itemWithLabel:Confirm target:self selector:@selector(backToMilitoryZone)];
-    CCMenu *menu=[CCMenu menuWithItems:menu10,nil];
     CCMenu *menuBack=[CCMenu menuWithItems:menu11, nil];
     
     [menuBack setPosition:ccp(810, 540)];
     [menuBack setOpacity:0];
     [self addChild:menuBack z:3 tag:203];
+    CCMenu *menu=[CCMenu menuWithItems:check,nil];
+  
     
-    [menu setPosition:CGPointMake(400,550)];
+    [menu setPosition:CGPointMake(260,550)];
     [self addChild:menu z:3 tag:204 ];
     
 }
@@ -337,6 +361,7 @@
 //从军事区面板回到军事区
 -(void)backToMilitoryZone
 {
+     [self removeChildByTag:888 cleanup:YES];
     [self removeChildByTag:3 cleanup:NO];
     [self removeChildByTag:20 cleanup:NO];
     [self removeChildByTag:202 cleanup:YES];
@@ -344,7 +369,7 @@
     [self removeChildByTag:204 cleanup:YES ];
     [self removeChildByTag:200 cleanup:YES];
     [self removeChildByTag:205 cleanup:YES];
-    
+    [self removeChildByTag:211 cleanup:YES];
     isPanelExist=NO;
     armyLayer.visible=NO;
     
@@ -354,6 +379,9 @@
 //显示兵力菜单
 -(void)GoToArmyPanel
 {
+    [self removeChildByTag:211 cleanup:YES];
+    [self removeChildByTag:200 cleanup:YES];
+    [self removeChildByTag:205 cleanup:YES];
     CCNode *wrapper=[self getChildByTag:20];
     wrapper.visible=NO;
     armyLayer.visible=YES;
@@ -956,21 +984,21 @@
 {
     [Util playClickSound];
     int gestureviewtag = gesture.view.tag;
-    Building* building =[militaryBuildingView event:self tag:gestureviewtag png:@"ipad_b15.png" buildings:buildings];
+    Building* building =[militaryBuildingView event:self tag:gestureviewtag png:@"ipad_b63.png" buildings:buildings];
     [self rotateWrench:building];
 }
 -(void) event3:(UITapGestureRecognizer *)gesture
 {
     [Util playClickSound];
     int gestureviewtag = gesture.view.tag;
-    Building* building =[militaryBuildingView event:self tag:gestureviewtag png:@"ipad_b12.png" buildings:buildings];
+    Building* building =[militaryBuildingView event:self tag:gestureviewtag png:@"ipad_b6.png" buildings:buildings];
     [self rotateWrench:building];
 }
 -(void) event4:(UITapGestureRecognizer *)gesture
 {
     [Util playClickSound];
     int gestureviewtag = gesture.view.tag;
-    Building* building =[militaryBuildingView event:self tag:gestureviewtag png:@"ipad_b18.png" buildings:buildings];
+    Building* building =[militaryBuildingView event:self tag:gestureviewtag png:@"ipad_b54.png" buildings:buildings];
     [self rotateWrench:building];
     
 }
