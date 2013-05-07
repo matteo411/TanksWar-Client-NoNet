@@ -145,6 +145,7 @@
     CGPoint point;
     point=[self convertTouchToNodeSpace:touch];
     [self selectSpriteForTouch:point];
+    NSLog(@"资源区触摸点坐标：%f,%f",point.x,point.y);
     return TRUE;//？？？ chenyl
     
 }

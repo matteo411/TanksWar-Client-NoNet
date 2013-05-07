@@ -31,9 +31,9 @@
 			<key>key</key>
 			<integer>1000</integer>
 			<key>x</key>
-			<integer>113</integer>
+			<integer>712</integer>
 			<key>y</key>
-			<integer>269</integer>
+			<integer>566</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -43,9 +43,9 @@
 			<key>key</key>
 			<integer>1001</integer>
 			<key>x</key>
-			<integer>44</integer>
+			<integer>428</integer>
 			<key>y</key>
-			<integer>339</integer>
+			<integer>547</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -55,9 +55,9 @@
 			<key>key</key>
 			<integer>1002</integer>
 			<key>x</key>
-			<integer>231</integer>
+			<integer>217</integer>
 			<key>y</key>
-			<integer>180</integer>
+			<integer>522</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -67,9 +67,9 @@
 			<key>key</key>
 			<integer>1003</integer>
 			<key>x</key>
-			<integer>52</integer>
+			<integer>322</integer>
 			<key>y</key>
-			<integer>141</integer>
+			<integer>462</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -79,9 +79,9 @@
 			<key>key</key>
 			<integer>1004</integer>
 			<key>x</key>
-			<integer>500</integer>
+			<integer>483</integer>
 			<key>y</key>
-			<integer>105</integer>
+			<integer>462</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -91,9 +91,9 @@
 			<key>key</key>
 			<integer>1005</integer>
 			<key>x</key>
-			<integer>636</integer>
+			<integer>412</integer>
 			<key>y</key>
-			<integer>104</integer>
+			<integer>388</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -103,9 +103,9 @@
 			<key>key</key>
 			<integer>1006</integer>
 			<key>x</key>
-			<integer>818</integer>
+			<integer>689</integer>
 			<key>y</key>
-			<integer>110</integer>
+			<integer>401</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -115,9 +115,9 @@
 			<key>key</key>
 			<integer>1007</integer>
 			<key>x</key>
-			<integer>907</integer>
+			<integer>226</integer>
 			<key>y</key>
-			<integer>301</integer>
+			<integer>322</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -127,9 +127,9 @@
 			<key>key</key>
 			<integer>1008</integer>
 			<key>x</key>
-			<integer>530</integer>
+			<integer>568</integer>
 			<key>y</key>
-			<integer>572</integer>
+			<integer>311</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -139,9 +139,9 @@
 			<key>key</key>
 			<integer>1009</integer>
 			<key>x</key>
-			<integer>662</integer>
+			<integer>421</integer>
 			<key>y</key>
-			<integer>535</integer>
+			<integer>268</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -151,9 +151,9 @@
 			<key>key</key>
 			<integer>1010</integer>
 			<key>x</key>
-			<integer>758</integer>
+			<integer>635</integer>
 			<key>y</key>
-			<integer>484</integer>
+			<integer>268</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -163,9 +163,9 @@
 			<key>key</key>
 			<integer>1011</integer>
 			<key>x</key>
-			<integer>481</integer>
+			<integer>344</integer>
 			<key>y</key>
-			<integer>492</integer>
+			<integer>201</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -175,9 +175,9 @@
 			<key>key</key>
 			<integer>1012</integer>
 			<key>x</key>
-			<integer>649</integer>
+			<integer>527</integer>
 			<key>y</key>
-			<integer>386</integer>
+			<integer>197</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -187,9 +187,9 @@
 			<key>key</key>
 			<integer>1013</integer>
 			<key>x</key>
-			<integer>294</integer>
+			<integer>704</integer>
 			<key>y</key>
-			<integer>368</integer>
+			<integer>197</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -199,9 +199,9 @@
 			<key>key</key>
 			<integer>1014</integer>
 			<key>x</key>
-			<integer>447</integer>
+			<integer>585</integer>
 			<key>y</key>
-			<integer>285</integer>
+			<integer>501</integer>
 		</dict>
 	</array>
 	<key>resource_area</key>
@@ -214,9 +214,9 @@
 			<key>key</key>
 			<integer>1100</integer>
 			<key>x</key>
-			<integer>200</integer>
+			<integer>623</integer>
 			<key>y</key>
-			<integer>300</integer>
+			<integer>564</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -226,9 +226,9 @@
 			<key>key</key>
 			<integer>1101</integer>
 			<key>x</key>
-			<integer>50</integer>
+			<integer>205</integer>
 			<key>y</key>
-			<integer>150</integer>
+			<integer>583</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -238,9 +238,9 @@
 			<key>key</key>
 			<integer>1102</integer>
 			<key>x</key>
-			<integer>300</integer>
+			<integer>347</integer>
 			<key>y</key>
-			<integer>100</integer>
+			<integer>580</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -250,9 +250,9 @@
 			<key>key</key>
 			<integer>1103</integer>
 			<key>x</key>
-			<integer>50</integer>
+			<integer>366</integer>
 			<key>y</key>
-			<integer>150</integer>
+			<integer>475</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -262,9 +262,9 @@
 			<key>key</key>
 			<integer>1104</integer>
 			<key>x</key>
-			<integer>500</integer>
+			<integer>605</integer>
 			<key>y</key>
-			<integer>200</integer>
+			<integer>497</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -274,9 +274,9 @@
 			<key>key</key>
 			<integer>1105</integer>
 			<key>x</key>
-			<integer>700</integer>
+			<integer>499</integer>
 			<key>y</key>
-			<integer>100</integer>
+			<integer>497</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -286,9 +286,9 @@
 			<key>key</key>
 			<integer>1106</integer>
 			<key>x</key>
-			<integer>800</integer>
+			<integer>181</integer>
 			<key>y</key>
-			<integer>200</integer>
+			<integer>398</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -298,9 +298,9 @@
 			<key>key</key>
 			<integer>1107</integer>
 			<key>x</key>
-			<integer>900</integer>
+			<integer>730</integer>
 			<key>y</key>
-			<integer>400</integer>
+			<integer>418</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -310,9 +310,9 @@
 			<key>key</key>
 			<integer>1108</integer>
 			<key>x</key>
-			<integer>600</integer>
+			<integer>759</integer>
 			<key>y</key>
-			<integer>670</integer>
+			<integer>345</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -322,9 +322,9 @@
 			<key>key</key>
 			<integer>1109</integer>
 			<key>x</key>
-			<integer>670</integer>
+			<integer>636</integer>
 			<key>y</key>
-			<integer>820</integer>
+			<integer>339</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -334,9 +334,9 @@
 			<key>key</key>
 			<integer>1110</integer>
 			<key>x</key>
-			<integer>888</integer>
+			<integer>806</integer>
 			<key>y</key>
-			<integer>484</integer>
+			<integer>236</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -346,9 +346,9 @@
 			<key>key</key>
 			<integer>1111</integer>
 			<key>x</key>
-			<integer>481</integer>
+			<integer>250</integer>
 			<key>y</key>
-			<integer>520</integer>
+			<integer>255</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -358,9 +358,9 @@
 			<key>key</key>
 			<integer>1112</integer>
 			<key>x</key>
-			<integer>472</integer>
+			<integer>401</integer>
 			<key>y</key>
-			<integer>386</integer>
+			<integer>193</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -370,9 +370,9 @@
 			<key>key</key>
 			<integer>1113</integer>
 			<key>x</key>
-			<integer>350</integer>
+			<integer>636</integer>
 			<key>y</key>
-			<integer>368</integer>
+			<integer>182</integer>
 		</dict>
 		<dict>
 			<key>level</key>
@@ -382,9 +382,9 @@
 			<key>key</key>
 			<integer>1114</integer>
 			<key>x</key>
-			<integer>447</integer>
+			<integer>452</integer>
 			<key>y</key>
-			<integer>340</integer>
+			<integer>284</integer>
 		</dict>
 	</array>
 </dict>
