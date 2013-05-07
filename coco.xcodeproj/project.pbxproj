@@ -256,6 +256,8 @@
 		AC622C7316E974B70030E4E7 /* 弹框1.png in Resources */ = {isa = PBXBuildFile; fileRef = AC622C6D16E974B70030E4E7 /* 弹框1.png */; };
 		AC622CAC16E9B9790030E4E7 /* CCUIViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AC622CAB16E9B9790030E4E7 /* CCUIViewWrapper.m */; };
 		AC622CB216E9CCF20030E4E7 /* SlidingMenuGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = AC622CB116E9CCF20030E4E7 /* SlidingMenuGrid.m */; };
+		AC98697717391A3A00F47CF8 /* winPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98697617391A3A00F47CF8 /* winPanel.png */; };
+		AC98697A17391A5000F47CF8 /* losePanel.png in Resources */ = {isa = PBXBuildFile; fileRef = AC98697917391A5000F47CF8 /* losePanel.png */; };
 		ACDB83A6172801D700DE8246 /* WorldSence.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDB83A5172801D700DE8246 /* WorldSence.m */; };
 		ACEF913716E6079B00DD7120 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACEF913016E6079B00DD7120 /* map@2x.png */; };
 		ACEF913816E6079B00DD7120 /* 钢铁厂.png in Resources */ = {isa = PBXBuildFile; fileRef = ACEF913116E6079B00DD7120 /* 钢铁厂.png */; };
@@ -755,6 +757,8 @@
 		AC622CAB16E9B9790030E4E7 /* CCUIViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCUIViewWrapper.m; sourceTree = "<group>"; };
 		AC622CB016E9CCF20030E4E7 /* SlidingMenuGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingMenuGrid.h; sourceTree = "<group>"; };
 		AC622CB116E9CCF20030E4E7 /* SlidingMenuGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingMenuGrid.m; sourceTree = "<group>"; };
+		AC98697617391A3A00F47CF8 /* winPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winPanel.png; sourceTree = "<group>"; };
+		AC98697917391A5000F47CF8 /* losePanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = losePanel.png; sourceTree = "<group>"; };
 		ACDB83A4172801D700DE8246 /* WorldSence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldSence.h; sourceTree = "<group>"; };
 		ACDB83A5172801D700DE8246 /* WorldSence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldSence.m; sourceTree = "<group>"; };
 		ACEF913016E6079B00DD7120 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
@@ -1497,6 +1501,8 @@
 		DC087EE315BDA9470044A820 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AC98697917391A5000F47CF8 /* losePanel.png */,
+				AC98697617391A3A00F47CF8 /* winPanel.png */,
 				2A0199C91738F52200E5A6AE /* panel.png */,
 				2A0199C71738F46900E5A6AE /* word_bkg.png */,
 				2A0199BA1738EE7100E5A6AE /* btn */,
@@ -2226,6 +2232,8 @@
 				2A0199CE17390AD400E5A6AE /* back1.mp3 in Resources */,
 				2A0199CF17390AD400E5A6AE /* back2.mp3 in Resources */,
 				2A0199D017390AD400E5A6AE /* back3.mp3 in Resources */,
+				AC98697717391A3A00F47CF8 /* winPanel.png in Resources */,
+				AC98697A17391A5000F47CF8 /* losePanel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
