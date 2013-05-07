@@ -152,11 +152,12 @@
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     NSLog(@"building touch");
-    
+   
     CGPoint point;
     point=[self convertTouchToNodeSpace:touch];
     [self selectSpriteForTouch:point];
-    return TRUE;//
+    NSLog(@"触摸点坐标：%f,%f",point.x,point.y);
+    return TRUE;
 }
 
 -(void)selectSpriteForTouch:(CGPoint) point//选择触摸点
